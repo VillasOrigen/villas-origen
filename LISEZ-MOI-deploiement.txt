@@ -1,0 +1,13 @@
+VILLAS ORIGEN — SITE MULTILINGUE (à déployer)
+
+Contenu de ce dossier = la RACINE du site :
+  index.html            → page FR (villasorigen.com/)
+  en/ es/ de/ it/       → versions par langue (/en/, /es/, ...)
+  img/                  → toutes les images (partagées par les 5 pages)
+  sitemap.xml, robots.txt
+
+DÉPLOIEMENT (GitHub + Vercel + GoDaddy) : voir le dossier de projet
+« villas-origen-deploiement-github-vercel-godaddy.md ».
+Différence vs la version fichier unique : on n'a plus à renommer un fichier —
+on pousse TOUT le contenu de ce dossier à la racine du dépôt GitHub.
+L'image de partage (aperçu WhatsApp/Facebook) est déjà en place : img/hero-piscine.jpeg.
