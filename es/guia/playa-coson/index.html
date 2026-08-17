@@ -147,8 +147,18 @@
     <a class="nav-guide" href="/es/guia/">Guía</a>
     <a href="https://wa.me/15819838339?text=%C2%A1Hola%21%20Vengo%20del%20sitio%20villasorigen.com%20%28bot%C3%B3n%20Reservar%29%20y%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n." target="_blank" rel="noopener" class="nav-cta">Reservar</a>
     <div class="nav-lang" role="group" aria-label="Langue"><a href="/guide/playa-coson/" hreflang="fr">FR</a><a href="/en/guide/playa-coson-beach/" hreflang="en">EN</a><a class="actif" href="/es/guia/playa-coson/" hreflang="es">ES</a><a href="/de/reisefuehrer/playa-coson/" hreflang="de">DE</a><a href="/it/guida/playa-coson/" hreflang="it">IT</a></div>
+    <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
+<div class="mmenu" id="mmenu">
+  <button class="mmenu-close" id="mclose" aria-label="Fermer">&times;</button>
+  <a class="mlink" href="/es/#villa">La villa</a>
+  <a class="mlink" href="/es/#galerie">Galería</a>
+  <a class="mlink" href="/es/#coson">Las Terrenas</a>
+  <a class="mlink" href="/es/guia/">Guía</a>
+  <a class="m-cta" href="https://wa.me/15819838339?text=%C2%A1Hola%21%20Vengo%20de%20la%20p%C3%A1gina%20Playa%20Cos%C3%B3n%20de%20la%20gu%C3%ADa%20y%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20la%20villa." target="_blank" rel="noopener">Reservar</a>
+  <div class="m-langs"><a href="/guide/playa-coson/" hreflang="fr">FR</a><a href="/en/guide/playa-coson-beach/" hreflang="en">EN</a><a class="actif" href="/es/guia/playa-coson/" hreflang="es">ES</a><a href="/de/reisefuehrer/playa-coson/" hreflang="de">DE</a><a href="/it/guida/playa-coson/" hreflang="it">IT</a></div>
+</div>
 <header class="g-hero">
   <img src="/img/94398acde6d1.jpg" alt="La primera bahía de Playa Cosón por la mañana, arena dorada y sombras de cocoteros">
   <div class="g-hero-in">
@@ -216,5 +226,15 @@
     <div class="footer-bas"><span>© 2026 Cana Immobilier Inc. — Todos los derechos reservados</span><span>Villas Origen · Las Terrenas · República Dominicana</span></div>
   </div>
 </footer>
+<script>
+(function(){
+  var b=document.getElementById('burger'),m=document.getElementById('mmenu'),c=document.getElementById('mclose');
+  if(!b||!m)return;
+  b.addEventListener('click',function(){m.classList.add('open');document.body.style.overflow='hidden'});
+  function close(){m.classList.remove('open');document.body.style.overflow=''}
+  c.addEventListener('click',close);
+  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});
+})();
+</script>
 </body>
 </html>

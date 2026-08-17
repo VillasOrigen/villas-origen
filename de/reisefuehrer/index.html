@@ -62,8 +62,18 @@
     <a class="nav-guide" href="/de/reisefuehrer/">Reiseführer</a>
     <a href="https://wa.me/15819838339?text=Hallo%21%20Ich%20komme%20von%20villasorigen.com%20%28Schaltfl%C3%A4che%20Buchen%29%20und%20h%C3%A4tte%20gerne%20Informationen." target="_blank" rel="noopener" class="nav-cta">Buchen</a>
     <div class="nav-lang" role="group" aria-label="Langue"><a href="/guide/" hreflang="fr">FR</a><a href="/en/guide/" hreflang="en">EN</a><a href="/es/guia/" hreflang="es">ES</a><a class="actif" href="/de/reisefuehrer/" hreflang="de">DE</a><a href="/it/guida/" hreflang="it">IT</a></div>
+    <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
+<div class="mmenu" id="mmenu">
+  <button class="mmenu-close" id="mclose" aria-label="Fermer">&times;</button>
+  <a class="mlink" href="/de/#villa">Die Villa</a>
+  <a class="mlink" href="/de/#galerie">Galerie</a>
+  <a class="mlink" href="/de/#coson">Las Terrenas</a>
+  <a class="mlink" href="/de/reisefuehrer/">Reiseführer</a>
+  <a class="m-cta" href="https://wa.me/15819838339?text=Hallo%21%20Ich%20komme%20von%20villasorigen.com%20%28Schaltfl%C3%A4che%20Buchen%29%20und%20h%C3%A4tte%20gerne%20Informationen." target="_blank" rel="noopener">Buchen</a>
+  <div class="m-langs"><a href="/guide/" hreflang="fr">FR</a><a href="/en/guide/" hreflang="en">EN</a><a href="/es/guia/" hreflang="es">ES</a><a class="actif" href="/de/reisefuehrer/" hreflang="de">DE</a><a href="/it/guida/" hreflang="it">IT</a></div>
+</div>
 <main class="g-hub"><div class="container">
   <div class="g-hub-head">
     <p class="eyebrow">Reiseführer</p>
@@ -97,5 +107,15 @@
     <div class="footer-bas"><span>© 2026 Cana Immobilier Inc. — Alle Rechte vorbehalten</span><span>Villas Origen · Las Terrenas · Dominikanische Republik</span></div>
   </div>
 </footer>
+<script>
+(function(){
+  var b=document.getElementById('burger'),m=document.getElementById('mmenu'),c=document.getElementById('mclose');
+  if(!b||!m)return;
+  b.addEventListener('click',function(){m.classList.add('open');document.body.style.overflow='hidden'});
+  function close(){m.classList.remove('open');document.body.style.overflow=''}
+  c.addEventListener('click',close);
+  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});
+})();
+</script>
 </body>
 </html>

@@ -1010,8 +1010,35 @@ nav.scrolled .nav-lang button+button{border-left-color:rgba(26,18,8,.2)}
 @media(max-width:620px){.h1-seo{letter-spacing:.18em;text-indent:.18em}}
 
 /* ═══════════ GUIDE ═══════════ */
-@media(max-width:780px){.nav-links a.nav-guide{display:inline-block}}
 .nav-links a.nav-guide{white-space:nowrap}
+
+/* ═══════════ CORRECTIF SECTIONS COLLÉES (mobile) ═══════════ */
+section.container{padding-left:6vw;padding-right:6vw}
+/* ═══════════ MENU MOBILE ═══════════ */
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:8px;margin-left:4px}
+.nav-burger span{display:block;height:1.5px;width:100%;background:var(--blanc);transition:.3s;box-shadow:0 1px 6px rgba(15,22,12,.5)}
+nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
+.mmenu{position:fixed;inset:0;z-index:300;background:linear-gradient(168deg,#31402a 0%,#232e1d 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s}
+.mmenu.open{opacity:1;visibility:visible}
+.mmenu-close{position:absolute;top:22px;right:22px;background:none;border:none;cursor:pointer;font-size:2.1rem;font-weight:200;color:var(--sable-clair);line-height:1;padding:10px}
+.mmenu a.mlink{font-family:var(--serif);font-weight:500;font-size:1.65rem;color:var(--sable-clair);padding:9px 0;letter-spacing:.04em}
+.mmenu a.mlink:hover{color:var(--ocre-pale)}
+.mmenu .m-cta{margin-top:22px;font-family:var(--sans);font-weight:600;font-size:.68rem;letter-spacing:.32em;text-indent:.32em;text-transform:uppercase;color:#fff;border:1.5px solid var(--or);border-radius:99px;padding:16px 42px}
+.mmenu .m-langs{display:flex;gap:4px;margin-top:32px}
+.mmenu .m-langs a{font-family:var(--sans);font-weight:600;font-size:.8rem;letter-spacing:.14em;color:rgba(247,241,230,.75);padding:6px 10px}
+.mmenu .m-langs a+a{border-left:1px solid rgba(247,241,230,.25)}
+.mmenu .m-langs a.actif{color:var(--or)}
+@media(max-width:780px){.nav-burger{display:flex}}
+/* barre compacte sur mobile */
+@media(max-width:780px){
+  nav{padding:16px 4.5vw}
+  nav.scrolled{padding:11px 4.5vw}
+  .nav-logo .v{font-size:.45rem;letter-spacing:.5em}
+  .nav-logo .o{font-size:1.15rem}
+  .nav-links{gap:10px}
+  .nav-lang{display:none}
+  .nav-cta{padding:8px 16px!important;font-size:.6rem;letter-spacing:.2em}
+}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
@@ -1030,8 +1057,18 @@ nav.scrolled .nav-lang button+button{border-left-color:rgba(26,18,8,.2)}
     <a class="nav-guide" href="/de/reisefuehrer/">Reiseführer</a>
     <a href="https://wa.me/15819838339?text=Hallo%21%20Ich%20komme%20von%20villasorigen.com%20%28Schaltfl%C3%A4che%20Buchen%29%20und%20h%C3%A4tte%20gerne%20Informationen." target="_blank" rel="noopener" class="nav-cta" data-i18n="nav_cta">Buchen</a>
     <div class="nav-lang" role="group" aria-label="Langue"><a href="/" hreflang="fr">FR</a><a href="/en/" hreflang="en">EN</a><a href="/es/" hreflang="es">ES</a><a class="actif" href="/de/" hreflang="de">DE</a><a href="/it/" hreflang="it">IT</a></div>
+    <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
+<div class="mmenu" id="mmenu">
+  <button class="mmenu-close" id="mclose" aria-label="Fermer">&times;</button>
+  <a class="mlink" href="#villa">Die Villa</a>
+  <a class="mlink" href="#galerie">Galerie</a>
+  <a class="mlink" href="#coson">Las Terrenas</a>
+  <a class="mlink" href="/de/reisefuehrer/">Reiseführer</a>
+  <a class="m-cta" href="https://wa.me/15819838339?text=Hallo%21%20Ich%20komme%20von%20villasorigen.com%20%28Schaltfl%C3%A4che%20Buchen%29%20und%20h%C3%A4tte%20gerne%20Informationen." target="_blank" rel="noopener">Buchen</a>
+  <div class="m-langs"><a href="/" hreflang="fr">FR</a><a href="/en/" hreflang="en">EN</a><a href="/es/" hreflang="es">ES</a><a class="actif" href="/de/" hreflang="de">DE</a><a href="/it/" hreflang="it">IT</a></div>
+</div>
 
 <!-- ═══════════ HERO ═══════════ -->
 <header class="hero">
@@ -1569,6 +1606,16 @@ stats.forEach(s => obsStats.observe(s));
   if(document.readyState !== 'loading') initVillaMap();
   else document.addEventListener('DOMContentLoaded', initVillaMap);
   window.addEventListener('load', initVillaMap);
+})();
+</script>
+<script>
+(function(){
+  var b=document.getElementById('burger'),m=document.getElementById('mmenu'),c=document.getElementById('mclose');
+  if(!b||!m)return;
+  b.addEventListener('click',function(){m.classList.add('open');document.body.style.overflow='hidden'});
+  function close(){m.classList.remove('open');document.body.style.overflow=''}
+  c.addEventListener('click',close);
+  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});
 })();
 </script>
 </body>

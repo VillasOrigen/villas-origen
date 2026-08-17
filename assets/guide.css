@@ -50,9 +50,37 @@
 .g-card h2{font-family:var(--serif);font-weight:600;font-size:1.5rem;color:var(--encre);margin-bottom:10px}
 .g-card p{font-size:.88rem;color:#4a4135;line-height:1.6;margin-bottom:18px}
 .g-card span{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--kaki);border-bottom:1px solid var(--or);padding-bottom:4px}
+
+/* ═══════════ CORRECTIF SECTIONS COLLÉES (mobile) ═══════════ */
+section.container{padding-left:6vw;padding-right:6vw}
+/* ═══════════ MENU MOBILE ═══════════ */
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:8px;margin-left:4px}
+.nav-burger span{display:block;height:1.5px;width:100%;background:var(--blanc);transition:.3s;box-shadow:0 1px 6px rgba(15,22,12,.5)}
+nav.scrolled .nav-burger span,nav.gnav .nav-burger span{background:var(--kaki);box-shadow:none}
+.mmenu{position:fixed;inset:0;z-index:300;background:linear-gradient(168deg,#31402a 0%,#232e1d 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s}
+.mmenu.open{opacity:1;visibility:visible}
+.mmenu-close{position:absolute;top:22px;right:22px;background:none;border:none;cursor:pointer;font-size:2.1rem;font-weight:200;color:var(--sable-clair);line-height:1;padding:10px}
+.mmenu a.mlink{font-family:var(--serif);font-weight:500;font-size:1.65rem;color:var(--sable-clair);padding:9px 0;letter-spacing:.04em}
+.mmenu a.mlink:hover{color:var(--ocre-pale)}
+.mmenu .m-cta{margin-top:22px;font-family:var(--sans);font-weight:600;font-size:.68rem;letter-spacing:.32em;text-indent:.32em;text-transform:uppercase;color:#fff;border:1.5px solid var(--or);border-radius:99px;padding:16px 42px}
+.mmenu .m-langs{display:flex;gap:4px;margin-top:32px}
+.mmenu .m-langs a{font-family:var(--sans);font-weight:600;font-size:.8rem;letter-spacing:.14em;color:rgba(247,241,230,.75);padding:6px 10px}
+.mmenu .m-langs a+a{border-left:1px solid rgba(247,241,230,.25)}
+.mmenu .m-langs a.actif{color:var(--or)}
+@media(max-width:780px){.nav-burger{display:flex}}
+/* barre compacte sur mobile */
+@media(max-width:780px){
+  nav{padding:16px 4.5vw}
+  nav.scrolled{padding:11px 4.5vw}
+  .nav-logo .v{font-size:.45rem;letter-spacing:.5em}
+  .nav-logo .o{font-size:1.15rem}
+  .nav-links{gap:10px}
+  .nav-lang{display:none}
+  .nav-cta{padding:8px 16px!important;font-size:.6rem;letter-spacing:.2em}
+}
+
 nav.gnav{background:rgba(247,241,230,.96);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(201,161,94,.35);padding:16px 7.5vw;position:sticky}
 nav.gnav .nav-logo .v,nav.gnav .nav-logo .o{color:var(--kaki);text-shadow:none}
 nav.gnav .nav-links a{color:var(--encre);text-shadow:none}
 nav.gnav .nav-lang a{color:var(--encre);text-shadow:none}
 nav.gnav .nav-lang a+a{border-left-color:rgba(26,18,8,.2)}
-@media(max-width:780px){.nav-links a.nav-guide{display:inline-block}}
