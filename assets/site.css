@@ -1,0 +1,807 @@
+
+/* ═══════════ TOKENS — identité Villas Origen ═══════════ */
+:root{
+  --or:#C9A15E;
+  --ocre:#C4976A;
+  --ocre-pale:#D9B68C;
+  --foret:#2D4A2D;
+  --foret-sombre:#1E331E;
+  --sable:#EFE6D6;
+  --sable-clair:#F7F1E6;
+  --encre:#1A1208;
+  --blanc:#FDFBF7;
+  --serif:'Cormorant Garamond', Georgia, serif;
+  --sans:'Montserrat', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  font-weight:300;
+  color:var(--encre);
+  background:var(--sable-clair);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--ocre);outline-offset:3px}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+
+/* ═══════════ UTILITAIRES ═══════════ */
+.eyebrow{
+  font-family:var(--sans);
+  font-size:.64rem;
+  font-weight:400;
+  letter-spacing:.52em;
+  text-transform:uppercase;
+  color:var(--ocre);
+}
+.h-serif{
+  font-family:var(--serif);
+  font-weight:300;
+  line-height:1.08;
+}
+.container{max-width:1240px;margin:0 auto;padding:0 6vw}
+
+/* Apparition au défilement */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* Cadres photo */
+.photo{
+  position:relative;
+  overflow:hidden;
+  background:var(--sable);
+}
+.photo img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .8s ease;
+}
+.photo .tag{
+  position:absolute;left:18px;bottom:14px;z-index:2;
+  font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(255,255,255,.92);
+  border:1px solid rgba(255,255,255,.45);
+  padding:5px 12px;border-radius:99px;
+  background:rgba(26,18,8,.18);
+  backdrop-filter:blur(4px);
+}
+/* Placeholders pour photos d'environnement à venir */
+.photo.ph-sea{background:linear-gradient(170deg,#eaf4ef 0%,#aed4c6 35%,#5f9d8c 70%,#2d5a52 100%)}
+.photo.ph-warm{background:linear-gradient(150deg,#f3ddbb 0%,#e3b886 40%,#c4976a 72%,#8a5f3a 100%)}
+.photo.ph-dusk{background:linear-gradient(165deg,#f5d9b0 0%,#dba26e 35%,#7a6248 68%,#2c2418 100%)}
+.photo.ph-sea::after,.photo.ph-warm::after,.photo.ph-dusk::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 120% 55% at 50% 108%, rgba(26,18,8,.38), transparent 60%);
+}
+
+/* ═══════════ NAVIGATION ═══════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px 5vw;
+  transition:background .4s ease, padding .4s ease, box-shadow .4s ease;
+}
+nav.scrolled{
+  background:rgba(247,241,230,.94);
+  backdrop-filter:blur(10px);
+  padding:14px 5vw;
+  box-shadow:0 1px 0 rgba(26,18,8,.07);
+}
+.nav-logo{display:flex;flex-direction:column;align-items:center;line-height:1.1}
+.nav-logo .v{font-family:var(--sans);font-size:.5rem;font-weight:300;letter-spacing:.55em;color:var(--blanc);transition:color .4s;text-shadow:0 1px 8px rgba(0,0,0,.3)}
+.nav-logo .o{font-family:var(--serif);font-size:1.5rem;letter-spacing:.42em;margin-left:.42em;color:var(--blanc);transition:color .4s;text-shadow:0 1px 8px rgba(0,0,0,.3)}
+nav.scrolled .nav-logo .v, nav.scrolled .nav-logo .o{color:var(--foret);text-shadow:none}
+.nav-links{display:flex;gap:38px;align-items:center}
+.nav-links a{
+  font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--blanc);transition:color .4s, opacity .3s;
+  text-shadow:0 1px 8px rgba(0,0,0,.3);
+}
+nav.scrolled .nav-links a{color:var(--encre);text-shadow:none}
+.nav-links a:hover{opacity:.6}
+.nav-cta{
+  border:1px solid currentColor;border-radius:99px;
+  padding:9px 22px!important;
+}
+@media(max-width:780px){.nav-links a:not(.nav-cta){display:none}}
+
+/* ═══════════ HERO ═══════════ */
+.hero{
+  position:relative;min-height:100svh;
+  display:flex;align-items:flex-end;
+  overflow:hidden;
+}
+.hero-img{
+  position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;
+  animation:heroZoom 7s ease-out;
+}
+@keyframes heroZoom{from{transform:scale(1.07)}to{transform:scale(1)}}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(to top, rgba(15,10,4,.72) 0%, rgba(15,10,4,.25) 38%, rgba(15,10,4,.05) 60%, rgba(15,10,4,.18) 100%);
+}
+.hero-inner{
+  position:relative;z-index:2;width:100%;
+  padding:0 6vw 9vh;
+  color:var(--blanc);
+}
+.hero .eyebrow{color:var(--ocre-pale);animation:fadeUp 1.2s .2s both}
+.hero h1{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(3.9rem, 13vw, 11.5rem);
+  letter-spacing:.08em;line-height:.92;
+  margin:.1em 0 .12em -.04em;
+  animation:fadeUp 1.2s .45s both;
+  text-shadow:0 2px 30px rgba(0,0,0,.25);
+}
+.hero h1 em{font-style:italic;letter-spacing:.02em}
+.hero-sub{
+  display:flex;flex-wrap:wrap;gap:14px 36px;align-items:center;
+  animation:fadeUp 1.2s .7s both;
+}
+.hero-sub p{
+  font-family:var(--serif);font-style:italic;font-size:1.25rem;opacity:.95;
+}
+.hero-line{flex:1;min-width:60px;height:1px;background:rgba(255,255,255,.4)}
+.hero-cta{
+  font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;
+  border:1px solid rgba(255,255,255,.7);border-radius:99px;
+  padding:17px 46px;letter-spacing:.38em;color:var(--blanc);
+  transition:background .35s,color .35s;white-space:nowrap;
+}
+.hero-cta:hover{background:var(--blanc);color:var(--foret)}
+.hero-scroll{
+  position:absolute;right:5vw;bottom:9vh;z-index:2;
+  writing-mode:vertical-rl;
+  font-size:.58rem;letter-spacing:.4em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);
+  animation:fadeUp 1.2s 1s both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@media(max-width:780px){.hero-scroll{display:none}}
+
+/* ═══════════ INTRO MANIFESTE ═══════════ */
+.manifeste{padding:16vh 0 12vh;text-align:center}
+.manifeste .h-serif{
+  font-size:clamp(2.1rem,4.5vw,3.8rem);
+  max-width:20ch;letter-spacing:-.01em;margin:26px auto 0;
+}
+.manifeste .h-serif em{font-style:italic;color:var(--foret)}
+.manifeste .ligne{
+  width:1px;height:70px;background:var(--ocre);margin:48px auto 0;opacity:.7;
+}
+
+/* ═══════════ LA VILLA — éditorial ═══════════ */
+.villa{padding:4vh 0 14vh}
+.villa-grid{
+  display:grid;grid-template-columns:1.15fr .85fr;
+  gap:clamp(30px,5vw,80px);align-items:center;
+}
+.villa-photo-main{aspect-ratio:4/5;border-radius:2px}
+.villa-photo-small{
+  aspect-ratio:1;width:62%;margin:-22% 0 0 auto;
+  border:6px solid var(--sable-clair);border-radius:2px;
+  position:relative;z-index:3;
+}
+.villa-txt h2{font-size:clamp(2.4rem,4.6vw,4.1rem);line-height:1.04;margin:18px 0 26px}
+.villa-txt h2 em{font-style:italic;color:var(--ocre)}
+.villa-txt p{max-width:46ch;margin-bottom:18px;color:#3d352a}
+.villa-stats{
+  display:flex;gap:0;margin-top:42px;
+  border-top:1px solid rgba(26,18,8,.14);
+}
+.villa-stats div{
+  flex:1;padding:22px 18px 0 0;
+}
+.villa-stats div + div{padding-left:24px;border-left:1px solid rgba(26,18,8,.14)}
+.villa-stats strong{
+  display:block;font-family:var(--serif);font-weight:300;
+  font-size:clamp(2.8rem,3.4vw,3.6rem);line-height:1;color:var(--foret);
+}
+.villa-stats span{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:#6e6353}
+@media(max-width:880px){
+  .villa-grid{grid-template-columns:1fr}
+  .villa-photo-small{width:48%;margin-top:-18%}
+}
+
+/* ═══════════ GALERIE ═══════════ */
+.galerie{background:var(--foret-sombre);color:var(--sable-clair);padding:13vh 0 14vh}
+.galerie .eyebrow{color:var(--ocre-pale)}
+.galerie h2{font-size:clamp(2.4rem,4.6vw,4.1rem);line-height:1.04;margin:16px 0 8px}
+.galerie h2 em{font-style:italic;color:var(--ocre-pale)}
+.galerie-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:54px;flex-wrap:wrap}
+.galerie-head p{max-width:38ch;font-size:.92rem;opacity:.75}
+.galerie-grid{columns:2;column-gap:16px}
+.galerie-grid .photo{margin-bottom:16px;break-inside:avoid;display:block}
+.galerie-grid .photo img{position:static;width:100%;height:auto;object-fit:unset;display:block}
+.g1{column-span:all}
+.galerie-grid .photo{border-radius:2px}
+.galerie-grid .photo:hover img{transform:scale(1.04)}
+
+
+
+
+
+
+@media(max-width:780px){
+  .galerie-grid{columns:1}
+}
+
+/* ═══════════ EXPÉRIENCE LAS TERRENAS ═══════════ */
+.experience{padding:14vh 0}
+.exp-head{text-align:center;margin-bottom:64px}
+.exp-head h2{font-size:clamp(2.4rem,4.6vw,4.1rem);line-height:1.04;margin-top:16px}
+.exp-head h2 em{font-style:italic;color:var(--ocre)}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px)}
+.exp-card .photo{aspect-ratio:3/4;border-radius:2px;margin-bottom:22px}
+.exp-card h3{
+  font-family:var(--serif);font-weight:400;font-size:1.5rem;
+  letter-spacing:.04em;margin-bottom:8px;
+}
+.exp-card p{font-size:.88rem;color:#4a4135;max-width:34ch}
+.exp-card .dist{
+  display:inline-block;margin-top:14px;
+  font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ocre);
+  border-bottom:1px solid var(--ocre);padding-bottom:3px;
+}
+@media(max-width:880px){.exp-grid{grid-template-columns:1fr;max-width:440px;margin:0 auto}}
+
+/* ═══════════ BANDEAU IMMERSIF ═══════════ */
+.bandeau{
+  position:relative;min-height:70vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;color:var(--blanc);overflow:hidden;
+}
+.bandeau-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bandeau::before{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:radial-gradient(ellipse 130% 80% at 50% 60%, rgba(10,7,3,.52), rgba(10,7,3,.2) 75%);
+}
+.bandeau-inner{position:relative;z-index:2;padding:60px 6vw}
+.bandeau p.cit{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:clamp(2rem,4.4vw,3.6rem);line-height:1.28;max-width:22ch;
+  text-shadow:0 2px 24px rgba(0,0,0,.35);
+}
+.bandeau .sig{margin-top:26px;font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;opacity:.85}
+
+/* ═══════════ SÉJOUR / RÉSERVATION ═══════════ */
+.sejour{padding:14vh 0;background:var(--sable)}
+.sejour-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px);align-items:center}
+.sejour h2{font-size:clamp(2.4rem,4.6vw,4.1rem);line-height:1.04;margin:16px 0 24px}
+.sejour h2 em{font-style:italic;color:var(--foret)}
+.sejour-list{list-style:none;margin:8px 0 36px}
+.sejour-list li{
+  display:flex;gap:16px;align-items:baseline;
+  padding:13px 0;border-bottom:1px solid rgba(26,18,8,.12);
+  font-size:.92rem;
+}
+.sejour-list li::before{content:"—";color:var(--ocre)}
+.btn-foret{
+  display:inline-block;
+  font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;
+  background:var(--foret);color:var(--sable-clair);
+  border-radius:99px;padding:19px 50px;letter-spacing:.38em;
+  transition:background .35s;
+}
+.btn-foret:hover{background:var(--foret-sombre)}
+.sejour-inaug{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--kaki);margin-bottom:20px}
+.sejour-note{margin-top:16px;font-size:.78rem;color:#6e6353}
+.sejour .photo{aspect-ratio:4/5;border-radius:2px}
+@media(max-width:880px){.sejour-grid{grid-template-columns:1fr}}
+
+/* ═══════════ INSTAGRAM ═══════════ */
+.insta{padding:13vh 0 12vh;text-align:center}
+.insta h2{font-size:clamp(2.2rem,3.6vw,3.3rem);margin:14px 0 12px}
+.insta h2 em{font-style:italic;color:var(--ocre)}
+.insta-handle{
+  font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--foret);
+  border-bottom:1px solid var(--foret);padding-bottom:3px;
+}
+.insta-strip{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:48px;
+}
+.insta-strip .photo{aspect-ratio:1;border-radius:2px;transition:transform .5s}
+.insta-strip .photo:hover{transform:translateY(-5px)}
+@media(max-width:780px){.insta-strip{grid-template-columns:repeat(2,1fr)}.insta-strip .photo:nth-child(5){display:none}}
+
+/* ═══════════ PIED DE PAGE ═══════════ */
+footer{
+  background:var(--encre);color:var(--sable);
+  padding:80px 0 36px;
+}
+.footer-grid{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:50px;
+  padding-bottom:54px;border-bottom:1px solid rgba(239,230,214,.14);
+}
+.footer-logo .v{font-size:.6rem;letter-spacing:.55em;color:var(--ocre)}
+.footer-logo .o{font-family:var(--serif);font-size:2.7rem;letter-spacing:.35em;display:block;margin:6px 0 2px}
+.footer-logo .lt{font-family:var(--serif);font-style:italic;font-size:1rem;letter-spacing:.18em;opacity:.7}
+.footer-grid h4{
+  font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--ocre);font-weight:400;margin-bottom:18px;
+}
+.footer-grid a, .footer-grid p{display:block;font-size:.86rem;opacity:.78;margin-bottom:10px}
+.footer-grid a:hover{opacity:1}
+.footer-bas{
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  padding-top:30px;font-size:.7rem;opacity:.5;letter-spacing:.06em;
+}
+@media(max-width:780px){.footer-grid{grid-template-columns:1fr}}
+
+/* ═══════════ ANIMATIONS ENRICHIES ═══════════ */
+/* Bandeau défilant éditorial */
+.marquee{
+  overflow:hidden;padding:26px 0;
+  border-top:1px solid rgba(26,18,8,.12);
+  border-bottom:1px solid rgba(26,18,8,.12);
+}
+.marquee-track{
+  display:flex;white-space:nowrap;width:max-content;
+  animation:defile 30s linear infinite;
+}
+.marquee span{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:1.85rem;letter-spacing:.14em;color:var(--foret);
+  padding-right:.5em;
+}
+.marquee em{font-style:normal;color:var(--ocre);padding:0 .4em}
+@keyframes defile{to{transform:translateX(-50%)}}
+
+/* Apparition en cascade — galerie */
+.galerie-grid .photo{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.galerie-grid.visible .photo{opacity:1;transform:none}
+.galerie-grid .photo:nth-child(2){transition-delay:.1s}
+.galerie-grid .photo:nth-child(3){transition-delay:.2s}
+.galerie-grid .photo:nth-child(4){transition-delay:.3s}
+.galerie-grid .photo:nth-child(5){transition-delay:.4s}
+.galerie-grid .photo:nth-child(6){transition-delay:.5s}
+
+/* Cascade — cartes expérience */
+.exp-grid .exp-card:nth-child(2){transition-delay:.18s}
+.exp-grid .exp-card:nth-child(3){transition-delay:.36s}
+
+/* Cascade — bande Instagram */
+.insta-strip .photo{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease,box-shadow .4s}
+.insta-strip.visible .photo{opacity:1;transform:none}
+.insta-strip .photo:nth-child(2){transition-delay:.09s}
+.insta-strip .photo:nth-child(3){transition-delay:.18s}
+.insta-strip .photo:nth-child(4){transition-delay:.27s}
+.insta-strip .photo:nth-child(5){transition-delay:.36s}
+
+/* Ken Burns lent sur le bandeau citation */
+.bandeau-img{animation:kenburns 20s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09)}}
+
+/* Pulsation de l'indicateur de défilement */
+@keyframes pulse{0%,100%{opacity:.7}50%{opacity:.25}}
+.hero-scroll{animation:fadeUp 1.2s 1s both, pulse 2.6s 3s ease-in-out infinite}
+
+/* Lueur douce au survol des photos */
+.galerie-grid .photo:hover, .insta-strip .photo:hover{box-shadow:0 18px 50px rgba(0,0,0,.28)}
+
+
+/* ═══════════ DÉTAILS HAUT DE GAMME ═══════════ */
+/* Cadre filaire sur le hero — signature hôtellerie de luxe */
+
+/* Sélection de texte aux couleurs de la maison */
+::selection{background:var(--ocre);color:var(--blanc)}
+
+/* Filet doré sous les titres de section centrés */
+.exp-head h2::after, .insta h2 + .insta-handle{position:relative}
+.exp-head::after{
+  content:"";display:block;width:54px;height:1px;
+  background:var(--ocre);margin:30px auto 0;
+}
+
+/* Tête de galerie structurée par un filet */
+.galerie-head{border-bottom:1px solid rgba(239,230,214,.16);padding-bottom:38px}
+
+/* Chiffres des statistiques précédés d'un filet doré */
+.villa-stats div::before{
+  content:"";display:block;width:26px;height:1px;
+  background:var(--ocre);margin-bottom:16px;
+}
+
+/* Étiquettes photo plus raffinées */
+.photo .tag{font-size:.55rem;letter-spacing:.32em;padding:6px 14px;border-width:.5px}
+
+/* Liens de navigation : soulignement doré au survol */
+.nav-links a:not(.nav-cta){position:relative}
+.nav-links a:not(.nav-cta)::after{
+  content:"";position:absolute;left:0;bottom:-5px;width:0;height:1px;
+  background:var(--ocre);transition:width .35s ease;
+}
+.nav-links a:not(.nav-cta):hover{opacity:1}
+.nav-links a:not(.nav-cta):hover::after{width:100%}
+
+/* Boutons : passage au doré au survol */
+.btn-foret:hover{background:var(--foret-sombre);box-shadow:0 14px 36px rgba(30,51,30,.32)}
+.hero-cta:hover{border-color:var(--blanc)}
+
+/* Respiration plus généreuse entre les grandes sections */
+.experience{padding:16vh 0}
+.villa{padding:5vh 0 16vh}
+
+
+/* ═══════════ LA VIE D'ICI ═══════════ */
+.vivant{padding:15vh 0 13vh}
+.vivant-grid{
+  display:grid;grid-template-columns:.85fr 1.15fr;
+  gap:clamp(30px,5vw,80px);align-items:center;
+}
+.vivant-txt h2{font-size:clamp(2.4rem,4.6vw,4.1rem);line-height:1.04;margin:18px 0 30px}
+.vivant-txt h2 em{font-style:italic;color:var(--ocre)}
+.vivant-txt p{max-width:46ch;margin-bottom:18px;color:#3d352a}
+.vivant-photo-main{aspect-ratio:4/5;border-radius:2px}
+.vivant-photo-small{
+  aspect-ratio:1;width:58%;margin:-24% auto 0 0;
+  border:6px solid var(--sable-clair);border-radius:2px;
+  position:relative;z-index:3;
+}
+.vivant-saisons{
+  display:flex;flex-direction:column;gap:0;margin-top:38px;
+  border-top:1px solid rgba(26,18,8,.14);
+}
+.vivant-saisons div{
+  display:flex;gap:18px;align-items:baseline;
+  padding:15px 0;border-bottom:1px solid rgba(26,18,8,.1);
+  font-size:.9rem;color:#3d352a;
+}
+.vivant-saisons strong{
+  font-family:var(--serif);font-weight:400;font-style:italic;
+  font-size:1.15rem;color:var(--foret);white-space:nowrap;
+}
+@media(max-width:880px){
+  .vivant-grid{grid-template-columns:1fr}
+  .vivant-grid > .reveal:first-child{order:2}
+  .vivant-photo-small{width:46%;margin-top:-18%}
+}
+
+
+/* ═══════════ HERO SIGNATURE — Ara en plein vol ═══════════ */
+.hero{align-items:center;justify-content:center;text-align:center}
+.hero::before{background:linear-gradient(168deg,rgba(58,74,48,.80) 0%,rgba(40,53,33,.90) 100%)}
+.hero-img{background-size:cover;background-position:center}
+.hero-lumiere{position:absolute;inset:0;z-index:2;pointer-events:none;background-size:cover;background-position:center;mix-blend-mode:screen;opacity:.9}
+.hero-inner{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;padding:0 6vw;width:auto}
+.hero-villas{font-family:var(--sans);font-weight:700;font-size:clamp(1.05rem,2.1vw,1.5rem);letter-spacing:.6em;text-indent:.6em;color:#fff;text-shadow:0 2px 6px rgba(15,22,12,.95),0 6px 26px rgba(15,22,12,.8)}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(3.6rem,8.2vw,7.2rem);letter-spacing:.04em;text-indent:.04em;line-height:.95;margin:.06em 0 0;color:var(--blanc);text-shadow:0 3px 26px rgba(15,22,12,.55)}
+.hero-lt{margin-top:20px;display:flex;align-items:center;gap:20px}
+.hero-lt::before,.hero-lt::after{content:'';width:34px;height:1px;background:var(--or);opacity:.85}
+.hero-lt span{font-family:var(--sans);font-weight:600;font-size:clamp(.78rem,1.5vw,1rem);letter-spacing:.56em;text-indent:.56em;color:#fff;text-shadow:0 2px 6px rgba(15,22,12,.95),0 6px 24px rgba(15,22,12,.8)}
+.hero-sep{width:1px;height:46px;margin:24px auto 0;background:var(--or)}
+.hero .hero-cta{margin-top:30px;font-weight:600;border:1.5px solid #fff;color:#fff;text-shadow:0 1px 4px rgba(15,22,12,.9);box-shadow:0 8px 30px rgba(15,22,12,.5)}
+.hero .hero-cta:hover{background:#fff;color:var(--foret);text-shadow:none}
+
+/* Harmonisation typographique : titres de section plus assumés (échо du hero) */
+.villa-txt h2,.galerie h2,.exp-head h2,.sejour h2,.insta h2,.vivant-txt h2{font-family:var(--serif);font-weight:600}
+.manifeste .h-serif{font-weight:500}
+
+
+/* ═══════════ CONTINUITÉ KAKI & PERROQUETS ═══════════ */
+:root{--kaki:#3A4A30;--kaki-sombre:#283521;}
+
+/* Galerie : du vert forêt pur vers le kaki du hero + fresque en filigrane */
+.galerie{position:relative;background:linear-gradient(168deg,#31402a 0%,#232e1d 100%)}
+.galerie::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:url(/img/eaa8ccc59691.jpg);background-size:cover;background-position:center 30%;
+  opacity:.09;mix-blend-mode:luminosity;
+}
+.galerie .container{position:relative;z-index:1}
+
+/* Section « La vie d'ici » : le duo ara-toucan en filigrane très pâle */
+.vivant{position:relative}
+.vivant::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:url(/img/73ddb1ccc771.jpg);background-size:cover;background-position:center;
+  opacity:.10;
+}
+.vivant-grid{position:relative;z-index:1}
+
+/* Pied de page : fresque fantôme dans l'encre */
+footer{position:relative;overflow:hidden}
+footer::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:url(/img/eaa8ccc59691.jpg);background-size:cover;background-position:center 60%;
+  opacity:.055;mix-blend-mode:luminosity;
+}
+footer .container{position:relative;z-index:1}
+
+/* Bandeau défilant : souffle kaki très léger */
+.marquee{background:rgba(58,74,48,.055)}
+
+/* Boutons et accents verts alignés sur le kaki du hero */
+.btn-foret{background:var(--kaki)}
+.btn-foret:hover{background:var(--kaki-sombre);box-shadow:0 14px 36px rgba(40,53,33,.35)}
+.villa-txt h2 em{color:var(--ocre)}
+.sejour h2 em,.manifeste .h-serif em{color:var(--kaki)}
+.villa-stats strong{color:var(--kaki)}
+.insta-handle{color:var(--kaki);border-bottom-color:var(--kaki)}
+nav.scrolled .nav-logo .v, nav.scrolled .nav-logo .o{color:var(--kaki)}
+
+/* Nav défilée : filet doré discret sous la barre */
+nav.scrolled{box-shadow:0 1px 0 rgba(201,161,94,.35)}
+
+
+/* ═══════════ NAV : espacement du cadre + lettrage assumé ═══════════ */
+nav{padding:38px 7.5vw}
+nav.scrolled{padding:16px 7.5vw}
+.nav-logo .v{font-weight:600;font-size:.58rem;letter-spacing:.62em}
+.nav-logo .o{font-weight:600;font-size:1.6rem}
+.nav-links{gap:34px}
+.nav-links a{font-weight:600;font-size:.82rem;text-shadow:0 1px 10px rgba(15,22,12,.45)}
+.hero-scroll{right:7.5vw}
+
+/* Sélecteur de langue */
+.nav-lang{display:flex;align-items:center;gap:4px;margin-left:10px}
+.nav-lang button{
+  background:none;border:none;cursor:pointer;
+  font-family:var(--sans);font-weight:600;font-size:.78rem;letter-spacing:.14em;
+  color:var(--blanc);opacity:.8;padding:5px 8px;transition:.3s;
+  text-shadow:0 1px 8px rgba(0,0,0,.3);
+}
+.nav-lang button+button{border-left:1px solid rgba(255,255,255,.28)}
+nav.scrolled .nav-lang button{color:var(--encre);text-shadow:none}
+nav.scrolled .nav-lang button+button{border-left-color:rgba(26,18,8,.2)}
+.nav-lang button:hover{opacity:1}
+.nav-lang button.actif{opacity:1;color:var(--or)!important;font-weight:800}
+@media(max-width:780px){.nav-lang{margin-left:4px}}
+
+
+/* ═══════════ LES PLAGES ═══════════ */
+.plages{padding:14vh 0}
+.plages-head{text-align:center;margin-bottom:56px}
+.plages-head h2{font-size:clamp(2.4rem,4.6vw,4.1rem);line-height:1.04;margin-top:16px;font-family:var(--serif);font-weight:600}
+.plages-head h2 em{font-style:italic;color:var(--ocre)}
+.plages-head p{max-width:52ch;margin:18px auto 0;color:#4a4135;font-size:.92rem}
+.plages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.plage{
+  position:relative;overflow:hidden;border-radius:4px;
+  min-height:440px;display:flex;align-items:flex-end;
+  grid-column:span 1;
+}
+.plage.vedette{grid-column:span 4;min-height:560px}
+.plage.vedette .plage-body{padding:36px 40px 34px}
+.plage.vedette h3{font-size:clamp(2rem,3.4vw,2.9rem)}
+.plage.vedette p{font-size:.94rem;max-width:56ch}
+.plage.vedette .plage-dist{font-size:.64rem}
+.plage img,.plage .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.plage:hover img{transform:scale(1.045)}
+.plage .ph{background:linear-gradient(165deg,#5a6b4a 0%,#3a4a30 55%,#283521 100%)}
+.plage .ph .tag{position:absolute;top:16px;left:16px;font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.35);padding:5px 12px;border-radius:99px}
+.plage::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(20,28,17,.88) 0%, rgba(20,28,17,.42) 42%, rgba(20,28,17,.05) 70%);
+}
+.plage-body{position:relative;z-index:2;padding:26px 26px 24px;width:100%;color:var(--sable-clair)}
+.plage-dist{display:inline-flex;align-items:center;gap:10px;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ocre-pale);margin-bottom:10px}
+.plage-dist::before{content:"";width:22px;height:1px;background:var(--or)}
+.plage-body h3{font-family:var(--serif);font-weight:600;font-size:clamp(1.5rem,2.2vw,1.9rem);letter-spacing:.03em;color:var(--blanc);margin-bottom:8px}
+.plage-body p{font-size:.84rem;line-height:1.55;color:rgba(247,241,230,.88);max-width:40ch;margin-bottom:14px}
+.plage-chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--sable-clair);border:1px solid rgba(201,161,94,.65);
+  padding:6px 13px;border-radius:99px;
+  background:rgba(30,42,27,.4);backdrop-filter:blur(4px);
+}
+@media(max-width:960px){
+  .plages-grid{grid-template-columns:1fr 1fr}
+  .plage{grid-column:span 1;min-height:400px}
+  .plage.vedette{grid-column:span 2;min-height:480px}
+}
+@media(max-width:620px){
+  .plages-grid{grid-template-columns:1fr}
+  .plage,.plage.vedette{grid-column:span 1}
+}
+
+
+/* ═══════════ LE CARNET DES HÔTES ═══════════ */
+.restos{padding:13vh 0 14vh;background:var(--sable)}
+.restos-head{text-align:center;margin-bottom:54px}
+.restos-head h2{font-size:clamp(2.4rem,4.6vw,4.1rem);line-height:1.04;margin-top:16px;font-family:var(--serif);font-weight:600}
+.restos-head h2 em{font-style:italic;color:var(--kaki)}
+.restos-head p{max-width:54ch;margin:18px auto 0;color:#4a4135;font-size:.92rem}
+.restos-grid{display:grid;grid-template-columns:repeat(2,1fr);max-width:980px;margin-left:auto;margin-right:auto;gap:clamp(18px,2.5vw,30px)}
+.resto{
+  background:var(--sable-clair);border:1px solid rgba(201,161,94,.4);border-radius:4px;
+  padding:38px 32px 32px;display:flex;flex-direction:column;align-items:flex-start;
+  transition:transform .45s ease, box-shadow .45s ease;
+}
+.resto:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(40,53,33,.16)}
+.resto-mono{
+  width:58px;height:58px;border-radius:50%;
+  border:1px solid var(--or);display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-weight:600;font-size:1.7rem;color:var(--kaki);
+  margin-bottom:20px;
+}
+.resto-badge{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ocre-fonce, #A9784E);
+  margin-bottom:14px;
+}
+.resto-badge::before{content:"";width:18px;height:1px;background:var(--or)}
+.resto h3{font-family:var(--serif);font-weight:600;font-size:1.65rem;letter-spacing:.02em;color:var(--encre);margin-bottom:4px}
+.resto-type{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:#8a7d6a;margin-bottom:16px}
+.resto p{font-size:.87rem;line-height:1.65;color:#4a4135;margin-bottom:20px}
+.resto-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.resto-chips .chip{color:var(--kaki);border-color:rgba(58,74,48,.4);background:rgba(58,74,48,.06);backdrop-filter:none}
+.resto-note{font-size:.78rem;font-style:italic;color:#8a7d6a;margin:14px 0 18px}
+.resto-lien{
+  margin-top:auto;
+  font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--kaki);
+  border-bottom:1px solid var(--or);padding-bottom:4px;transition:.3s;
+}
+.resto-lien:hover{color:var(--ocre-fonce,#A9784E)}
+.resto.avenir{
+  border-style:dashed;border-color:rgba(169,120,78,.45);background:transparent;
+  align-items:center;justify-content:center;text-align:center;min-height:340px;
+}
+.resto.avenir .resto-mono{border-style:dashed;color:var(--ocre)}
+.resto.avenir p{color:#6e6353;max-width:26ch;margin-bottom:0}
+@media(max-width:880px){.restos-grid{grid-template-columns:1fr;max-width:460px;margin:0 auto}}
+
+
+/* ═══════════ LES ACTIVITÉS ═══════════ */
+.activites{padding:0 0 14vh;background:var(--sable)}
+.activites .restos-head{margin-bottom:54px}
+.act-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(18px,2.5vw,30px);max-width:980px;margin:0 auto}
+.act-card{
+  background:var(--sable-clair);border:1px solid rgba(201,161,94,.4);border-radius:4px;
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .45s ease, box-shadow .45s ease;
+}
+.act-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(40,53,33,.16)}
+.act-photo{aspect-ratio:16/10;overflow:hidden}
+.act-photo img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.act-card:hover .act-photo img{transform:scale(1.04)}
+.act-body{padding:28px 30px 30px;display:flex;flex-direction:column;align-items:flex-start;flex:1}
+.act-body .resto-badge{margin-bottom:12px}
+.act-body h3{font-family:var(--serif);font-weight:600;font-size:1.65rem;letter-spacing:.02em;color:var(--encre);margin-bottom:4px}
+.act-body .resto-type{margin-bottom:14px}
+.act-body p{font-size:.87rem;line-height:1.65;color:#4a4135;margin-bottom:18px}
+.act-body .resto-chips{margin-bottom:22px}
+.act-avenir{
+  border:1px dashed rgba(169,120,78,.45);border-radius:4px;background:transparent;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  min-height:300px;padding:30px;
+}
+.act-avenir .resto-mono{border-style:dashed;color:var(--ocre);margin-bottom:16px}
+.act-avenir p{color:#6e6353;max-width:26ch;font-size:.87rem}
+
+
+/* ═══════════ ENGAGEMENT ÉCO-RESPONSABLE ═══════════ */
+.eco{position:relative;background:linear-gradient(168deg,#31402a 0%,#232e1d 100%);color:var(--sable-clair);padding:13vh 0;overflow:hidden}
+.eco::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:inherit;opacity:0}
+.eco .container{position:relative;z-index:1;max-width:900px}
+.eco .eyebrow{color:var(--ocre-pale)}
+.eco h2{font-family:var(--serif);font-weight:600;font-size:clamp(2.4rem,4.6vw,4.1rem);line-height:1.04;margin:16px 0 10px;color:var(--blanc)}
+.eco h2 em{font-style:italic;color:var(--ocre-pale)}
+.inaugurale{padding:9vh 0}
+.inaugurale .eco-intro{margin-bottom:38px}
+.eco-filet{width:54px;height:1px;background:var(--or);margin:22px 0 30px}
+.eco-intro{font-size:.98rem;color:rgba(247,241,230,.88);max-width:56ch;margin-bottom:46px}
+.eco-item{display:flex;gap:24px;align-items:flex-start;padding:22px 0;border-top:1px solid rgba(201,161,94,.25)}
+.eco-item:last-of-type{border-bottom:1px solid rgba(201,161,94,.25)}
+.eco-ico{
+  flex:0 0 54px;width:54px;height:54px;border-radius:50%;
+  border:1px solid var(--or);display:flex;align-items:center;justify-content:center;
+  color:var(--ocre-pale);
+}
+.eco-item h3{font-family:var(--sans);font-weight:600;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ocre-pale);margin-bottom:7px}
+.eco-item p{font-size:.92rem;line-height:1.65;color:rgba(247,241,230,.85);max-width:58ch}
+.eco-note{
+  margin-top:40px;padding:24px 28px;
+  background:rgba(201,161,94,.12);border-left:2px solid var(--or);border-radius:0 4px 4px 0;
+  font-size:.9rem;line-height:1.65;color:rgba(247,241,230,.92);
+}
+.eco-note strong{font-family:var(--serif);font-weight:600;font-size:1.05rem;color:var(--blanc)}
+@media(max-width:620px){.eco-item{gap:16px}.eco-ico{flex-basis:46px;width:46px;height:46px}}
+
+
+/* Carte activité sans photo : bloc kaki avec pictogramme doré */
+.act-ico-block{
+  aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(155deg,#3a4a30 0%,#283521 100%);
+  color:var(--ocre-pale);
+}
+.act-ico-block svg{opacity:.9}
+
+
+/* ═══════════ VITRINE SIGNATURE ═══════════ */
+.signature{position:relative}
+.signature img{display:block;width:100%;height:auto}
+
+
+/* Photo en tête des cartes du carnet des hôtes */
+.resto-photo{margin:-38px -32px 24px;aspect-ratio:16/10;overflow:hidden}
+.resto-photo img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.resto:hover .resto-photo img{transform:scale(1.04)}
+
+
+/* 3e photo du montage villa : la cuisine extérieure */
+.villa-photo-third{
+  aspect-ratio:4/3;width:66%;margin:-14% auto 0 0;
+  border:6px solid var(--sable-clair);border-radius:2px;
+  position:relative;z-index:4;
+}
+@media(max-width:880px){.villa-photo-third{width:58%;margin-top:-10%}}
+
+
+/* ═══════════ PLAYA COSÓN — VOTRE PLAGE ═══════════ */
+.coson{padding:14vh 0 13vh;background:var(--sable-clair)}
+.coson-head{text-align:center;margin-bottom:50px}
+.coson-head h2{font-size:clamp(2.4rem,4.6vw,4.1rem);line-height:1.04;margin-top:16px;font-family:var(--serif);font-weight:600}
+.coson-head h2 em{font-style:italic;color:var(--ocre)}
+.coson-head p{max-width:58ch;margin:18px auto 0;color:#4a4135;font-size:.95rem}
+.coson-hero{aspect-ratio:21/9;overflow:hidden;border-radius:4px;margin-bottom:56px}
+.coson-hero img{width:100%;height:100%;object-fit:cover}
+.coson-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(30px,4vw,64px);margin-bottom:60px}
+.coson-item{display:flex;gap:22px;align-items:flex-start;padding:24px 0;border-top:1px solid rgba(201,161,94,.4)}
+.coson-ico{flex:0 0 50px;width:50px;height:50px;border-radius:50%;border:1px solid var(--or);display:flex;align-items:center;justify-content:center;color:var(--kaki)}
+.coson-item h3{font-family:var(--sans);font-weight:600;font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--kaki);margin-bottom:7px}
+.coson-item p{font-size:.9rem;line-height:1.65;color:#4a4135}
+.coson-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.coson-photos figure{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:4px;margin:0}
+.coson-photos img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.coson-photos figure:hover img{transform:scale(1.04)}
+.coson-photos figcaption{position:absolute;left:14px;bottom:12px;font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sable-clair);text-shadow:0 1px 8px rgba(15,22,12,.8)}
+@media(max-width:880px){.coson-grid{grid-template-columns:1fr}.coson-photos{grid-template-columns:1fr;max-width:440px;margin:0 auto}.coson-hero{aspect-ratio:16/10}}
+
+
+/* Tarifs HugXander */
+.hx-table{width:100%;border-collapse:collapse;font-size:.73rem;margin:2px 0 20px;color:#4a4135}
+.hx-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}.hx-table th{font-weight:600;font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;color:var(--kaki);padding:5px 4px;border-bottom:1px solid rgba(201,161,94,.55);text-align:left}
+.hx-table th+th,.hx-table td+td{text-align:right}
+.hx-table td{padding:6px 4px;border-bottom:1px solid rgba(201,161,94,.28)}
+.hx-table td strong{font-family:var(--sans);font-weight:700;color:var(--encre);letter-spacing:.04em}
+.hx-table td span{display:block;font-size:.62rem;color:#8a7d6a}
+.hx-note{font-size:.66rem;color:#8a7d6a;margin:-8px 0 20px;line-height:1.5}
+
+
+/* ═══════════ SITUATION / CARTE ═══════════ */
+.situation{background:var(--sable-clair);padding:12vh 0}
+.situation-head{text-align:center;margin-bottom:44px}
+.situation-map{position:relative;width:100%;aspect-ratio:16/9;border-radius:6px;overflow:hidden;box-shadow:0 20px 60px rgba(26,18,8,.14);border:1px solid rgba(201,161,94,.35)}
+.situation-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.9)}
+.situation-cta{text-align:center;margin-top:30px}
+.map-link{font-family:var(--sans);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--kaki);border-bottom:1px solid var(--or);padding-bottom:4px;transition:color .3s}
+.map-link:hover{color:var(--ocre)}
+@media(max-width:600px){.situation-map{aspect-ratio:4/5}}
+#villa-map{position:absolute;inset:0;background:var(--sable)}
+.leaflet-container{font-family:var(--sans)}
+.situation-note{text-align:center;font-size:.8rem;color:#8a7d6a;margin-top:14px}
+.faq{background:var(--sable);padding:12vh 0}
+.faq-head{text-align:center;margin-bottom:46px}
+.faq-list{max-width:820px;margin:0 auto}
+.faq-item{border-top:1px solid rgba(58,74,48,.16)}
+.faq-item:last-child{border-bottom:1px solid rgba(58,74,48,.16)}
+.faq-item summary{list-style:none;cursor:pointer;padding:26px 44px 26px 0;position:relative;font-family:var(--serif);font-size:clamp(1.15rem,2vw,1.5rem);color:var(--encre);font-weight:600}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';position:absolute;right:6px;top:50%;transform:translateY(-50%);font-family:var(--sans);font-weight:300;font-size:1.5rem;color:var(--ocre);transition:transform .3s}
+.faq-item[open] summary::after{content:'\2212'}
+.faq-item p{margin:0 0 26px;max-width:70ch;color:#5f5647;font-size:1rem;line-height:1.7}
+.nav-lang a{background:none;text-decoration:none;display:inline-block;font-family:var(--sans);font-weight:600;font-size:.78rem;letter-spacing:.14em;color:var(--encre);opacity:.8;padding:5px 8px;transition:.3s}.nav-lang a+a{border-left:1px solid rgba(26,18,8,.2)}.nav-lang a:hover{opacity:1}.nav-lang a.actif{opacity:1;color:var(--or)!important;font-weight:800}
+
+/* ═══════════ H1 : marque + mots-clés (SEO) ═══════════ */
+.hero h1{display:flex;flex-direction:column;align-items:center}
+.h1-marque{display:block}
+.h1-seo{
+  display:block;margin-top:22px;
+  font-family:var(--sans);font-weight:600;
+  font-size:clamp(.6rem,1.1vw,.78rem);
+  letter-spacing:.22em;text-indent:.22em;text-transform:uppercase;
+  line-height:1.75;color:#fff;max-width:46ch;
+  text-shadow:0 2px 6px rgba(15,22,12,.95),0 6px 24px rgba(15,22,12,.8);
+}
+@media(max-width:620px){.h1-seo{letter-spacing:.18em;text-indent:.18em}}
