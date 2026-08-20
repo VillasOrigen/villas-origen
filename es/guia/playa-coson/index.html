@@ -242,11 +242,11 @@
 var WA='15819838339';
 var lang=(document.documentElement.lang||'fr').slice(0,2);
 var T={
-fr:{title:"Demander les disponibilités",sub:"Tous les champs sont optionnels — écrivez-nous comme vous êtes.",name:"Prénom",arr:"Arrivée",dep:"Départ",guests:"Voyageurs",any:"—",msg:"Votre question (facultatif)",ph:"Ex. : la villa convient-elle à deux jeunes enfants ?",btn:"Ouvrir dans WhatsApp",note:"Vous pourrez relire et modifier le message avant de l'envoyer.",m0:"Bonjour ! Demande de disponibilités — Villas Origen",mn:"Prénom : ",ma:"Arrivée : ",md:"Départ : ",mg:"Voyageurs : ",mp:"Page : ",loc:"fr-CA"},
-en:{title:"Check availability",sub:"Every field is optional — write to us as you are.",name:"First name",arr:"Check-in",dep:"Check-out",guests:"Guests",any:"—",msg:"Your question (optional)",ph:"E.g.: is the villa suitable for two young children?",btn:"Open in WhatsApp",note:"You can review and edit the message before sending it.",m0:"Hello! Availability request — Villas Origen",mn:"First name: ",ma:"Check-in: ",md:"Check-out: ",mg:"Guests: ",mp:"Page: ",loc:"en-US"},
-es:{title:"Consultar disponibilidad",sub:"Todos los campos son opcionales — escríbanos con confianza.",name:"Nombre",arr:"Llegada",dep:"Salida",guests:"Huéspedes",any:"—",msg:"Su pregunta (opcional)",ph:"Ej.: ¿la villa es adecuada para dos niños pequeños?",btn:"Abrir en WhatsApp",note:"Podrá revisar y modificar el mensaje antes de enviarlo.",m0:"¡Hola! Consulta de disponibilidad — Villas Origen",mn:"Nombre: ",ma:"Llegada: ",md:"Salida: ",mg:"Huéspedes: ",mp:"Página: ",loc:"es-DO"},
-de:{title:"Verfügbarkeit anfragen",sub:"Alle Felder sind optional — schreiben Sie uns einfach.",name:"Vorname",arr:"Anreise",dep:"Abreise",guests:"Gäste",any:"—",msg:"Ihre Frage (optional)",ph:"Z. B.: Ist die Villa für zwei kleine Kinder geeignet?",btn:"In WhatsApp öffnen",note:"Sie können die Nachricht vor dem Senden prüfen und ändern.",m0:"Hallo! Verfügbarkeitsanfrage — Villas Origen",mn:"Vorname: ",ma:"Anreise: ",md:"Abreise: ",mg:"Gäste: ",mp:"Seite: ",loc:"de-DE"},
-it:{title:"Verifica disponibilità",sub:"Tutti i campi sono facoltativi — scriveteci pure.",name:"Nome",arr:"Arrivo",dep:"Partenza",guests:"Ospiti",any:"—",msg:"La vostra domanda (facoltativa)",ph:"Es.: la villa è adatta a due bambini piccoli?",btn:"Apri in WhatsApp",note:"Potrete rileggere e modificare il messaggio prima dell'invio.",m0:"Buongiorno! Richiesta di disponibilità — Villas Origen",mn:"Nome: ",ma:"Arrivo: ",md:"Partenza: ",mg:"Ospiti: ",mp:"Pagina: ",loc:"it-IT"}
+fr:{title:"Demander les disponibilités",sub:"Tous les champs sont optionnels — écrivez-nous comme vous êtes.",name:"Prénom",arr:"Arrivée",dep:"Départ",guests:"Voyageurs",any:"—",msg:"Votre question (facultatif)",ph:"Ex. : la villa convient-elle à deux jeunes enfants ?",btn:"Ouvrir dans WhatsApp",note:"Vous pourrez relire et modifier le message avant de l'envoyer.",m0:"Bonjour ! Demande de disponibilités — Villas Origen",mn:"Prénom : ",ma:"Arrivée : ",md:"Départ : ",mg:"Voyageurs : ",mp:"Page : ",mh:"Accueil",loc:"fr-CA"},
+en:{title:"Check availability",sub:"Every field is optional — write to us as you are.",name:"First name",arr:"Check-in",dep:"Check-out",guests:"Guests",any:"—",msg:"Your question (optional)",ph:"E.g.: is the villa suitable for two young children?",btn:"Open in WhatsApp",note:"You can review and edit the message before sending it.",m0:"Hello! Availability request — Villas Origen",mn:"First name: ",ma:"Check-in: ",md:"Check-out: ",mg:"Guests: ",mp:"Page: ",mh:"Home page",loc:"en-US"},
+es:{title:"Consultar disponibilidad",sub:"Todos los campos son opcionales — escríbanos con confianza.",name:"Nombre",arr:"Llegada",dep:"Salida",guests:"Huéspedes",any:"—",msg:"Su pregunta (opcional)",ph:"Ej.: ¿la villa es adecuada para dos niños pequeños?",btn:"Abrir en WhatsApp",note:"Podrá revisar y modificar el mensaje antes de enviarlo.",m0:"¡Hola! Consulta de disponibilidad — Villas Origen",mn:"Nombre: ",ma:"Llegada: ",md:"Salida: ",mg:"Huéspedes: ",mp:"Página: ",mh:"Página de inicio",loc:"es-DO"},
+de:{title:"Verfügbarkeit anfragen",sub:"Alle Felder sind optional — schreiben Sie uns einfach.",name:"Vorname",arr:"Anreise",dep:"Abreise",guests:"Gäste",any:"—",msg:"Ihre Frage (optional)",ph:"Z. B.: Ist die Villa für zwei kleine Kinder geeignet?",btn:"In WhatsApp öffnen",note:"Sie können die Nachricht vor dem Senden prüfen und ändern.",m0:"Hallo! Verfügbarkeitsanfrage — Villas Origen",mn:"Vorname: ",ma:"Anreise: ",md:"Abreise: ",mg:"Gäste: ",mp:"Seite: ",mh:"Startseite",loc:"de-DE"},
+it:{title:"Verifica disponibilità",sub:"Tutti i campi sono facoltativi — scriveteci pure.",name:"Nome",arr:"Arrivo",dep:"Partenza",guests:"Ospiti",any:"—",msg:"La vostra domanda (facoltativa)",ph:"Es.: la villa è adatta a due bambini piccoli?",btn:"Apri in WhatsApp",note:"Potrete rileggere e modificare il messaggio prima dell'invio.",m0:"Buongiorno! Richiesta di disponibilità — Villas Origen",mn:"Nome: ",ma:"Arrivo: ",md:"Partenza: ",mg:"Ospiti: ",mp:"Pagina: ",mh:"Home page",loc:"it-IT"}
 };
 var t=T[lang]||T.fr;
 var css='.bmodal{position:fixed;inset:0;z-index:400;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(26,18,8,.55);backdrop-filter:blur(4px)}'
@@ -285,11 +285,14 @@ m.addEventListener('click',function(e){if(e.target===m)close()});
 document.getElementById('bsend').addEventListener('click',function(){
  var L=[t.m0];
  var n=document.getElementById('bname').value.trim();if(n)L.push(t.mn+n);
- var a=fdate(document.getElementById('barr').value);if(a)L.push(t.ma+a);
- var d=fdate(document.getElementById('bdep').value);if(d)L.push(t.md+d);
+ var ra=document.getElementById('barr').value,rd=document.getElementById('bdep').value;
+ if(ra&&rd&&rd<ra){var tm=ra;ra=rd;rd=tm;}
+ var a=fdate(ra);if(a)L.push(t.ma+a);
+ var d=fdate(rd);if(d)L.push(t.md+d);
  var g=document.getElementById('bguests').value;if(g)L.push(t.mg+g);
  var q=document.getElementById('bmsg').value.trim();if(q)L.push(q);
- L.push(t.mp+location.pathname);
+ var pg=location.pathname,HM={'/':1,'/en/':1,'/es/':1,'/de/':1,'/it/':1};
+ L.push(t.mp+(HM[pg]?t.mh:pg));
  window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(L.join('\n')),'_blank');
  close();
 });
