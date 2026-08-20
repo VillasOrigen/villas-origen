@@ -236,5 +236,70 @@
   m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});
 })();
 </script>
+<script>
+/* ═══════════ Demande de disponibilités — panneau WhatsApp ═══════════ */
+(function(){
+var WA='15819838339';
+var lang=(document.documentElement.lang||'fr').slice(0,2);
+var T={
+fr:{title:"Demander les disponibilités",sub:"Tous les champs sont optionnels — écrivez-nous comme vous êtes.",name:"Prénom",arr:"Arrivée",dep:"Départ",guests:"Voyageurs",any:"—",msg:"Votre question (facultatif)",ph:"Ex. : la villa convient-elle à deux jeunes enfants ?",btn:"Ouvrir dans WhatsApp",note:"Vous pourrez relire et modifier le message avant de l'envoyer.",m0:"Bonjour ! Demande de disponibilités — Villas Origen",mn:"Prénom : ",ma:"Arrivée : ",md:"Départ : ",mg:"Voyageurs : ",mp:"Page : ",loc:"fr-CA"},
+en:{title:"Check availability",sub:"Every field is optional — write to us as you are.",name:"First name",arr:"Check-in",dep:"Check-out",guests:"Guests",any:"—",msg:"Your question (optional)",ph:"E.g.: is the villa suitable for two young children?",btn:"Open in WhatsApp",note:"You can review and edit the message before sending it.",m0:"Hello! Availability request — Villas Origen",mn:"First name: ",ma:"Check-in: ",md:"Check-out: ",mg:"Guests: ",mp:"Page: ",loc:"en-US"},
+es:{title:"Consultar disponibilidad",sub:"Todos los campos son opcionales — escríbanos con confianza.",name:"Nombre",arr:"Llegada",dep:"Salida",guests:"Huéspedes",any:"—",msg:"Su pregunta (opcional)",ph:"Ej.: ¿la villa es adecuada para dos niños pequeños?",btn:"Abrir en WhatsApp",note:"Podrá revisar y modificar el mensaje antes de enviarlo.",m0:"¡Hola! Consulta de disponibilidad — Villas Origen",mn:"Nombre: ",ma:"Llegada: ",md:"Salida: ",mg:"Huéspedes: ",mp:"Página: ",loc:"es-DO"},
+de:{title:"Verfügbarkeit anfragen",sub:"Alle Felder sind optional — schreiben Sie uns einfach.",name:"Vorname",arr:"Anreise",dep:"Abreise",guests:"Gäste",any:"—",msg:"Ihre Frage (optional)",ph:"Z. B.: Ist die Villa für zwei kleine Kinder geeignet?",btn:"In WhatsApp öffnen",note:"Sie können die Nachricht vor dem Senden prüfen und ändern.",m0:"Hallo! Verfügbarkeitsanfrage — Villas Origen",mn:"Vorname: ",ma:"Anreise: ",md:"Abreise: ",mg:"Gäste: ",mp:"Seite: ",loc:"de-DE"},
+it:{title:"Verifica disponibilità",sub:"Tutti i campi sono facoltativi — scriveteci pure.",name:"Nome",arr:"Arrivo",dep:"Partenza",guests:"Ospiti",any:"—",msg:"La vostra domanda (facoltativa)",ph:"Es.: la villa è adatta a due bambini piccoli?",btn:"Apri in WhatsApp",note:"Potrete rileggere e modificare il messaggio prima dell'invio.",m0:"Buongiorno! Richiesta di disponibilità — Villas Origen",mn:"Nome: ",ma:"Arrivo: ",md:"Partenza: ",mg:"Ospiti: ",mp:"Pagina: ",loc:"it-IT"}
+};
+var t=T[lang]||T.fr;
+var css='.bmodal{position:fixed;inset:0;z-index:400;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(26,18,8,.55);backdrop-filter:blur(4px)}'
++'.bmodal.open{display:flex}'
++'.bpanel{background:#F7F1E6;border-radius:6px;max-width:430px;width:100%;max-height:92vh;overflow:auto;padding:34px 30px 28px;position:relative;box-shadow:0 30px 80px rgba(15,22,12,.45)}'
++'.bclose{position:absolute;top:12px;right:14px;background:none;border:none;font-size:1.7rem;font-weight:200;color:#3A4A30;cursor:pointer;padding:6px;line-height:1}'
++'.bpanel h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:1.6rem;color:#3A4A30;margin:0 0 6px}'
++'.bpanel .bsub{font-size:.8rem;color:#6e6353;margin:0 0 20px;line-height:1.5}'
++'.brow{display:flex;gap:12px}.brow>div{flex:1}'
++'.bpanel label{display:block;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:#3A4A30;font-weight:600;margin:14px 0 6px}'
++'.bpanel input,.bpanel select,.bpanel textarea{width:100%;box-sizing:border-box;background:#FDFBF7;border:1px solid rgba(201,161,94,.55);border-radius:3px;padding:11px 12px;font-family:Montserrat,sans-serif;font-size:.9rem;color:#1A1208}'
++'.bpanel input:focus,.bpanel select:focus,.bpanel textarea:focus{outline:2px solid #C9A15E;outline-offset:1px}'
++'.bpanel textarea{min-height:74px;resize:vertical}'
++'.bsend{margin-top:20px;width:100%;background:#3A4A30;color:#F7F1E6;border:none;border-radius:99px;padding:16px;font-family:Montserrat,sans-serif;font-weight:600;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;cursor:pointer;transition:background .3s}'
++'.bsend:hover{background:#283521}'
++'.bnote{font-size:.7rem;color:#8a7d6a;text-align:center;margin:12px 0 0;line-height:1.5}';
+var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
+var m=document.createElement('div');m.className='bmodal';m.id='bmodal';
+var opts='<option value="">'+t.any+'</option>';for(var i=1;i<=8;i++)opts+='<option>'+i+'</option>';
+m.innerHTML='<div class="bpanel" role="dialog" aria-label="'+t.title+'">'
++'<button class="bclose" id="bclose" aria-label="&times;">&times;</button>'
++'<h3>'+t.title+'</h3><p class="bsub">'+t.sub+'</p>'
++'<label>'+t.name+'</label><input id="bname" type="text" autocomplete="given-name">'
++'<div class="brow"><div><label>'+t.arr+'</label><input id="barr" type="date"></div>'
++'<div><label>'+t.dep+'</label><input id="bdep" type="date"></div></div>'
++'<label>'+t.guests+'</label><select id="bguests">'+opts+'</select>'
++'<label>'+t.msg+'</label><textarea id="bmsg" placeholder="'+t.ph.replace(/"/g,'&quot;')+'"></textarea>'
++'<button class="bsend" id="bsend">'+t.btn+'</button>'
++'<p class="bnote">'+t.note+'</p></div>';
+document.body.appendChild(m);
+function fdate(v){if(!v)return'';try{var d=new Date(v+'T12:00:00');return d.toLocaleDateString(t.loc,{day:'numeric',month:'long',year:'numeric'})}catch(e){return v}}
+function open(){m.classList.add('open');document.body.style.overflow='hidden'}
+function close(){m.classList.remove('open');document.body.style.overflow=''}
+document.getElementById('bclose').addEventListener('click',close);
+m.addEventListener('click',function(e){if(e.target===m)close()});
+document.getElementById('bsend').addEventListener('click',function(){
+ var L=[t.m0];
+ var n=document.getElementById('bname').value.trim();if(n)L.push(t.mn+n);
+ var a=fdate(document.getElementById('barr').value);if(a)L.push(t.ma+a);
+ var d=fdate(document.getElementById('bdep').value);if(d)L.push(t.md+d);
+ var g=document.getElementById('bguests').value;if(g)L.push(t.mg+g);
+ var q=document.getElementById('bmsg').value.trim();if(q)L.push(q);
+ L.push(t.mp+location.pathname);
+ window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(L.join('\n')),'_blank');
+ close();
+});
+document.addEventListener('click',function(e){
+ var a=e.target.closest&&e.target.closest('a');if(!a)return;
+ var isCta=a.classList.contains('nav-cta')||a.classList.contains('m-cta')||a.classList.contains('hero-cta')
+   ||(a.classList.contains('btn-foret')&&(a.getAttribute('href')||'').indexOf('wa.me')>-1);
+ if(isCta){e.preventDefault();open();}
+});
+})();
+</script>
 </body>
 </html>
