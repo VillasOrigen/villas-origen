@@ -84,3 +84,16 @@ nav.gnav .nav-logo .v,nav.gnav .nav-logo .o{color:var(--kaki);text-shadow:none}
 nav.gnav .nav-links a{color:var(--encre);text-shadow:none}
 nav.gnav .nav-lang a{color:var(--encre);text-shadow:none}
 nav.gnav .nav-lang a+a{border-left-color:rgba(26,18,8,.2)}
+
+/* ═══════════ LISIBILITÉ (2026-08) ═══════════ */
+.article p{color:#332d20}
+.chapo{color:#2e2a1c}
+.g-faq .faq-item p{color:#3d3527;font-size:1.02rem}
+.g-table{color:#332d20}
+@media(min-width:900px){
+  .article p{font-size:1.09rem;line-height:1.8}
+  .chapo{font-size:1.5rem}
+  .g-table{font-size:.95rem}
+}
+.article a{color:var(--kaki);font-weight:500;border-bottom:1px solid var(--or);transition:color .3s}
+.article a:hover{color:#8a5f3a}
