@@ -97,3 +97,5 @@ nav.gnav .nav-lang a+a{border-left-color:rgba(26,18,8,.2)}
 }
 .article a{color:var(--kaki);font-weight:500;border-bottom:1px solid var(--or);transition:color .3s}
 .article a:hover{color:#8a5f3a}
+/* le texte de l'encart vert reste clair, non touché par la lisibilité */
+.cta-box p{color:rgba(247,241,230,.88);font-size:.95rem;line-height:1.75}
