@@ -1668,8 +1668,8 @@ stats.forEach(s => obsStats.observe(s));
     if(!el || !window.L || el._leaflet_id) return;
     var lat = 19.300833, lng = -69.574472;
     var map = L.map(el, {scrollWheelZoom:false, zoomControl:true}).setView([lat, lng], 14);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      maxZoom: 19, attribution: '&copy; OpenStreetMap &copy; CARTO'
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
     L.circle([lat, lng], {radius:450, color:'#C9A15E', weight:1.5, opacity:.7, fillColor:'#3A4A30', fillOpacity:.15}).addTo(map);
     setTimeout(function(){ map.invalidateSize(); }, 300);
