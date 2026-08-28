@@ -61,7 +61,7 @@
     <a href="/it/#villa">La villa</a>
     <a href="/it/#galerie">Galleria</a>
     <a class="nav-guide" href="/it/guida/">Guida</a>
-    <a href="https://wa.me/15819838339?text=Buongiorno%21%20Vengo%20dal%20sito%20villasorigen.com%20%28pulsante%20Prenota%29%20e%20vorrei%20ricevere%20informazioni." target="_blank" rel="noopener" class="nav-cta">Prenota</a>
+    <a href="/it/#reserver" class="nav-cta">Prenota</a>
     <div class="nav-lang" role="group" aria-label="Langue"><a href="/guide/" hreflang="fr">FR</a><a href="/en/guide/" hreflang="en">EN</a><a href="/es/guia/" hreflang="es">ES</a><a href="/de/reisefuehrer/" hreflang="de">DE</a><a class="actif" href="/it/guida/" hreflang="it">IT</a></div>
     <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
@@ -72,7 +72,7 @@
   <a class="mlink" href="/it/#galerie">Galleria</a>
   <a class="mlink" href="/it/#coson">Las Terrenas</a>
   <a class="mlink" href="/it/guida/">Guida</a>
-  <a class="m-cta" href="https://wa.me/15819838339?text=Buongiorno%21%20Vengo%20dal%20sito%20villasorigen.com%20%28pulsante%20Prenota%29%20e%20vorrei%20ricevere%20informazioni." target="_blank" rel="noopener">Prenota</a>
+  <a class="m-cta" href="/it/#reserver">Prenota</a>
   <div class="m-langs"><a href="/guide/" hreflang="fr">FR</a><a href="/en/guide/" hreflang="en">EN</a><a href="/es/guia/" hreflang="es">ES</a><a href="/de/reisefuehrer/" hreflang="de">DE</a><a class="actif" href="/it/guida/" hreflang="it">IT</a></div>
 </div>
 <main class="g-hub"><div class="container">
@@ -111,6 +111,8 @@
         <h4>Seguire</h4>
         <a href="/it/guida/">Guida</a>
         <a href="https://www.instagram.com/villasorigen" rel="noopener">Instagram</a>
+    <a href="/go/airbnb/" target="_blank" rel="noopener">Airbnb</a>
+    <a href="/go/vrbo/" target="_blank" rel="noopener">Vrbo</a>
       </div>
     </div>
     <div class="footer-bas"><span>© 2026 Cana Immobilier Inc. — Tutti i diritti riservati</span><span>Villas Origen · Las Terrenas · Repubblica Dominicana</span></div>
@@ -188,8 +190,7 @@ document.getElementById('bsend').addEventListener('click',function(){
 });
 document.addEventListener('click',function(e){
  var a=e.target.closest&&e.target.closest('a');if(!a)return;
- var isCta=a.classList.contains('nav-cta')||a.classList.contains('m-cta')||a.classList.contains('hero-cta')
-   ||a.classList.contains('wa-float')||(a.classList.contains('btn-foret')&&(a.getAttribute('href')||'').indexOf('wa.me')>-1);
+ var isCta=a.classList.contains('wa-float')||(a.classList.contains('btn-foret')&&(a.getAttribute('href')||'').indexOf('wa.me')>-1);
  if(isCta){e.preventDefault();open();}
 });
 })();

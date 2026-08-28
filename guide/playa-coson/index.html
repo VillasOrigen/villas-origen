@@ -146,7 +146,7 @@
     <a href="/#villa">La villa</a>
     <a href="/#galerie">Galerie</a>
     <a class="nav-guide" href="/guide/">Guide</a>
-    <a href="https://wa.me/15819838339?text=Bonjour%20%21%20Je%20viens%20du%20site%20villasorigen.com%20%28bouton%20R%C3%A9server%29%20et%20j%27aimerais%20des%20informations." target="_blank" rel="noopener" class="nav-cta">Réserver</a>
+    <a href="/#reserver" class="nav-cta">Réserver</a>
     <div class="nav-lang" role="group" aria-label="Langue"><a class="actif" href="/guide/playa-coson/" hreflang="fr">FR</a><a href="/en/guide/playa-coson-beach/" hreflang="en">EN</a><a href="/es/guia/playa-coson/" hreflang="es">ES</a><a href="/de/reisefuehrer/playa-coson/" hreflang="de">DE</a><a href="/it/guida/playa-coson/" hreflang="it">IT</a></div>
     <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
@@ -157,7 +157,7 @@
   <a class="mlink" href="/#galerie">Galerie</a>
   <a class="mlink" href="/#coson">Las Terrenas</a>
   <a class="mlink" href="/guide/">Guide</a>
-  <a class="m-cta" href="https://wa.me/15819838339?text=Bonjour%20%21%20Je%20viens%20de%20la%20page%20Playa%20Cos%C3%B3n%20du%20guide%20et%20j%27aimerais%20des%20informations%20sur%20la%20villa." target="_blank" rel="noopener">Réserver</a>
+  <a class="m-cta" href="/#reserver">Réserver</a>
   <div class="m-langs"><a class="actif" href="/guide/playa-coson/" hreflang="fr">FR</a><a href="/en/guide/playa-coson-beach/" hreflang="en">EN</a><a href="/es/guia/playa-coson/" hreflang="es">ES</a><a href="/de/reisefuehrer/playa-coson/" hreflang="de">DE</a><a href="/it/guida/playa-coson/" hreflang="it">IT</a></div>
 </div>
 <header class="g-hero">
@@ -223,6 +223,8 @@
         <h4>Suivre</h4>
         <a href="/guide/">Guide</a>
         <a href="https://www.instagram.com/villasorigen" rel="noopener">Instagram</a>
+    <a href="/go/airbnb/" target="_blank" rel="noopener">Airbnb</a>
+    <a href="/go/vrbo/" target="_blank" rel="noopener">Vrbo</a>
       </div>
     </div>
     <div class="footer-bas"><span>© 2026 Cana Immobilier Inc. — Tous droits réservés</span><span>Villas Origen · Las Terrenas · République dominicaine</span></div>
@@ -300,8 +302,7 @@ document.getElementById('bsend').addEventListener('click',function(){
 });
 document.addEventListener('click',function(e){
  var a=e.target.closest&&e.target.closest('a');if(!a)return;
- var isCta=a.classList.contains('nav-cta')||a.classList.contains('m-cta')||a.classList.contains('hero-cta')
-   ||a.classList.contains('wa-float')||(a.classList.contains('btn-foret')&&(a.getAttribute('href')||'').indexOf('wa.me')>-1);
+ var isCta=a.classList.contains('wa-float')||(a.classList.contains('btn-foret')&&(a.getAttribute('href')||'').indexOf('wa.me')>-1);
  if(isCta){e.preventDefault();open();}
 });
 })();

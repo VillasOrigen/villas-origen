@@ -949,7 +949,7 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
     <a href="#galerie" data-i18n="nav_galerie">Gallery</a>
     <a href="#coson">Las Terrenas</a>
     <a class="nav-guide" href="/en/guide/">Guide</a>
-    <a href="https://wa.me/15819838339?text=Hello%21%20I%27m%20coming%20from%20villasorigen.com%20%28Book%20button%29%20and%20I%27d%20like%20more%20information." target="_blank" rel="noopener" class="nav-cta" data-i18n="nav_cta">Book</a>
+    <a href="#reserver" class="nav-cta" data-i18n="nav_cta">Book</a>
     <div class="nav-lang" role="group" aria-label="Langue"><a href="/" hreflang="fr">FR</a><a class="actif" href="/en/" hreflang="en">EN</a><a href="/es/" hreflang="es">ES</a><a href="/de/" hreflang="de">DE</a><a href="/it/" hreflang="it">IT</a></div>
     <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
@@ -960,7 +960,7 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
   <a class="mlink" href="#galerie">Gallery</a>
   <a class="mlink" href="#coson">Las Terrenas</a>
   <a class="mlink" href="/en/guide/">Guide</a>
-  <a class="m-cta" href="https://wa.me/15819838339?text=Hello%21%20I%27m%20coming%20from%20villasorigen.com%20%28Book%20button%29%20and%20I%27d%20like%20more%20information." target="_blank" rel="noopener">Book</a>
+  <a class="m-cta" href="#reserver">Book</a>
   <div class="m-langs"><a href="/" hreflang="fr">FR</a><a class="actif" href="/en/" hreflang="en">EN</a><a href="/es/" hreflang="es">ES</a><a href="/de/" hreflang="de">DE</a><a href="/it/" hreflang="it">IT</a></div>
 </div>
 
@@ -975,7 +975,7 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
       <span class="h1-seo">Luxury villa, a 5-minute walk from Playa Cosón, Las Terrenas</span>
     </h1>
     <div class="hero-sep" aria-hidden="true"></div>
-    <a class="hero-cta" href="https://wa.me/15819838339?text=Hello%21%20I%27m%20coming%20from%20the%20villasorigen.com%20home%20page%20and%20I%27d%20like%20more%20information%20about%20the%20villa." target="_blank" rel="noopener" data-i18n="cta_sejour">Book your stay</a>
+    <a class="hero-cta" href="#reserver" data-i18n="cta_sejour">Book your stay</a>
   </div>
   <span class="hero-scroll" aria-hidden="true" data-i18n="scroll">Scroll</span>
 </header>
@@ -1367,8 +1367,8 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Payment handled and protected by the platform</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Instant booking on an up-to-date calendar</li>
         </ul>
-        <a class="bk-btn-airbnb" href="https://airbnb.com/h/villa-origen" target="_blank" rel="noopener">Book on Airbnb&nbsp;↗</a>
-        <p class="bk-vrbo"><a href="https://www.vrbo.com/en-ca/cottage-rental/p20315734" target="_blank" rel="noopener">Also on Vrbo&nbsp;↗</a></p>
+        <a class="bk-btn-airbnb" href="/go/airbnb/" target="_blank" rel="noopener">Book on Airbnb&nbsp;↗</a>
+        <p class="bk-vrbo"><a href="/go/vrbo/" target="_blank" rel="noopener">Also on Vrbo&nbsp;↗</a></p>
       </div>
     </div>
     <p class="bk-note">Both paths lead to the same garden — write to us if you're unsure, we'll be happy to help.</p>
@@ -1510,6 +1510,8 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
         <h4 data-i18n="f_s">Follow</h4>
         <a href="/en/guide/">Guide</a>
         <a href="https://www.instagram.com/villasorigen" rel="noopener">Instagram</a>
+    <a href="/go/airbnb/" target="_blank" rel="noopener">Airbnb</a>
+    <a href="/go/vrbo/" target="_blank" rel="noopener">Vrbo</a>
       </div>
     </div>
     <div class="footer-bas">
@@ -1639,7 +1641,7 @@ m.innerHTML='<div class="bpanel" role="dialog" aria-label="'+t.title+'">'
 +'<label>'+t.guests+'</label><select id="bguests">'+opts+'</select>'
 +'<label>'+t.msg+'</label><textarea id="bmsg" placeholder="'+t.ph.replace(/"/g,'&quot;')+'"></textarea>'
 +'<button class="bsend" id="bsend">'+t.btn+'</button>'
-+'<p class="bnote">'+t.note+'</p>'+'<p class="bnote" style="margin-top:4px"><a href="https://airbnb.com/h/villa-origen" target="_blank" rel="noopener" style="color:inherit">Or book on Airbnb ↗</a></p></div>';
++'<p class="bnote">'+t.note+'</p>'+'<p class="bnote" style="margin-top:4px"><a href="/go/airbnb/" target="_blank" rel="noopener" style="color:inherit">Or book on Airbnb ↗</a></p></div>';
 document.body.appendChild(m);
 function fdate(v){if(!v)return'';try{var d=new Date(v+'T12:00:00');return d.toLocaleDateString(t.loc,{day:'numeric',month:'long',year:'numeric'})}catch(e){return v}}
 function open(){m.classList.add('open');document.body.style.overflow='hidden'}
@@ -1662,8 +1664,9 @@ document.getElementById('bsend').addEventListener('click',function(){
 });
 document.addEventListener('click',function(e){
  var a=e.target.closest&&e.target.closest('a');if(!a)return;
- var isCta=a.classList.contains('nav-cta')||a.classList.contains('m-cta')||a.classList.contains('hero-cta')
-   ||a.classList.contains('wa-float')||(a.classList.contains('btn-foret')&&(a.getAttribute('href')||'').indexOf('wa.me')>-1);
+ var isNav=a.classList.contains('nav-cta')||a.classList.contains('m-cta')||a.classList.contains('hero-cta');
+ if(isNav){var tR=document.getElementById('reserver');if(tR){e.preventDefault();history.replaceState(null,'','#reserver');tR.scrollIntoView();var nR=0,ivR=setInterval(function(){tR.scrollIntoView();if(++nR>5)clearInterval(ivR)},450);return;}}
+ var isCta=a.classList.contains('wa-float')||(a.classList.contains('btn-foret')&&(a.getAttribute('href')||'').indexOf('wa.me')>-1);
  if(isCta){e.preventDefault();open();}
 });
 })();
@@ -1675,5 +1678,6 @@ document.addEventListener('click',function(e){
 .wa-float.on{opacity:1;transform:none;pointer-events:auto}
 @media(max-width:640px){.wa-float{right:16px;bottom:16px;width:52px;height:52px}}</style>
 <script>(function(){var w=document.querySelector('.wa-float');if(!w)return;var f=function(){var y=window.scrollY||0;w.classList.toggle('on',y>500)};window.addEventListener('scroll',f,{passive:true});f()})();</script>
+<script>(function(){if(location.hash==='#reserver'){var t=document.getElementById('reserver');if(t){var n=0,iv=setInterval(function(){t.scrollIntoView();if(++n>6)clearInterval(iv)},450);}}})();</script>
 </body>
 </html>

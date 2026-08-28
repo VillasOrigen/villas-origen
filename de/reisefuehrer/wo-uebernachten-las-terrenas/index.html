@@ -146,7 +146,7 @@
     <a href="/de/#villa">Die Villa</a>
     <a href="/de/#galerie">Galerie</a>
     <a class="nav-guide" href="/de/reisefuehrer/">Reiseführer</a>
-    <a href="https://wa.me/15819838339?text=Hallo%21%20Ich%20komme%20von%20villasorigen.com%20%28Schaltfl%C3%A4che%20Buchen%29%20und%20h%C3%A4tte%20gerne%20Informationen." target="_blank" rel="noopener" class="nav-cta">Buchen</a>
+    <a href="/de/#reserver" class="nav-cta">Buchen</a>
     <div class="nav-lang" role="group" aria-label="Langue"><a href="/guide/ou-loger-las-terrenas/" hreflang="fr">FR</a><a href="/en/guide/where-to-stay-las-terrenas/" hreflang="en">EN</a><a href="/es/guia/donde-alojarse-las-terrenas/" hreflang="es">ES</a><a class="actif" href="/de/reisefuehrer/wo-uebernachten-las-terrenas/" hreflang="de">DE</a><a href="/it/guida/dove-alloggiare-las-terrenas/" hreflang="it">IT</a></div>
     <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
@@ -157,7 +157,7 @@
   <a class="mlink" href="/de/#galerie">Galerie</a>
   <a class="mlink" href="/de/#coson">Las Terrenas</a>
   <a class="mlink" href="/de/reisefuehrer/">Reiseführer</a>
-  <a class="m-cta" href="https://wa.me/15819838339?text=Hallo%21%20Ich%20komme%20von%20der%20Seite%20Wo%20%C3%BCbernachten%20des%20Reisef%C3%BChrers%20und%20h%C3%A4tte%20gerne%20Informationen%20zur%20Villa." target="_blank" rel="noopener">Buchen</a>
+  <a class="m-cta" href="/de/#reserver">Buchen</a>
   <div class="m-langs"><a href="/guide/ou-loger-las-terrenas/" hreflang="fr">FR</a><a href="/en/guide/where-to-stay-las-terrenas/" hreflang="en">EN</a><a href="/es/guia/donde-alojarse-las-terrenas/" hreflang="es">ES</a><a class="actif" href="/de/reisefuehrer/wo-uebernachten-las-terrenas/" hreflang="de">DE</a><a href="/it/guida/dove-alloggiare-las-terrenas/" hreflang="it">IT</a></div>
 </div>
 <header class="g-hero">
@@ -218,6 +218,8 @@
         <h4>Folgen</h4>
         <a href="/de/reisefuehrer/">Reiseführer</a>
         <a href="https://www.instagram.com/villasorigen" rel="noopener">Instagram</a>
+    <a href="/go/airbnb/" target="_blank" rel="noopener">Airbnb</a>
+    <a href="/go/vrbo/" target="_blank" rel="noopener">Vrbo</a>
       </div>
     </div>
     <div class="footer-bas"><span>© 2026 Cana Immobilier Inc. — Alle Rechte vorbehalten</span><span>Villas Origen · Las Terrenas · Dominikanische Republik</span></div>
@@ -292,8 +294,7 @@ document.getElementById('bsend').addEventListener('click',function(){
 });
 document.addEventListener('click',function(e){
  var a=e.target.closest&&e.target.closest('a');if(!a)return;
- var isCta=a.classList.contains('nav-cta')||a.classList.contains('m-cta')||a.classList.contains('hero-cta')
-   ||a.classList.contains('wa-float')||(a.classList.contains('btn-foret')&&(a.getAttribute('href')||'').indexOf('wa.me')>-1);
+ var isCta=a.classList.contains('wa-float')||(a.classList.contains('btn-foret')&&(a.getAttribute('href')||'').indexOf('wa.me')>-1);
  if(isCta){e.preventDefault();open();}
 });
 })();
