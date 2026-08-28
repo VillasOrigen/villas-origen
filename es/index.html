@@ -1367,8 +1367,8 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Pago gestionado y protegido por la plataforma</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Reserva instantánea con calendario al día</li>
         </ul>
-        <a class="bk-btn-airbnb" href="/go/airbnb/" target="_blank" rel="noopener">Reservar en Airbnb&nbsp;↗</a>
-        <p class="bk-vrbo"><a href="/go/vrbo/" target="_blank" rel="noopener">También en Vrbo&nbsp;↗</a></p>
+        <a class="bk-btn-airbnb" href="/go/airbnb/" target="_blank" rel="noopener">Reservar en Airbnb<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="margin-left:7px;vertical-align:-1px" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        <p class="bk-vrbo"><a href="/go/vrbo/" target="_blank" rel="noopener">También en Vrbo<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="margin-left:7px;vertical-align:-1px" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></p>
       </div>
     </div>
     <p class="bk-note">Los dos caminos llevan al mismo jardín — escríbanos si tiene dudas, le respondemos con gusto.</p>
@@ -1641,7 +1641,7 @@ m.innerHTML='<div class="bpanel" role="dialog" aria-label="'+t.title+'">'
 +'<label>'+t.guests+'</label><select id="bguests">'+opts+'</select>'
 +'<label>'+t.msg+'</label><textarea id="bmsg" placeholder="'+t.ph.replace(/"/g,'&quot;')+'"></textarea>'
 +'<button class="bsend" id="bsend">'+t.btn+'</button>'
-+'<p class="bnote">'+t.note+'</p>'+'<p class="bnote" style="margin-top:4px"><a href="/go/airbnb/" target="_blank" rel="noopener" style="color:inherit">O reserve en Airbnb ↗</a></p></div>';
++'<p class="bnote">'+t.note+'</p>'+'<p class="bnote" style="margin-top:4px"><a href="/go/airbnb/" target="_blank" rel="noopener" style="color:inherit">O reserve en Airbnb<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="margin-left:7px;vertical-align:-1px" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></p></div>';
 document.body.appendChild(m);
 function fdate(v){if(!v)return'';try{var d=new Date(v+'T12:00:00');return d.toLocaleDateString(t.loc,{day:'numeric',month:'long',year:'numeric'})}catch(e){return v}}
 function open(){m.classList.add('open');document.body.style.overflow='hidden'}
