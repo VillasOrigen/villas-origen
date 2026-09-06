@@ -933,6 +933,46 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
 .bk-carte .btn-foret{display:inline-flex;align-items:center;justify-content:center;text-align:center}
 .bk-ghost{visibility:hidden}
 @media(max-width:760px){.bk-duo{grid-template-columns:1fr}.bk-carte{padding:34px 24px 30px}}
+
+/* ═══════════ CALENDRIER DES DISPONIBILITÉS ═══════════ */
+.bk-cal{max-width:960px;margin:46px auto 0;background:var(--sable-clair);border:1px solid rgba(201,161,94,.4);border-radius:4px;padding:34px 34px 26px}
+.bk-cal[hidden]{display:none}
+.bk-cal-head{text-align:center;margin-bottom:24px}
+.bk-cal-head h3{font-family:var(--serif);font-weight:600;font-size:1.7rem;color:var(--encre);margin:0 0 6px}
+.bk-cal-head p{font-family:var(--serif);font-style:italic;font-size:1.02rem;color:#6e6353;margin:0}
+.bk-cal-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.bk-cal-nav button{background:none;border:1px solid rgba(201,161,94,.5);border-radius:50%;width:34px;height:34px;color:var(--kaki);font-size:1rem;cursor:pointer;line-height:1}
+.bk-cal-nav button:disabled{opacity:.3;cursor:default}
+.bk-cal-months{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.bk-cal-m h4{font-family:var(--serif);font-weight:600;font-size:1.25rem;text-align:center;margin:0 0 12px;color:var(--encre)}
+.bk-cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.bk-cal-g .dw{font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:#8a7d6a;text-align:center;padding:5px 0;font-weight:600}
+.bk-cal-d{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:.82rem;border-radius:3px;background:var(--sable);border:1px solid rgba(201,161,94,.28);cursor:pointer;user-select:-webkit-user-select;user-select:none}
+.bk-cal-d.off{background:transparent;border:none;cursor:default}
+.bk-cal-d.busy,.bk-cal-d.past{background:transparent;border:1px solid rgba(26,18,8,.07);color:#b6ab99;text-decoration:line-through;cursor:default}
+.bk-cal-d.past{border:none}
+.bk-cal-d.sel{background:var(--kaki);color:#F7F1E6;border-color:var(--kaki);font-weight:600}
+.bk-cal-d.mid{background:rgba(58,74,48,.14);border-color:rgba(58,74,48,.2)}
+@media(hover:hover){.bk-cal-d:not(.busy):not(.off):not(.past):hover{border-color:var(--or)}}
+.bk-cal-leg{display:flex;gap:24px;justify-content:center;margin-top:20px;font-size:.7rem;color:#6e6353;flex-wrap:wrap}
+.bk-cal-leg span{display:inline-flex;align-items:center;gap:7px}
+.bk-cal-leg i{width:13px;height:13px;border-radius:3px;display:inline-block}
+.bk-cal-leg .l1{background:var(--sable);border:1px solid rgba(201,161,94,.45)}
+.bk-cal-leg .l2{border:1px solid rgba(26,18,8,.12);position:relative}
+.bk-cal-leg .l2::after{content:"";position:absolute;left:2px;right:2px;top:50%;height:1px;background:#b6ab99}
+.bk-cal-leg .l3{background:var(--kaki)}
+.bk-cal-bar{margin-top:22px;padding-top:20px;border-top:1px solid rgba(201,161,94,.35);display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.bk-cal-pick{font-family:var(--serif);font-style:italic;font-size:1.08rem;color:#3d352a;margin:0}
+.bk-cal-pick strong{font-style:normal;font-family:var(--sans);font-weight:600;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--kaki)}
+.bk-cal-pick.err{color:#8a4a2b}
+.bk-cal .btn-foret.dim{opacity:.45;pointer-events:none}
+.bk-cal-note{text-align:center;margin-top:14px;font-size:.7rem;color:#8a7d6a}
+@media(max-width:720px){
+  .bk-cal{padding:22px 14px 20px}
+  .bk-cal-months{grid-template-columns:1fr}
+  .bk-cal-m.m2{display:none}
+  .bk-cal-bar{flex-direction:column;align-items:stretch;text-align:center}
+}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
@@ -1371,6 +1411,28 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
         <p class="bk-vrbo"><a href="/go/vrbo/" target="_blank" rel="noopener">También en Vrbo<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="margin-left:7px;vertical-align:-1px" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></p>
       </div>
     </div>
+    
+    <div class="bk-cal" id="bkcal" hidden>
+      <div class="bk-cal-head">
+        <h3>Disponibilidad</h3>
+        <p>Sincronizado con nuestras reservas — elija sus fechas y escríbanos.</p>
+      </div>
+      <div class="bk-cal-nav"><button type="button" id="bkc-prev" aria-label="&#8249;">&#8249;</button><button type="button" id="bkc-next" aria-label="&#8250;">&#8250;</button></div>
+      <div class="bk-cal-months">
+        <div class="bk-cal-m m1"><h4 id="bkc-t1"></h4><div class="bk-cal-g" id="bkc-g1"></div></div>
+        <div class="bk-cal-m m2"><h4 id="bkc-t2"></h4><div class="bk-cal-g" id="bkc-g2"></div></div>
+      </div>
+      <div class="bk-cal-leg">
+        <span><i class="l1"></i> Disponible</span>
+        <span><i class="l2"></i> Reservado</span>
+        <span><i class="l3"></i> Su selección</span>
+      </div>
+      <div class="bk-cal-bar">
+        <p class="bk-cal-pick" id="bkc-pick"></p>
+        <a class="btn-foret dim" id="bkc-go" href="#">Solicitar estas fechas</a>
+      </div>
+      <p class="bk-cal-note">Se actualiza automáticamente varias veces al día.</p>
+    </div>
     <p class="bk-note">Los dos caminos llevan al mismo jardín — escríbanos si tiene dudas, le respondemos con gusto.</p>
   </div>
 </section>
@@ -1678,5 +1740,78 @@ document.addEventListener('click',function(e){
 @media(max-width:640px){.wa-float{right:16px;bottom:16px;width:52px;height:52px}}</style>
 <script>(function(){var w=document.querySelector('.wa-float');if(!w)return;var f=function(){var y=window.scrollY||0;w.classList.toggle('on',y>500)};window.addEventListener('scroll',f,{passive:true});f()})();</script>
 <script>(function(){if(location.hash==='#reserver'){var t=document.getElementById('reserver');if(t){var n=0,iv=setInterval(function(){t.scrollIntoView();if(++n>6)clearInterval(iv)},450);}}})();</script>
+<script>
+(function(){
+var W=document.getElementById('bkcal');if(!W)return;
+var L={"pick": "Elija su fecha de llegada", "pick2": "Ahora elija su fecha de salida", "dates": "Sus fechas", "night": "noche", "nights": "noches", "overlap": "Estas fechas incluyen noches ya reservadas — elija otro rango.", "months": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"], "dows": ["D", "L", "M", "X", "J", "V", "S"], "du": "del", "au": "al", "loc": "es-DO"};
+fetch('/api/disponibilites').then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
+ if(!d||!d.nights)throw 0;
+ var BUSY={};d.nights.forEach(function(n){BUSY[n]=1});
+ var today=new Date();var TODAY=today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+ function iso(y,m,dd){return y+'-'+String(m+1).padStart(2,'0')+'-'+String(dd).padStart(2,'0')}
+ // premier mois avec au moins un jour libre
+ var startY=today.getFullYear(),startM=today.getMonth(),vy=startY,vm=startM,found=false;
+ for(var k=0;k<20&&!found;k++){
+   var y=startY+Math.floor((startM+k)/12),mo=(startM+k)%12,dim=new Date(y,mo+1,0).getDate();
+   for(var dd=1;dd<=dim;dd++){var s=iso(y,mo,dd);if(s>=TODAY&&!BUSY[s]){vy=y;vm=mo;found=true;break}}
+ }
+ var minY=startY,minM=startM,maxOff=17;
+ var arr=null,dep=null;
+ var go=document.getElementById('bkc-go'),pick=document.getElementById('bkc-pick');
+ function fmt(s){var p=s.split('-');var d=new Date(+p[0],+p[1]-1,+p[2]);return d.toLocaleDateString(L.loc,{day:'numeric',month:'long'})}
+ function nightsBetween(a,b){var pa=a.split('-'),pb=b.split('-');return Math.round((Date.UTC(+pb[0],+pb[1]-1,+pb[2])-Date.UTC(+pa[0],+pa[1]-1,+pa[2]))/864e5)}
+ function rangeBusy(a,b){var p=a.split('-'),d=new Date(+p[0],+p[1]-1,+p[2]);while(true){var s=iso(d.getFullYear(),d.getMonth(),d.getDate());if(s>=b)return false;if(BUSY[s])return true;d.setDate(d.getDate()+1)}}
+ function update(){
+  go.classList.add('dim');pick.classList.remove('err');
+  if(!arr){pick.textContent=L.pick;return}
+  if(!dep){pick.innerHTML='<strong>'+L.dates+' ·</strong> '+fmt(arr)+' — '+L.pick2;return}
+  if(rangeBusy(arr,dep)){pick.textContent=L.overlap;pick.classList.add('err');return}
+  var n=nightsBetween(arr,dep);
+  pick.innerHTML='<strong>'+L.dates+' ·</strong> '+(L.du?L.du+' ':'')+fmt(arr)+' '+L.au+' '+fmt(dep)+' — '+n+' '+(n>1?L.nights:L.night);
+  go.classList.remove('dim');
+ }
+ function render(){
+  [[0,'bkc-t1','bkc-g1'],[1,'bkc-t2','bkc-g2']].forEach(function(cfg){
+   var y=vy+Math.floor((vm+cfg[0])/12),mo=(vm+cfg[0])%12;
+   document.getElementById(cfg[1]).textContent=L.months[mo].charAt(0).toUpperCase()+L.months[mo].slice(1)+' '+y;
+   var g=document.getElementById(cfg[2]);g.innerHTML='';
+   L.dows.forEach(function(dw){var e=document.createElement('div');e.className='dw';e.textContent=dw;g.appendChild(e)});
+   var first=new Date(y,mo,1).getDay(),dim=new Date(y,mo+1,0).getDate();
+   for(var i=0;i<first;i++){var o=document.createElement('div');o.className='bk-cal-d off';g.appendChild(o)}
+   for(var dd=1;dd<=dim;dd++){
+    var s=iso(y,mo,dd),c=document.createElement('div');c.className='bk-cal-d';c.textContent=dd;
+    if(s<TODAY)c.classList.add('past');
+    else if(BUSY[s])c.classList.add('busy');
+    if(arr===s||dep===s)c.classList.add('sel');
+    else if(arr&&dep&&s>arr&&s<dep)c.classList.add('mid');
+    (function(s2,el){el.addEventListener('click',function(){
+      if(s2<TODAY||BUSY[s2])return;
+      if(!arr||(arr&&dep)){arr=s2;dep=null}
+      else if(s2<=arr){arr=s2;dep=null}
+      else{dep=s2}
+      render();update();
+    })})(s,c);
+    g.appendChild(c);
+   }
+  });
+  var off=(vy-minY)*12+(vm-minM);
+  document.getElementById('bkc-prev').disabled=off<=0;
+  document.getElementById('bkc-next').disabled=off>=maxOff;
+ }
+ document.getElementById('bkc-prev').addEventListener('click',function(){vm--;if(vm<0){vm=11;vy--}render()});
+ document.getElementById('bkc-next').addEventListener('click',function(){vm++;if(vm>11){vm=0;vy++}render()});
+ go.addEventListener('click',function(e){
+  e.preventDefault();
+  if(go.classList.contains('dim'))return;
+  var ba=document.getElementById('barr'),bd=document.getElementById('bdep');
+  if(ba)ba.value=arr;if(bd)bd.value=dep;
+  var btn=document.querySelector('.bk-direct .btn-foret');
+  if(btn)btn.click();
+ });
+ render();update();
+ W.hidden=false;
+}).catch(function(){/* flux indisponible : le calendrier reste masqué */});
+})();
+</script>
 </body>
 </html>
