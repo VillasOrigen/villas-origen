@@ -991,6 +991,18 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
 .bk-dispolnk{text-align:center;margin-top:20px}
 .bk-dispolnk a{display:inline-flex;align-items:center;gap:8px;font-size:.68rem;letter-spacing:.24em;text-indent:.24em;text-transform:uppercase;font-weight:600;color:var(--kaki);text-decoration:none;border-bottom:1px solid var(--or);padding-bottom:4px}
 #bkcal{scroll-margin-top:90px}
+
+/* ═══════════ BANDE PLAYA COSÓN ═══════════ */
+.plage-band{position:relative;min-height:64vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.plage-band>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.plage-band::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(20,18,10,.28),rgba(20,18,10,.5))}
+.pb-inner{position:relative;z-index:2;color:#F7F1E6;padding:70px 6vw;max-width:760px}
+.pb-inner .eyebrow{color:var(--ocre-pale,#E4C79A)}
+.pb-inner h2{font-family:var(--serif);font-weight:600;font-size:clamp(2.2rem,4.4vw,3.8rem);line-height:1.08;margin:14px 0 16px;color:#fff}
+.pb-inner h2 em{font-style:italic;color:var(--ocre-pale,#E4C79A)}
+.pb-inner p{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:rgba(247,241,230,.85);margin-bottom:30px}
+.pb-btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:600;font-size:.66rem;letter-spacing:.28em;text-indent:.28em;text-transform:uppercase;color:#F7F1E6;border:1.5px solid rgba(247,241,230,.75);border-radius:99px;padding:16px 34px;text-decoration:none;transition:background .3s,color .3s}
+.pb-btn:hover{background:#F7F1E6;color:var(--encre)}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
@@ -1195,6 +1207,18 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
 
 
 
+
+
+<!-- ═══════════ BANDE PLAYA COSÓN ═══════════ -->
+<section class="plage-band" id="plage">
+  <img src="/img/94398acde6d1.jpg" alt="Playa Cosón" loading="lazy">
+  <div class="pb-inner reveal">
+    <p class="eyebrow">La plage</p>
+    <h2>Playa Cosón, à <em>cinq minutes</em> à pied</h2>
+    <p>Une des plus longues plages sauvages du pays, au bout d'un petit sentier.</p>
+    <a class="pb-btn" href="/guide/playa-coson/">Découvrir la plage</a>
+  </div>
+</section>
 
 <!-- ═══════════ SÉJOUR / RÉSERVATION ═══════════ -->
 <section class="sejour" id="sejour">
