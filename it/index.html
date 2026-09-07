@@ -973,6 +973,24 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
   .bk-cal-m.m2{display:none}
   .bk-cal-bar{flex-direction:column;align-items:stretch;text-align:center}
 }
+.activites{padding-top:11vh}
+
+/* ═══════════ DÉCOUVRIR LAS TERRENAS (teaser) ═══════════ */
+.guide-teaser{padding:13vh 0;background:var(--sable-clair)}
+.guide-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,26px);max-width:1100px;margin:0 auto 44px}
+.guide-card{display:block;text-decoration:none;color:var(--encre);background:var(--blanc);border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(26,18,8,.06);transition:transform .35s ease,box-shadow .35s ease}
+.guide-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(26,18,8,.12)}
+.guide-card .gp{aspect-ratio:4/3;overflow:hidden}
+.guide-card img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.guide-card:hover img{transform:scale(1.04)}
+.guide-card .gb{padding:18px 20px 22px}
+.guide-card h3{font-family:var(--serif);font-weight:600;font-size:1.35rem;line-height:1.1;margin-bottom:6px}
+.guide-card p{font-size:.78rem;color:#6b5f4e;letter-spacing:.02em;line-height:1.5}
+.guide-cta{text-align:center}
+@media(max-width:880px){.guide-grid{grid-template-columns:1fr 1fr;max-width:560px}}
+.bk-dispolnk{text-align:center;margin-top:20px}
+.bk-dispolnk a{display:inline-flex;align-items:center;gap:8px;font-size:.68rem;letter-spacing:.24em;text-indent:.24em;text-transform:uppercase;font-weight:600;color:var(--kaki);text-decoration:none;border-bottom:1px solid var(--or);padding-bottom:4px}
+#bkcal{scroll-margin-top:90px}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
@@ -987,7 +1005,7 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
   <div class="nav-links">
     <a href="#villa" data-i18n="nav_villa">La villa</a>
     <a href="#galerie" data-i18n="nav_galerie">Galleria</a>
-    <a href="#coson">Las Terrenas</a>
+    <a href="/it/guida/#coson">Las Terrenas</a>
     <a class="nav-guide" href="/it/guida/">Guida</a>
     <a href="#reserver" class="nav-cta" data-i18n="nav_cta">Prenota</a>
     <div class="nav-lang" role="group" aria-label="Langue"><a href="/" hreflang="fr">FR</a><a href="/en/" hreflang="en">EN</a><a href="/es/" hreflang="es">ES</a><a href="/de/" hreflang="de">DE</a><a class="actif" href="/it/" hreflang="it">IT</a></div>
@@ -998,7 +1016,7 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
   <button class="mmenu-close" id="mclose" aria-label="Fermer">&times;</button>
   <a class="mlink" href="#villa">La villa</a>
   <a class="mlink" href="#galerie">Galleria</a>
-  <a class="mlink" href="#coson">Las Terrenas</a>
+  <a class="mlink" href="/it/guida/#coson">Las Terrenas</a>
   <a class="mlink" href="/it/guida/">Guida</a>
   <a class="m-cta" href="#reserver">Prenota</a>
   <div class="m-langs"><a href="/" hreflang="fr">FR</a><a href="/en/" hreflang="en">EN</a><a href="/es/" hreflang="es">ES</a><a href="/de/" hreflang="de">DE</a><a class="actif" href="/it/" hreflang="it">IT</a></div>
@@ -1161,78 +1179,9 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
 
 
 
-<!-- ═══════════ PLAYA COSÓN ═══════════ -->
-<section class="coson" id="coson">
-  <div class="container">
-    <div class="coson-head reveal">
-      <p class="eyebrow" data-i18n="pc_eyebrow">La vostra spiaggia</p>
-      <h2 data-i18n="pc_h2">Playa Cosón, <em>a cinque minuti a piedi</em></h2>
-      <p data-i18n="pc_p">La villa si apre sulla prima baia di Cosón — quella che raggiunge Punta Bonita in venti minuti a piedi. Chilometri di sabbia dorata, acque calme e la sensazione di avere la spiaggia tutta per sé.</p>
-    </div>
-    <div class="coson-hero reveal"><img src="/img/94398acde6d1.jpg" alt="La première baie de Playa Cosón au matin, sable doré et ombres de palmiers — à 5 minutes des Villas Origen" loading="lazy"></div>
-    <div class="coson-grid">
-      <div class="coson-item reveal">
-        <div class="coson-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="14.4" cy="4" r="1.7"/><path d="M13.6 7 11.4 11.6"/><path d="M13.6 7l3.1 1.4 2.6-1.2"/><path d="M13.6 7l-3 .5-2.2-1.7"/><path d="M11.4 11.6l3.4 2.2-.8 5"/><path d="M11.4 11.6 8 14.4l-3.4-.4"/></svg></div>
-        <div><h3 data-i18n="pc1_t">Corsa mattutina</h3><p data-i18n="pc1_d">La sabbia compatta della baia la rende un percorso di jogging eccezionale, all'alba di fronte al mare.</p></div>
-      </div>
-      <div class="coson-item reveal">
-        <div class="coson-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M7 3v7M4.5 3v4.5c0 1.4 1.1 2.5 2.5 2.5s2.5-1.1 2.5-2.5V3M9.5 3v7"/><path d="M7 10v11"/><path d="M16.5 3c-1.7 1.2-2.5 3.4-2.5 5.5 0 1.6 1 2.5 2.5 2.5V21"/><path d="M16.5 3v18" opacity=".0"/></svg></div>
-        <div><h3 data-i18n="pc2_t">Ristorante sulla spiaggia</h3><p data-i18n="pc2_d">L'Ocean Grill del Coson Bay Hotel & Residences, con i piedi nella sabbia — lettini a disposizione se consumate sul posto.</p></div>
-      </div>
-      <div class="coson-item reveal">
-        <div class="coson-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="10" cy="9" rx="6" ry="4.2"/><path d="M10 13.2V15c0 2 1.5 3.5 3.5 3.5H16c1.9 0 3.5-1.6 3.5-3.5V7"/><path d="M19.5 4.5V7"/></svg></div>
-        <div><h3 data-i18n="pc3_t">Snorkeling alla punta</h3><p data-i18n="pc3_d">Al mattino, alla punta di Punta Bonita, pesci magnifici nuotano in acque cristalline.</p></div>
-      </div>
-      <div class="coson-item reveal">
-        <div class="coson-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 4.5c1.6 2.2 1.6 12.8 0 15M12 4.5c-1.6 2.2-1.6 12.8 0 15"/><path d="M4.2 9.5c3 1.2 12.6 1.2 15.6 0M4.2 14.5c3-1.2 12.6-1.2 15.6 0"/></svg></div>
-        <div><h3 data-i18n="pc4_t">Dollari di sabbia</h3><p data-i18n="pc4_d">La baia ne è piena. Si raccolgono solo le conchiglie bianche — quelle vive restano nel mare.</p></div>
-      </div>
-    </div>
-    <div class="coson-photos reveal">
-      <figure><img src="/img/e8bfc0f10764.jpg" alt="La courbe calme de la baie de Cosón" loading="lazy"><figcaption data-i18n="pc_tag1">La baia</figcaption></figure>
-      <figure><img src="/img/218030f995f9.jpg" alt="Coucher de soleil sur la baie de Cosón, sous les palmes" loading="lazy"><figcaption data-i18n="pc_tag2">La sera</figcaption></figure>
-      <figure><img src="/img/0a4a469eb04e.jpg" alt="La pointe rocheuse de Punta Bonita, spot de snorkeling" loading="lazy"><figcaption data-i18n="pc_tag3">La punta</figcaption></figure>
-    </div>
-  </div>
-</section>
 
-<!-- ═══════════ LES PLAGES ═══════════ -->
-<section class="plages container" id="plages">
-  <div class="plages-head reveal">
-    <p class="eyebrow" data-i18n="b_eyebrow">Le spiagge</p>
-    <h2 data-i18n="b_h2">Le spiagge <em>intorno alla villa</em></h2>
-    <p data-i18n="b_p">Ogni spiaggia di Las Terrenas ha il suo carattere. Ecco le nostre preferite — dalla porta della villa alle escursioni di un giorno.</p>
-  </div>
-  <div class="plages-grid">
-    <article class="plage reveal">
-      <img src="/img/fed987d0497d.jpg" alt="Le sentier de bord de mer sous les cocotiers à Punta Bonita, Las Terrenas" loading="lazy">
-      <div class="plage-body">
-        <span class="plage-dist" data-i18n="b2_k">12 min in auto</span>
-        <h3>Punta Bonita</h3>
-        <p data-i18n="b2_d">La cartolina della penisola: sabbia dorata, palme inclinate, acqua cristallina.</p>
-        <div class="plage-chips"><span class="chip" data-i18n="b2_c1">Nuoto</span><span class="chip" data-i18n="b2_c2">Snorkeling</span><span class="chip" data-i18n="b2_c3">Ristoranti</span></div>
-      </div>
-    </article>
-    <article class="plage reveal">
-      <img src="/img/f535910c0f39.jpg" alt="Playa Las Terrenas et Punta Popy, la plage du village avec ses bateaux" loading="lazy">
-      <div class="plage-body">
-        <span class="plage-dist" data-i18n="b3_k">7 min in auto</span>
-        <h3>Punta Popy</h3>
-        <p data-i18n="b3_d">La spiaggia del villaggio: kite al vento, caffè e aperitivi in riva al mare.</p>
-        <div class="plage-chips"><span class="chip" data-i18n="b3_c1">Kitesurf</span><span class="chip" data-i18n="b3_c2">Paddle</span><span class="chip" data-i18n="b3_c3">Aperitivo al tramonto</span></div>
-      </div>
-    </article>
-    <article class="plage reveal">
-      <img src="/img/d55124ac5ee7.jpg" alt="Salon de plage sous les parasols à Playa Las Ballenas, Las Terrenas" loading="lazy">
-      <div class="plage-body">
-        <span class="plage-dist" data-i18n="b4_k">8 min in auto</span>
-        <h3>Playa Las Ballenas</h3>
-        <p data-i18n="b4_d">Acqua calma con i tre isolotti sullo sfondo — perfetta con i bambini.</p>
-        <div class="plage-chips"><span class="chip" data-i18n="b4_c1">Nuoto tranquillo</span><span class="chip" data-i18n="b4_c2">Famiglie</span><span class="chip" data-i18n="b4_c3">Snorkeling</span></div>
-      </div>
-    </article>
-    </div>
-</section>
+
+
 
 <!-- ═══════════ BANDEAU ═══════════ -->
 
@@ -1242,57 +1191,115 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
 
 
 
-<!-- ═══════════ LE CARNET DES HÔTES ═══════════ -->
-<section class="restos" id="adresses">
-  <div class="container">
-    <div class="restos-head reveal">
-      <p class="eyebrow" data-i18n="r_eyebrow">Il taccuino degli host</p>
-      <h2 data-i18n="r_h2">I nostri indirizzi <em>di fiducia</em></h2>
-      <p data-i18n="r_p">Tavole che frequentiamo noi stessi, stagione dopo stagione — provate, amate, consigliate. Un taccuino che cresce a ogni scoperta.</p>
-    </div>
-    <div class="restos-grid">
-      <article class="resto reveal">
-        <div class="resto-photo"><img src="/img/3889a1cd2269.jpg" alt="Les pâtes fraîches maison de Tio Belo, cucina tipica emiliana à Las Terrenas" loading="lazy"></div>
-        <span class="resto-badge" data-i18n="r_badge">Provato dai vostri host</span>
-        <h3>Tio Belo</h3>
-        <div class="resto-type" data-i18n="r1_t">Ristorante italiano · Calle Duarte</div>
-        <p data-i18n="r1_d">Pasta fresca fatta in casa, pescato del giorno e un tiramisù che da solo vale il viaggio. Un angolo d'Italia nel cuore del villaggio, gestito con passione.</p>
-        <div class="resto-chips"><span class="chip" data-i18n="r1_c1">Pasta fatta in casa</span><span class="chip" data-i18n="r1_c2">Tiramisù</span><span class="chip" data-i18n="r1_c3">Atmosfera familiare</span></div>
-        <a class="resto-lien" href="https://www.instagram.com/tiobelo22/" target="_blank" rel="noopener" data-i18n="r_lien">Vedi su Instagram</a>
-      </article>
-      <article class="resto reveal">
-        <div class="resto-photo"><img src="/img/eac3901649c5.jpg" alt="L'enseigne illuminée de Casa Miranda Restaurante, Plaza Taina, Las Terrenas" loading="lazy"></div>
-        <span class="resto-badge" data-i18n="r_badge2">Provato dai vostri host</span>
-        <h3>Casa Miranda</h3>
-        <div class="resto-type" data-i18n="r2_t">Cucina spagnola · Plaza Taina</div>
-        <p data-i18n="r2_d">Tapas e ricette di Spagna da una famiglia appassionata, su una terrazza illuminata da luci. Il giovedì sera c'è musica — prenotate.</p>
-        <div class="resto-chips"><span class="chip" data-i18n="r2_c1">Tapas</span><span class="chip" data-i18n="r2_c2">Terrazza</span><span class="chip" data-i18n="r2_c3">Giovedì musicali</span></div>
-        <a class="resto-lien" href="https://www.instagram.com/casamiranda_rd/" target="_blank" rel="noopener" data-i18n="r_lien2">Vedi su Instagram</a>
-      </article>
-      <article class="resto reveal">
-        <div class="resto-photo"><img src="/img/823936460dce.jpg" alt="Le beach club Casa Grande sous les voiles d'ombrage, face à la mer à Playa Bonita" loading="lazy"></div>
-        <span class="resto-badge" data-i18n="r3_b">Provato dai vostri host</span>
-        <h3>Casa Grande</h3>
-        <div class="resto-type" data-i18n="r3_t">Ristorante sulla spiaggia · Playa Bonita</div>
-        <p data-i18n="r3_d">Un pranzo all'ombra delle vele, tra il bar con tetto di palma e il prato che scende verso il mare — la tappa perfetta dopo lo snorkeling alla punta.</p>
-        <div class="resto-chips"><span class="chip" data-i18n="r3_c1">Fronte mare</span><span class="chip" data-i18n="r3_c2">Pranzo</span><span class="chip" data-i18n="r3_c3">Beach bar</span></div>
-        <p class="resto-note" data-i18n="r3_note">A circa 30 minuti a piedi lungo la spiaggia</p>
-        <a class="resto-lien" href="https://www.instagram.com/casagranderd/" target="_blank" rel="noopener" data-i18n="r_lien3">Vedi su Instagram</a>
-      </article>
-      <article class="resto reveal">
-        <div class="resto-photo"><img src="/img/3bee010f6afe.jpg" alt="Transats face au coucher de soleil sur Playa Cosón, au Mosquito Boutique Hotel" loading="lazy"></div>
-        <span class="resto-badge" data-i18n="r4_b">Provato dai vostri host</span>
-        <h3>El Mosquito</h3>
-        <div class="resto-type" data-i18n="r4_t">Hotel e ristorante sulla spiaggia · Playa Cosón</div>
-        <p data-i18n="r4_d">Lettini e tavoli sotto le palme da cocco, direttamente sulla sabbia di Playa Cosón, di fronte al tramonto.</p>
-        <div class="resto-chips"><span class="chip" data-i18n="r4_c1">Fronte mare</span><span class="chip" data-i18n="r4_c2">Tramonto</span><span class="chip" data-i18n="r4_c3">Beach bar</span></div>
-        <p class="resto-note" data-i18n="r4_note">A circa 30 minuti a piedi lungo la spiaggia</p>
-        <a class="resto-lien" href="https://www.instagram.com/mosquitoboutiquehotel/" target="_blank" rel="noopener" data-i18n="r_lien4">Vedi su Instagram</a>
-      </article>
+
+
+
+
+
+<!-- ═══════════ SÉJOUR / RÉSERVATION ═══════════ -->
+<section class="sejour" id="sejour">
+  <div class="container sejour-grid">
+    <div class="reveal">
+      <p class="eyebrow" data-i18n="se_eyebrow">Il vostro soggiorno</p>
+      <h2 data-i18n="se_h2">Prenotate <em>le vostre date</em></h2>
+      <ul class="sejour-list">
+        <li data-i18n="l1">Piscina privata, terrazza e giardino tropicale recintato</li>
+        <li data-i18n="l2">3 camere climatizzate, ciascuna con bagno privato + divano letto (fino a 8 ospiti)</li>
+        <li data-i18n="l7">Soggiorno e cucina climatizzati</li>
+        <li data-i18n="l3">Spiaggia a 5 minuti a piedi, villaggio a 5 minuti in auto</li>
+        <li data-i18n="l4">Wi-Fi oltre 120 Mb/s — per lavorare dal paradiso… o dimenticarlo del tutto</li>
+        <li data-i18n="l5">Parcheggio privato</li>
+        <li data-i18n="l6">Pulizie e concierge</li>
+      </ul>
+      <p class="sejour-inaug" data-i18n="se_inaug">Prime disponibilità: febbraio 2027</p>
+          </div>
+    <div class="photo reveal">
+      <img src="/img/e7eea108433f.jpg" alt="La piscine, la terrasse de bois et la casita — Villas Origen" loading="lazy">
     </div>
   </div>
 </section>
 
+
+
+
+
+<!-- ═══════════ DEUX FAÇONS DE RÉSERVER ═══════════ -->
+<section class="bk" id="reserver">
+  <div class="container">
+    <div class="bk-head reveal">
+      <p class="eyebrow">Prenotazione</p>
+      <h2>Due modi per <em>prenotare</em></h2>
+      <p>La stessa villa, la stessa accoglienza — scegliete la strada che fa per voi.</p>
+    
+      <p class="bk-dispolnk" id="bkcal-lnk" hidden><a href="#bkcal">Vedi disponibilità<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 4v16M6 14l6 6 6-6"/></svg></a></p>
+    </div>
+    <div class="bk-duo reveal">
+      <div class="bk-carte bk-direct">
+        <span class="bk-chip">Miglior prezzo</span>
+        <h3>Direttamente con noi</h3>
+        <p class="bk-sous">da famiglia a viaggiatori, senza intermediari</p>
+        <ul class="bk-aval">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Sempre il miglior prezzo — senza commissioni di piattaforma</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Risposta entro 24 ore, in italiano, inglese o francese</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Conferma scritta e ricevuta per ogni prenotazione</li>
+        </ul>
+        <a class="btn-foret" href="https://wa.me/15819838339?text=Buongiorno%21%20Vengo%20dalla%20sezione%20Il%20vostro%20soggiorno%20e%20vorrei%20conoscere%20disponibilit%C3%A0%20e%20tariffe." target="_blank" rel="noopener">Scriveteci</a>
+        <p class="bk-vrbo bk-ghost" aria-hidden="true">&nbsp;</p>
+      </div>
+      <div class="bk-carte bk-airbnb">
+        <h3>Su Airbnb</h3>
+        <p class="bk-sous">la tranquillità della piattaforma</p>
+        <ul class="bk-aval">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Host con identità verificata da Airbnb</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Pagamento gestito e protetto dalla piattaforma</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Prenotazione immediata su calendario aggiornato</li>
+        </ul>
+        <a class="bk-btn-airbnb" href="/go/airbnb/" target="_blank" rel="noopener">Prenota su Airbnb<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="margin-left:7px;vertical-align:-1px" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        <p class="bk-vrbo"><a href="/go/vrbo/" target="_blank" rel="noopener">Anche su Vrbo<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="margin-left:7px;vertical-align:-1px" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></p>
+      </div>
+    </div>
+    <div class="bk-cal" id="bkcal" hidden>
+      <div class="bk-cal-head">
+        <h3>Disponibilità</h3>
+        <p>Sincronizzato con le nostre prenotazioni — scegliete le date e scriveteci.</p>
+      </div>
+      <div class="bk-cal-nav"><button type="button" id="bkc-prev" aria-label="&#8249;">&#8249;</button><button type="button" id="bkc-next" aria-label="&#8250;">&#8250;</button></div>
+      <div class="bk-cal-months">
+        <div class="bk-cal-m m1"><h4 id="bkc-t1"></h4><div class="bk-cal-g" id="bkc-g1"></div></div>
+        <div class="bk-cal-m m2"><h4 id="bkc-t2"></h4><div class="bk-cal-g" id="bkc-g2"></div></div>
+      </div>
+      <div class="bk-cal-leg">
+        <span><i class="l1"></i> Disponibile</span>
+        <span><i class="l2"></i> Occupato</span>
+        <span><i class="l3"></i> La vostra selezione</span>
+      </div>
+      <div class="bk-cal-bar">
+        <p class="bk-cal-pick" id="bkc-pick"></p>
+        <a class="btn-foret dim" id="bkc-go" href="#">Richiedi queste date</a>
+      </div>
+      <p class="bk-cal-note">Aggiornato automaticamente più volte al giorno.</p>
+    </div>
+    <p class="bk-note">Due strade, lo stesso giardino — scriveteci in caso di dubbi, rispondiamo con piacere.</p>
+  </div>
+</section>
+
+<!-- ═══════════ SITUATION ═══════════ -->
+<section class="situation" id="situation">
+  <div class="container">
+    <div class="situation-head reveal">
+      <p class="eyebrow" data-i18n="loc_eyebrow">Posizione</p>
+      <h2 data-i18n="loc_h2">Dove si trova <em>la villa</em></h2>
+      <p data-i18n="loc_p">Sulla prima baia di Cosón, a cinque minuti a piedi da Playa Cosón e a cinque minuti in auto dal paese di Las Terrenas.</p>
+    </div>
+    <div class="situation-map reveal">
+      <div id="villa-map" role="img" aria-label="Carte — secteur approximatif de la villa, première baie de Cosón, Las Terrenas"></div>
+    </div>
+    <p class="situation-note" data-i18n="loc_note">Posizione approssimativa — l'indirizzo esatto viene comunicato alla prenotazione.</p>
+    <div class="situation-cta reveal">
+      <a class="map-link" href="https://www.google.com/maps/search/Playa+Coson+Las+Terrenas" target="_blank" rel="noopener" data-i18n="loc_link">Vedi la zona su Google Maps</a>
+    </div>
+  </div>
+</section>
 
 <!-- ═══════════ LES ACTIVITÉS ═══════════ -->
 <section class="activites" id="activites">
@@ -1351,147 +1358,32 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
   </div>
 </section>
 
-<!-- ═══════════ SÉJOUR / RÉSERVATION ═══════════ -->
-<section class="sejour" id="sejour">
-  <div class="container sejour-grid">
-    <div class="reveal">
-      <p class="eyebrow" data-i18n="se_eyebrow">Il vostro soggiorno</p>
-      <h2 data-i18n="se_h2">Prenotate <em>le vostre date</em></h2>
-      <ul class="sejour-list">
-        <li data-i18n="l1">Piscina privata, terrazza e giardino tropicale recintato</li>
-        <li data-i18n="l2">3 camere climatizzate, ciascuna con bagno privato + divano letto (fino a 8 ospiti)</li>
-        <li data-i18n="l7">Soggiorno e cucina climatizzati</li>
-        <li data-i18n="l3">Spiaggia a 5 minuti a piedi, villaggio a 5 minuti in auto</li>
-        <li data-i18n="l4">Wi-Fi oltre 120 Mb/s — per lavorare dal paradiso… o dimenticarlo del tutto</li>
-        <li data-i18n="l5">Parcheggio privato</li>
-        <li data-i18n="l6">Pulizie e concierge</li>
-      </ul>
-      <p class="sejour-inaug" data-i18n="se_inaug">Prime disponibilità: febbraio 2027</p>
-          </div>
-    <div class="photo reveal">
-      <img src="/img/e7eea108433f.jpg" alt="La piscine, la terrasse de bois et la casita — Villas Origen" loading="lazy">
-    </div>
-  </div>
-</section>
-
-
-
-
-
-<!-- ═══════════ DEUX FAÇONS DE RÉSERVER ═══════════ -->
-<section class="bk" id="reserver">
-  <div class="container">
-    <div class="bk-head reveal">
-      <p class="eyebrow">Prenotazione</p>
-      <h2>Due modi per <em>prenotare</em></h2>
-      <p>La stessa villa, la stessa accoglienza — scegliete la strada che fa per voi.</p>
-    </div>
-    <div class="bk-duo reveal">
-      <div class="bk-carte bk-direct">
-        <span class="bk-chip">Miglior prezzo</span>
-        <h3>Direttamente con noi</h3>
-        <p class="bk-sous">da famiglia a viaggiatori, senza intermediari</p>
-        <ul class="bk-aval">
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Sempre il miglior prezzo — senza commissioni di piattaforma</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Risposta entro 24 ore, in italiano, inglese o francese</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Conferma scritta e ricevuta per ogni prenotazione</li>
-        </ul>
-        <a class="btn-foret" href="https://wa.me/15819838339?text=Buongiorno%21%20Vengo%20dalla%20sezione%20Il%20vostro%20soggiorno%20e%20vorrei%20conoscere%20disponibilit%C3%A0%20e%20tariffe." target="_blank" rel="noopener">Scriveteci</a>
-        <p class="bk-vrbo bk-ghost" aria-hidden="true">&nbsp;</p>
-      </div>
-      <div class="bk-carte bk-airbnb">
-        <h3>Su Airbnb</h3>
-        <p class="bk-sous">la tranquillità della piattaforma</p>
-        <ul class="bk-aval">
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Host con identità verificata da Airbnb</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Pagamento gestito e protetto dalla piattaforma</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Prenotazione immediata su calendario aggiornato</li>
-        </ul>
-        <a class="bk-btn-airbnb" href="/go/airbnb/" target="_blank" rel="noopener">Prenota su Airbnb<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="margin-left:7px;vertical-align:-1px" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
-        <p class="bk-vrbo"><a href="/go/vrbo/" target="_blank" rel="noopener">Anche su Vrbo<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="margin-left:7px;vertical-align:-1px" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></p>
-      </div>
-    </div>
-    
-    <div class="bk-cal" id="bkcal" hidden>
-      <div class="bk-cal-head">
-        <h3>Disponibilità</h3>
-        <p>Sincronizzato con le nostre prenotazioni — scegliete le date e scriveteci.</p>
-      </div>
-      <div class="bk-cal-nav"><button type="button" id="bkc-prev" aria-label="&#8249;">&#8249;</button><button type="button" id="bkc-next" aria-label="&#8250;">&#8250;</button></div>
-      <div class="bk-cal-months">
-        <div class="bk-cal-m m1"><h4 id="bkc-t1"></h4><div class="bk-cal-g" id="bkc-g1"></div></div>
-        <div class="bk-cal-m m2"><h4 id="bkc-t2"></h4><div class="bk-cal-g" id="bkc-g2"></div></div>
-      </div>
-      <div class="bk-cal-leg">
-        <span><i class="l1"></i> Disponibile</span>
-        <span><i class="l2"></i> Occupato</span>
-        <span><i class="l3"></i> La vostra selezione</span>
-      </div>
-      <div class="bk-cal-bar">
-        <p class="bk-cal-pick" id="bkc-pick"></p>
-        <a class="btn-foret dim" id="bkc-go" href="#">Richiedi queste date</a>
-      </div>
-      <p class="bk-cal-note">Aggiornato automaticamente più volte al giorno.</p>
-    </div>
-    <p class="bk-note">Due strade, lo stesso giardino — scriveteci in caso di dubbi, rispondiamo con piacere.</p>
-  </div>
-</section>
-
-<!-- ═══════════ SITUATION ═══════════ -->
-<section class="situation" id="situation">
-  <div class="container">
-    <div class="situation-head reveal">
-      <p class="eyebrow" data-i18n="loc_eyebrow">Posizione</p>
-      <h2 data-i18n="loc_h2">Dove si trova <em>la villa</em></h2>
-      <p data-i18n="loc_p">Sulla prima baia di Cosón, a cinque minuti a piedi da Playa Cosón e a cinque minuti in auto dal paese di Las Terrenas.</p>
-    </div>
-    <div class="situation-map reveal">
-      <div id="villa-map" role="img" aria-label="Carte — secteur approximatif de la villa, première baie de Cosón, Las Terrenas"></div>
-    </div>
-    <p class="situation-note" data-i18n="loc_note">Posizione approssimativa — l'indirizzo esatto viene comunicato alla prenotazione.</p>
-    <div class="situation-cta reveal">
-      <a class="map-link" href="https://www.google.com/maps/search/Playa+Coson+Las+Terrenas" target="_blank" rel="noopener" data-i18n="loc_link">Vedi la zona su Google Maps</a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ GUIDE ═══════════ -->
-<section class="restos" id="guide">
+<section class="guide-teaser" id="guide">
   <div class="container">
     <div class="restos-head reveal">
-      <p class="eyebrow">Preparare il soggiorno</p>
-      <h2>La guida <em>di Las Terrenas</em></h2>
-      <p>Le nostre pagine pratiche sulla zona, scritte sul posto: le spiagge, gli accessi, gli orari giusti e gli errori da evitare.</p>
+      <p class="eyebrow">Intorno alla villa</p>
+      <h2>Scoprire <em>Las Terrenas</em></h2>
+      <p>Spiagge, buone tavole, escursioni: i consigli dei vostri host, testati stagione dopo stagione.</p>
     </div>
-    <div class="act-grid">
-      <a class="act-card reveal" href="/it/guida/playa-coson/">
-        <div class="act-photo"><img src="/img/94398acde6d1.jpg" alt="Playa Cosón au matin, sable doré et ombres de cocotiers" loading="lazy"></div>
-        <div class="act-body">
-          <span class="resto-badge">Guida</span>
-          <h3>Playa Cosón: la guida completa</h3>
-          <p>Dove si trova, come arrivarci, dove fare snorkeling, dove mangiare e a che ora andare.</p>
-          <span class="resto-lien">Leggi la guida</span>
-        </div>
+    <div class="guide-grid">
+      <a class="guide-card reveal" href="/it/guida/#coson">
+        <div class="gp"><img src="/img/94398acde6d1.jpg" alt="Playa Cosón" loading="lazy"></div>
+        <div class="gb"><h3>Playa Cosón</h3><p>La spiaggia a cinque minuti a piedi</p></div>
       </a>
-      <a class="act-card reveal" href="/it/guida/dove-alloggiare-las-terrenas/">
-        <div class="act-photo"><img src="/img/f535910c0f39.jpg" alt="La spiaggia del paese a Punta Popy, Las Terrenas, con le barche e le palme" loading="lazy"></div>
-        <div class="act-body">
-          <span class="resto-badge">Guida</span>
-          <h3>Dove alloggiare a Las Terrenas: la guida ai quartieri</h3>
-          <p>Punta Popy, il centro, Playa Bonita, Cosón o El Portillo? Le zone a confronto, con le loro atmosfere e i loro rovesci.</p>
-          <span class="resto-lien">Leggi la guida</span>
-        </div>
+      <a class="guide-card reveal" href="/it/guida/#plages">
+        <div class="gp"><img src="/img/fed987d0497d.jpg" alt="Le spiagge" loading="lazy"></div>
+        <div class="gb"><h3>Le spiagge</h3><p>Punta Bonita, Punta Popy, Las Ballenas</p></div>
       </a>
-      <a class="act-card reveal" href="/it/guida/come-arrivare-las-terrenas/">
-        <div class="act-photo"><img src="/img/14b0eda71f23.jpg" alt="Il cielo della sera sul bohío e la piscina di Villas Origen, all'arrivo a Cosón" loading="lazy"></div>
-        <div class="act-body">
-          <span class="resto-badge">Guida</span>
-          <h3>Come arrivare a Las Terrenas: aeroporti, voli e transfer</h3>
-          <p>El Catey a 25 minuti, i voli diretti dal Canada, le tariffe dei transfer e i nostri consigli d'arrivo.</p>
-          <span class="resto-lien">Leggi la guida</span>
-        </div>
+      <a class="guide-card reveal" href="/it/guida/#adresses">
+        <div class="gp"><img src="/img/3889a1cd2269.jpg" alt="Il taccuino degli host" loading="lazy"></div>
+        <div class="gb"><h3>Il taccuino degli host</h3><p>I nostri ristoranti di fiducia</p></div>
+      </a>
+      <a class="guide-card reveal" href="/it/guida/#activites">
+        <div class="gp"><img src="/img/273211944ea4.jpg" alt="Le attività" loading="lazy"></div>
+        <div class="gb"><h3>Le attività</h3><p>Immersioni, la via del caffè e altro</p></div>
       </a>
     </div>
+    <div class="guide-cta reveal"><a class="btn-foret" href="/it/guida/">Vedi la guida completa</a></div>
   </div>
 </section>
 </main>
@@ -1809,7 +1701,7 @@ fetch('/api/disponibilites').then(function(r){if(!r.ok)throw 0;return r.json()})
   if(btn)btn.click();
  });
  render();update();
- W.hidden=false;
+ W.hidden=false;var LK=document.getElementById('bkcal-lnk');if(LK)LK.hidden=false;
 }).catch(function(){/* flux indisponible : le calendrier reste masqué */});
 })();
 </script>
