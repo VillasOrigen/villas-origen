@@ -102,8 +102,8 @@ nav.gnav .nav-lang a+a{border-left-color:rgba(26,18,8,.2)}
 
 /* ═══ CTA avec photo ═══ */
 .cta-box.has-photo{padding:0;overflow:hidden}
-.cta-box .cta-photo{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.cta-box .cta-photo{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center top}
 .cta-box .cta-inner{padding:38px 34px}
 .cta-box .btn-foret{text-align:center;justify-content:center}
-@media(min-width:840px){.cta-box .cta-photo{aspect-ratio:21/9;object-position:center 62%}.cta-box .cta-inner{padding:40px 44px}}
+@media(min-width:900px){.cta-box.has-photo{display:flex;align-items:stretch;width:min(880px,94vw);position:relative;left:50%;transform:translateX(-50%)}.cta-box .cta-photo{width:47%;height:auto;object-fit:cover;object-position:center top;aspect-ratio:auto}.cta-box .cta-inner{width:53%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:40px 44px}}
 @media(max-width:620px){.cta-box .cta-inner{padding:30px 24px}}
