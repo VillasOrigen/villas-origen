@@ -107,3 +107,13 @@ nav.gnav .nav-lang a+a{border-left-color:rgba(26,18,8,.2)}
 .cta-box .btn-foret{text-align:center;justify-content:center}
 @media(min-width:900px){.cta-box.has-photo{display:flex;align-items:stretch;width:min(880px,94vw);position:relative;left:50%;transform:translateX(-50%)}.cta-box .cta-photo{width:47%;height:auto;object-fit:cover;object-position:center top;aspect-ratio:auto}.cta-box .cta-inner{width:53%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:40px 44px}}
 @media(max-width:620px){.cta-box .cta-inner{padding:30px 24px}}
+
+/* ═══ Offre d'ouverture (article) ═══ */
+.art-offre{background:linear-gradient(150deg,#31402a,#232e1d);border:1px solid rgba(201,161,94,.6);border-radius:14px;padding:24px 26px;margin:34px 0;display:flex;gap:18px;align-items:flex-start;box-shadow:0 12px 30px rgba(26,18,8,.12)}
+.art-offre-ico{flex:0 0 46px;width:46px;height:46px;border-radius:50%;border:1.5px solid var(--or);background:rgba(201,161,94,.14);display:flex;align-items:center;justify-content:center;color:var(--ocre-pale)}
+.art-offre-tag{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:var(--ocre-pale);margin:0 0 7px}
+.art-offre p{color:rgba(247,241,230,.9);font-size:.9rem;line-height:1.65;margin:0 0 13px}
+.art-offre strong{color:#fff}
+a.art-offre-lnk{display:inline-flex;align-items:center;gap:8px;color:var(--ocre-pale);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;text-decoration:none;border-bottom:1px solid var(--ocre-pale);padding-bottom:3px}
+a.art-offre-lnk:hover{color:#fff;border-color:#fff}
+@media(max-width:620px){.art-offre{flex-direction:column;gap:12px;padding:20px 18px}}
