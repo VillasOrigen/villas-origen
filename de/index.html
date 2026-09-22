@@ -1005,6 +1005,22 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
 .pb-inner p{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:rgba(247,241,230,.85);margin-bottom:30px}
 .pb-btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:600;font-size:.66rem;letter-spacing:.28em;text-indent:.28em;text-transform:uppercase;color:#F7F1E6;border:1.5px solid rgba(247,241,230,.75);border-radius:99px;padding:16px 34px;text-decoration:none;transition:background .3s,color .3s}
 .pb-btn:hover{background:#F7F1E6;color:var(--encre)}
+
+/* ═══ OFFRE D'OUVERTURE ═══ */
+.hero-promo{display:inline-flex;align-items:center;gap:10px;margin-top:18px;background:rgba(26,18,8,.42);backdrop-filter:blur(6px);border:1px solid var(--or);color:#F7F1E6;border-radius:99px;padding:12px 22px;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;font-weight:600;text-decoration:none;transition:background .3s,color .3s;text-shadow:none}
+.hero-promo .hp-more{color:var(--ocre-pale);border-bottom:1px solid var(--ocre-pale);padding-bottom:1px;display:inline-flex;align-items:center;gap:6px}
+.hero-promo:hover{background:var(--or);color:var(--encre)}
+.hero-promo:hover .hp-more{color:var(--encre);border-color:var(--encre)}
+@media(max-width:640px){.hero-promo{font-size:.58rem;padding:10px 14px;gap:8px;letter-spacing:.1em}}
+.bk-offre{position:relative;display:flex;align-items:center;gap:26px;background:linear-gradient(150deg,#31402a,#232e1d);border:1px solid rgba(201,161,94,.6);border-radius:14px;padding:28px 34px;margin:0 auto 46px;max-width:880px;box-shadow:0 16px 40px rgba(26,18,8,.14)}
+.bk-offre::after{content:"";position:absolute;bottom:-11px;left:22%;border-left:11px solid transparent;border-right:11px solid transparent;border-top:11px solid #232e1d}
+.bk-offre-ico{flex:0 0 62px;width:62px;height:62px;border-radius:50%;border:1.5px solid var(--or);background:rgba(201,161,94,.14);display:flex;align-items:center;justify-content:center;color:var(--ocre-pale)}
+.bk-offre-tag{font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:var(--ocre-pale);margin:0 0 6px}
+.bk-offre h3{font-family:var(--serif);font-weight:600;font-size:clamp(1.35rem,2.4vw,1.8rem);color:#fff;margin:0 0 8px}
+.bk-offre h3 em{font-style:italic;color:var(--ocre-pale)}
+.bk-offre-p{font-size:.9rem;line-height:1.65;color:rgba(247,241,230,.88);margin:0;max-width:60ch}
+.bk-aval strong{color:var(--kaki)}
+@media(max-width:640px){.bk-offre{flex-direction:column;text-align:center;padding:26px 22px;gap:16px}.bk-offre::after{left:50%;margin-left:-11px}}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
@@ -1048,6 +1064,7 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
     </h1>
     <div class="hero-sep" aria-hidden="true"></div>
     <a class="hero-cta" href="#reserver" data-i18n="cta_sejour">Aufenthalt buchen</a>
+    <a class="hero-promo" href="#reserver"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg><span>Eröffnungsangebot: Flughafentransfers inklusive</span><span class="hp-more">Mehr erfahren<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
   </div>
   <span class="hero-scroll" aria-hidden="true" data-i18n="scroll">Scrollen</span>
 </header>
@@ -1256,6 +1273,15 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
     
       <p class="bk-dispolnk" id="bkcal-lnk" hidden><a href="#bkcal">Verfügbarkeit prüfen<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 4v16M6 14l6 6 6-6"/></svg></a></p>
     </div>
+    
+    <div class="bk-offre reveal">
+      <div class="bk-offre-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg></div>
+      <div>
+        <p class="bk-offre-tag">Eröffnungsangebot · Nur bei Direktbuchung</p>
+        <h3>Flughafentransfers <em>inklusive</em></h3>
+        <p class="bk-offre-p">Buchen Sie direkt bei uns, und Ihr privater Hin- und Rücktransfer vom Flughafen El Catey ist inklusive, mit unserem Partnerfahrer. Ein Wert von 150&nbsp;US-$, und eine Ankunft ohne die geringste Sorge.</p>
+      </div>
+    </div>
     <div class="bk-duo reveal">
       <div class="bk-carte bk-direct">
         <span class="bk-chip">Bester Preis</span>
@@ -1265,6 +1291,7 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Immer der beste Preis — ohne Plattformgebühren</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Antwort innerhalb von 24 Stunden, auf Deutsch, Englisch oder Französisch</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Schriftliche Bestätigung und Beleg für jede Buchung</li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><strong>Flughafentransfers inklusive</strong>&nbsp;(Eröffnungsangebot)</li>
         </ul>
         <a class="btn-foret" href="https://wa.me/15819838339?text=Hallo%21%20Ich%20komme%20vom%20Abschnitt%20Ihr%20Aufenthalt%20und%20m%C3%B6chte%20Verf%C3%BCgbarkeiten%20und%20Preise%20erfahren." target="_blank" rel="noopener">Schreiben Sie uns</a>
         <p class="bk-vrbo bk-ghost" aria-hidden="true">&nbsp;</p>
