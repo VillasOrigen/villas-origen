@@ -1026,6 +1026,85 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
 .bk-sticker span{font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;margin-top:3px}
 .bk-aval strong{color:var(--kaki)}
 @media(max-width:640px){.bk-offre{flex-direction:column;text-align:center;padding:30px 22px 26px;gap:16px}.bk-offre::after{left:50%;margin-left:-11px}.bk-sticker{width:88px;height:88px;top:-20px;right:12px}.bk-sticker b{font-size:1rem}}
+
+/* ═══════════ GALERIE : vitrine 1 + 4 et visionneuse ═══════════ */
+.gal5{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:12px;height:clamp(420px,44vw,620px)}
+.gal5-item{position:relative;display:block;overflow:hidden;border:0;padding:0;margin:0;background:#1a2616;cursor:zoom-in;font:inherit;min-width:0;min-height:0}
+.gal5-item:first-child{grid-row:1/3}
+.gal5-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
+@media(hover:hover){.gal5-item:hover img{transform:scale(1.04)}}
+.gal5-item .tag{position:absolute;left:14px;bottom:14px;z-index:2;font-size:.55rem;letter-spacing:.32em;text-transform:uppercase;padding:6px 14px;border:.5px solid rgba(255,255,255,.25);border-radius:99px;background:rgba(20,26,15,.45);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);color:rgba(255,255,255,.95)}
+.gal5-tout{position:absolute;right:14px;bottom:14px;z-index:3;display:inline-flex;align-items:center;gap:9px;padding:10px 16px;background:var(--sable-clair);color:var(--foret-sombre);font-family:var(--sans);font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.gal5-item:last-child .tag{display:none}
+.gal5-mob{display:none}
+@media(max-width:780px){
+  .gal5{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto;height:auto;gap:8px}
+  .gal5-item{aspect-ratio:1}
+  .gal5-item:first-child{grid-column:1/3;grid-row:auto;aspect-ratio:4/3}
+  .gal5-item .tag{display:none}
+  .gal5-tout{display:none}
+  .gal5-mob{display:flex;justify-content:center;align-items:center;gap:10px;width:100%;margin-top:14px;padding:15px;border:1px solid rgba(239,230,214,.4);background:none;color:var(--sable-clair);font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+}
+.vis{position:fixed;inset:0;z-index:300;background:rgba(14,20,11,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 76px 118px}
+.vis[hidden]{display:none}
+.vis figure{margin:0;display:flex;flex-direction:column;align-items:center;max-width:100%;max-height:100%}
+.vis-img{max-width:100%;max-height:calc(100vh - 230px);object-fit:contain;display:block}
+.vis figcaption{margin-top:14px;font-family:var(--serif);font-style:italic;font-size:1.1rem;color:rgba(247,241,230,.85);text-align:center}
+.vis-x{position:absolute;top:12px;right:16px;width:44px;height:44px;border:0;background:none;color:#F7F1E6;font-size:2.2rem;line-height:1;cursor:pointer}
+.vis-n{position:absolute;top:24px;left:24px;font-size:.72rem;letter-spacing:.2em;color:rgba(247,241,230,.7)}
+.vis-fl{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border:1px solid rgba(247,241,230,.3);border-radius:50%;background:rgba(14,20,11,.4);color:#F7F1E6;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.vis-prec{left:14px}.vis-suiv{right:14px}
+.vis-th{position:absolute;left:0;right:0;bottom:16px;display:flex;gap:6px;justify-content:center;overflow-x:auto;padding:0 16px;scrollbar-width:none}
+.vis-th button{flex:0 0 auto;width:64px;height:46px;padding:0;border:2px solid transparent;background:none;opacity:.5;cursor:pointer}
+.vis-th button[aria-current="true"]{border-color:var(--or);opacity:1}
+.vis-th img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:780px){
+  .vis{padding:60px 0 96px}
+  .vis-fl{display:none}
+  .vis-img{max-height:calc(100vh - 200px)}
+  .vis figcaption{font-size:1rem;padding:0 16px}
+  .vis-th button{width:52px;height:38px}
+}
+
+/* ═══════════ ACTIVITÉS : HugXander en bandeau large, puis deux sorties côte à côte ═══════════ */
+.act2{max-width:1080px;margin:0 auto}
+.act2-hx,.act2-h{background:var(--sable-clair);border:1px solid rgba(201,161,94,.4);border-radius:4px;overflow:hidden}
+.act2-hx{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.25fr);gap:44px;padding:36px 40px;align-items:start}
+.act2 h3{font-family:var(--serif);font-weight:600;font-size:1.65rem;letter-spacing:.02em;color:var(--encre);line-height:1.1;margin-bottom:6px}
+.act2 .resto-type{margin-bottom:14px}
+.act2 p{font-size:.87rem;line-height:1.65;color:#4a4135;margin-bottom:18px}
+.act2-logo{display:flex;align-items:center;gap:18px;margin-bottom:16px}
+.act2-logo img{width:78px;height:78px;border-radius:50%;flex:0 0 auto;box-shadow:0 0 0 1.5px var(--or)}
+.act2-logo .resto-type{margin-bottom:0}
+.act2-logo>div{min-width:0}
+.act2-hx .hx-table{font-size:.8rem;margin:0 0 14px}
+.act2-hx .hx-table th{font-size:.58rem;padding:6px}
+.act2-hx .hx-table td{padding:9px 6px;white-space:nowrap}
+.act2-hx .hx-table td strong{margin-right:8px}
+.act2-hx .hx-table td span{display:inline;font-size:.72rem}
+.act2-hx .hx-note{margin:0;font-size:.72rem}
+.act2-duo{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+.act2-h{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+.act2-ph{position:relative;min-height:240px;overflow:hidden}
+.act2-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+@media(hover:hover){.act2-h:hover .act2-ph img{transform:scale(1.04)}}
+.act2-tx{padding:26px 26px 28px;display:flex;flex-direction:column;align-items:flex-start}
+@media(max-width:900px){
+  .act2-hx{grid-template-columns:minmax(0,1fr);gap:26px;padding:28px 22px}
+  .act2-duo{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:560px){
+  .act2-h{grid-template-columns:minmax(0,1fr)}
+  .act2-logo{gap:14px}
+  .act2-logo img{width:60px;height:60px}
+  .act2-ph{min-height:0;aspect-ratio:16/10}
+  .act2-hx{padding:24px 16px}
+  .act2-hx .hx-table{font-size:.74rem}
+  .act2-hx .hx-table th{font-size:.5rem;padding:5px 3px;letter-spacing:.04em}
+  .act2-hx .hx-table td{white-space:normal;padding:8px 3px}
+  .act2-hx .hx-table td+td{white-space:nowrap}
+  .act2-hx .hx-table td span{display:block;font-size:.64rem}
+}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
@@ -1079,12 +1158,6 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
 
 
 
-<!-- ═══════════ BANDEAU DÉFILANT ═══════════ -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span data-i18n="marquee">Villas Origen <em>·</em> Las Terrenas <em>·</em> Péninsule de Samaná <em>·</em> République Dominicaine <em>·</em> La plage à cinq minutes <em>·</em> </span><span data-i18n="marquee">Villas Origen <em>·</em> Las Terrenas <em>·</em> Péninsule de Samaná <em>·</em> République Dominicaine <em>·</em> La plage à cinq minutes <em>·</em> </span>
-  </div>
-</div>
 
 <!-- ═══════════ LA VILLA ═══════════ -->
 
@@ -1192,22 +1265,42 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
       </div>
       
     </div>
-    <div class="galerie-grid reveal">
-      <div class="photo g1"><img src="/img/c8ed55ded856.jpg" alt="La piscine turquoise vue du bohío, oiseaux du paradis au fond — Villas Origen" loading="lazy"><span class="tag" data-i18n="t1">Piscine & terrasse</span></div>
-      <div class="photo g2"><img src="/img/020e3204b4d6.jpg" alt="La suite principale — Villas Origen" loading="lazy"><span class="tag" data-i18n="t2">Suite principale · lit king</span></div>
-      <div class="photo g3"><img src="/img/2c25d601a597.jpg" alt="L'entrée : façade en pierre de corail, pergola et porte ronde sur le jardin clos — Villas Origen" loading="lazy"><span class="tag" data-i18n="t3">L'entrée</span></div>
-      <div class="photo g4"><img src="/img/f86bc9af370d.jpg" alt="La cuisine et son îlot de granit sous les suspensions de rotin — Villas Origen" loading="lazy"><span class="tag" data-i18n="t4">Cuisine</span></div>
-      <div class="photo g5"><img src="/img/5c3ba6675df9.jpg" alt="Chambre aux portes de bois artisanales — Villas Origen" loading="lazy"><span class="tag" data-i18n="t5">Chambre 1 · lit queen</span></div>
-      <div class="photo g6"><img src="/img/3d878de9b49a.jpg" alt="Le salon — Villas Origen" loading="lazy"><span class="tag" data-i18n="t6">Le salon</span></div>
-      <div class="photo g7 reveal"><img src="/img/4aa0f840ed09.jpg" alt="La cuisine d'été sous la pergola : bar, barbecue et frigo, ouverte sur le jardin — Villas Origen" loading="lazy"><span class="tag" data-i18n="t7">La cuisine extérieure</span></div>
-      <div class="photo g8 reveal"><img src="/img/c55c63fe9211.jpg" alt="La deuxième chambre et sa porte coulissante en bois — Villas Origen" loading="lazy"><span class="tag" data-i18n="t8">Chambre 2 · lit queen</span></div>
-      <div class="photo g9 reveal"><img src="/img/bbf6aadf10d2.jpg" alt="Le passage latéral abrité avec buanderie (laveuse-sécheuse) — Villas Origen" loading="lazy"><span class="tag" data-i18n="t9">Buanderie · laveuse-sécheuse</span></div>
-      <div class="photo g10 reveal"><img src="/img/sdb-suite.JPG" alt="Salle de bain privée de la suite principale, céramique aux oiseaux tropicaux et vasque en teck — Villas Origen" loading="lazy"><span class="tag" data-i18n="t10">Salle de bain — suite principale</span></div>
-      <div class="photo g11 reveal"><img src="/img/douche-suite.JPG" alt="La douche à l'italienne de la suite principale, mur de céramique aux perroquets — Villas Origen" loading="lazy"><span class="tag" data-i18n="t11">Douche — suite principale</span></div>
-      <div class="photo g12 reveal"><img src="/img/sdb-chambre1.JPG" alt="Salle de bain privée de la chambre 1, double vasque en teck et miroir éclairé — Villas Origen" loading="lazy"><span class="tag" data-i18n="t12">Salle de bain — chambre 1</span></div>
-      <div class="photo g13 reveal"><img src="/img/sdb-chambre2.JPG" alt="Salle de bain privée de la chambre 2 avec douche vitrée ouverte sur le jardin — Villas Origen" loading="lazy"><span class="tag" data-i18n="t13">Salle de bain — chambre 2</span></div>
-      <div class="photo g14 reveal"><img src="/img/douche-ext-chambre2.JPG" alt="La douche extérieure privée de la chambre 2, sous les palmiers du jardin — Villas Origen" loading="lazy"><span class="tag" data-i18n="t14">Douche extérieure privée — chambre 2</span></div>
+    <div class="gal5 reveal">
+      <button type="button" class="gal5-item" data-vis="0" aria-label="Agrandir la photo : Le bohío &amp; la piscine"><img src="/img/villa-bohio-jour.jpg" alt="Le grand bohío au toit de palme, son salon et sa table extérieure, vus depuis la piscine de Villas Origen" loading="lazy"><span class="tag">Le bohío &amp; la piscine</span></button>
+      <button type="button" class="gal5-item" data-vis="1" aria-label="Agrandir la photo : Piscine &amp; terrasse"><img src="/img/c8ed55ded856.jpg" alt="La piscine turquoise vue du bohío, oiseaux du paradis au fond — Villas Origen" loading="lazy"><span class="tag">Piscine &amp; terrasse</span></button>
+      <button type="button" class="gal5-item" data-vis="3" aria-label="Agrandir la photo : L&#x27;entrée"><img src="/img/2c25d601a597.jpg" alt="L&#x27;entrée : façade en pierre de corail, pergola et porte ronde sur le jardin clos — Villas Origen" loading="lazy"><span class="tag">L&#x27;entrée</span></button>
+      <button type="button" class="gal5-item" data-vis="2" aria-label="Agrandir la photo : Suite principale · lit king"><img src="/img/020e3204b4d6.jpg" alt="La suite principale — Villas Origen" loading="lazy"><span class="tag">Suite principale · lit king</span></button>
+      <button type="button" class="gal5-item" data-vis="13" aria-label="Agrandir la photo : Salle de bain · chambre 2"><img src="/img/sdb-chambre2.JPG" alt="Salle de bain privée de la chambre 2 avec douche vitrée ouverte sur le jardin — Villas Origen" loading="lazy"><span class="tag">Salle de bain · chambre 2</span><span class="gal5-tout"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Voir les 15 photos</span></button>
     </div>
+    <button type="button" class="gal5-mob" data-vis="0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Voir les 15 photos</button>
+    <div class="vis" id="vis" role="dialog" aria-modal="true" aria-label="Photos de la villa" hidden>
+      <button type="button" class="vis-x" aria-label="Fermer">&times;</button><div class="vis-n"></div>
+      <button type="button" class="vis-fl vis-prec" aria-label="Photo précédente"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <figure><img class="vis-img" src="data:," alt=""><figcaption></figcaption></figure>
+      <button type="button" class="vis-fl vis-suiv" aria-label="Photo suivante"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="vis-th"></div>
+    </div>
+    <script type="application/json" id="gal-donnees">[{"src": "/img/villa-bohio-jour.jpg", "alt": "Le grand bohío au toit de palme, son salon et sa table extérieure, vus depuis la piscine de Villas Origen", "tag": "Le bohío & la piscine"}, {"src": "/img/c8ed55ded856.jpg", "alt": "La piscine turquoise vue du bohío, oiseaux du paradis au fond — Villas Origen", "tag": "Piscine & terrasse"}, {"src": "/img/020e3204b4d6.jpg", "alt": "La suite principale — Villas Origen", "tag": "Suite principale · lit king"}, {"src": "/img/2c25d601a597.jpg", "alt": "L'entrée : façade en pierre de corail, pergola et porte ronde sur le jardin clos — Villas Origen", "tag": "L'entrée"}, {"src": "/img/f86bc9af370d.jpg", "alt": "La cuisine et son îlot de granit sous les suspensions de rotin — Villas Origen", "tag": "Cuisine"}, {"src": "/img/5c3ba6675df9.jpg", "alt": "Chambre aux portes de bois artisanales — Villas Origen", "tag": "Chambre 1 · lit queen"}, {"src": "/img/3d878de9b49a.jpg", "alt": "Le salon — Villas Origen", "tag": "Le salon"}, {"src": "/img/4aa0f840ed09.jpg", "alt": "La cuisine d'été sous la pergola : bar, barbecue et frigo, ouverte sur le jardin — Villas Origen", "tag": "La cuisine extérieure"}, {"src": "/img/c55c63fe9211.jpg", "alt": "La deuxième chambre et sa porte coulissante en bois — Villas Origen", "tag": "Chambre 2 · lit queen"}, {"src": "/img/bbf6aadf10d2.jpg", "alt": "Le passage latéral abrité avec buanderie (laveuse-sécheuse) — Villas Origen", "tag": "Buanderie · laveuse-sécheuse"}, {"src": "/img/sdb-suite.JPG", "alt": "Salle de bain privée de la suite principale, céramique aux oiseaux tropicaux et vasque en teck — Villas Origen", "tag": "Salle de bain · suite principale"}, {"src": "/img/douche-suite.JPG", "alt": "La douche à l'italienne de la suite principale, mur de céramique aux perroquets — Villas Origen", "tag": "Douche · suite principale"}, {"src": "/img/sdb-chambre1.JPG", "alt": "Salle de bain privée de la chambre 1, double vasque en teck et miroir éclairé — Villas Origen", "tag": "Salle de bain · chambre 1"}, {"src": "/img/sdb-chambre2.JPG", "alt": "Salle de bain privée de la chambre 2 avec douche vitrée ouverte sur le jardin — Villas Origen", "tag": "Salle de bain · chambre 2"}, {"src": "/img/douche-ext-chambre2.JPG", "alt": "La douche extérieure privée de la chambre 2, sous les palmiers du jardin — Villas Origen", "tag": "Douche extérieure privée · chambre 2"}]</script>
+    <script>
+(function(){
+var P=JSON.parse(document.getElementById('gal-donnees').textContent);
+var V=document.getElementById('vis');document.body.appendChild(V);var IM=V.querySelector('.vis-img'),CAP=V.querySelector('figcaption'),N=V.querySelector('.vis-n'),TH=V.querySelector('.vis-th');
+var i=0,avant=null,pret=false;
+function vignettes(){if(pret)return;P.forEach(function(p,k){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label',(k+1)+' / '+P.length);b.innerHTML='<img src="'+p.src+'" alt="" loading="lazy">';b.addEventListener('click',function(){montrer(k)});TH.appendChild(b)});pret=true}
+function montrer(k){i=(k+P.length)%P.length;IM.src=P[i].src;IM.alt=P[i].alt;CAP.textContent=P[i].tag;N.textContent=(i+1)+' / '+P.length;
+ var b=TH.querySelectorAll('button');for(var j=0;j<b.length;j++)b[j].setAttribute('aria-current',j===i?'true':'false');if(b[i])b[i].scrollIntoView({block:'nearest',inline:'center'})}
+function ouvrir(k){avant=document.activeElement;vignettes();V.hidden=false;document.body.style.overflow='hidden';montrer(k);V.querySelector('.vis-x').focus()}
+function fermer(){V.hidden=true;document.body.style.overflow='';if(avant)avant.focus()}
+document.querySelectorAll('[data-vis]').forEach(function(b){b.addEventListener('click',function(){ouvrir(+b.getAttribute('data-vis'))})});
+V.querySelector('.vis-x').addEventListener('click',fermer);
+V.querySelector('.vis-prec').addEventListener('click',function(){montrer(i-1)});
+V.querySelector('.vis-suiv').addEventListener('click',function(){montrer(i+1)});
+V.addEventListener('click',function(e){if(e.target===V)fermer()});
+document.addEventListener('keydown',function(e){if(V.hidden)return;if(e.key==='Escape')fermer();if(e.key==='ArrowLeft')montrer(i-1);if(e.key==='ArrowRight')montrer(i+1)});
+var x0=null;V.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+V.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)montrer(i+(dx<0?1:-1));x0=null});
+})();
+</script>
   </div>
 </section>
 
@@ -1362,28 +1455,16 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
     <div class="restos-head reveal">
       <p class="eyebrow" data-i18n="a_eyebrow">Les activités</p>
       <h2 data-i18n="a_h2">Nos expériences <em>recommandées</em></h2>
-      <p data-i18n="a_p">Des sorties que nous avons vécues nous-mêmes et des partenaires que nous connaissons — pour explorer la péninsule en toute confiance.</p>
+      <p data-i18n="a_p">Des sorties que nous avons vécues nous-mêmes et des partenaires que nous connaissons, pour explorer la péninsule en toute confiance.</p>
     </div>
-    <div class="act-grid">
-      <article class="act-card reveal">
-        <div class="act-photo"><img src="/img/273211944ea4.jpg" alt="Le catamaran rouge Antares de The Dive Academy à Las Terrenas — plongée, snorkeling et sorties en mer" loading="lazy"></div>
-        <div class="act-body">
-          <span class="resto-badge" data-i18n="a_badge">Recommandé par vos hôtes</span>
-          <h3>The Dive Academy</h3>
-          <div class="resto-type" data-i18n="a1_t">Plongée & apnée · Las Terrenas</div>
-          <p data-i18n="a1_d">De la première bulle aux cours certifiés, en excursion privée ou en petit groupe — et des sorties d'apnée avec Paul, le fondateur, aussi passionné que sympathique.</p>
-          <div class="resto-chips"><span class="chip" data-i18n="a1_c1">Initiation</span><span class="chip" data-i18n="a1_c2">Cours certifiés</span><span class="chip" data-i18n="a1_c3">Apnée</span><span class="chip" data-i18n="a1_c4">Excursions privées</span></div>
-          <a class="resto-lien" href="https://tdalasterrenas.com/" target="_blank" rel="noopener" data-i18n="a_lien">Visiter le site</a>
+    <div class="act2">
+      <article class="act2-hx reveal">
+        <div>
+          <div class="act2-logo"><img src="/img/9dc06bbb520d.png" alt="Logo HugXander Transport" loading="lazy"><div><h3>HugXander Transport</h3><div class="resto-type" data-i18n="a2_t">Transferts & transport privé · Las Terrenas</div></div></div>
+          <p data-i18n="a2_d">Transferts d'aéroport et déplacements privés partout sur la péninsule : ponctuel, fiable, attentionné. Notre référence pour arriver à la villa l'esprit tranquille.</p>
+          <a class="resto-lien" href="https://hugxandertransport.com/" target="_blank" rel="noopener" data-i18n="a_lien2">Visiter le site</a>
         </div>
-      </article>
-      <article class="act-card reveal">
-        <div class="act-ico-block" aria-hidden="true"><img src="/img/9dc06bbb520d.png" alt="Logo HugXander Transport" style="width:180px;height:180px;border-radius:50%;box-shadow:0 12px 34px rgba(15,22,12,.35), 0 0 0 1.5px var(--or)"></div>
-        <div class="act-body">
-          <span class="resto-badge" data-i18n="a_badge2">Recommandé par vos hôtes</span>
-          <h3>HugXander Transport</h3>
-          <div class="resto-type" data-i18n="a2_t">Transferts & transport privé · Las Terrenas</div>
-          <p data-i18n="a2_d">Transferts d'aéroport et déplacements privés partout sur la péninsule — ponctuel, fiable, attentionné. Notre référence pour arriver à la villa l'esprit tranquille.</p>
-          <div class="resto-chips"><span class="chip" data-i18n="a2_c1">Transferts aéroport</span><span class="chip" data-i18n="a2_c2">Véhicule privé</span><span class="chip" data-i18n="a2_c3">Excursions</span></div>
+        <div>
           <div class="hx-table-wrap"><table class="hx-table">
             <thead><tr><th data-i18n="hx_th1">Aéroport</th><th>1–5 aller</th><th>1–5 A/R</th><th>6–8 aller</th><th>6–8 A/R</th></tr></thead>
             <tbody>
@@ -1395,20 +1476,28 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
             </tbody>
           </table></div>
           <p class="hx-note" data-i18n="hx_note">Tarifs par véhicule en USD, fournis par HugXander. Les tarifs aller-retour incluent une remise de 20&nbsp;$ USD par rapport à deux allers simples.</p>
-          <a class="resto-lien" href="https://hugxandertransport.com/" target="_blank" rel="noopener" data-i18n="a_lien2">Visiter le site</a>
         </div>
       </article>
-      <article class="act-card reveal">
-        <div class="act-photo"><img src="/img/route-cafe.JPG" alt="Brouette de cabosses de cacao multicolores à La Fábrica Samaná, sur la route du café" style="object-position:50% 72%" loading="lazy"></div>
-        <div class="act-body">
-          <span class="resto-badge" data-i18n="a3_b">Recommandé par vos hôtes</span>
-          <h3 data-i18n="a3_h">La route du café</h3>
-          <div class="resto-type" data-i18n="a3_t">Journée en quad · montagnes de Samaná</div>
-          <p data-i18n="a3_d">Louez un quad pour la journée et grimpez dans les lomas derrière Las Terrenas : café et cacao y poussent à flanc de montagne, et les fincas familiales torréfient encore leurs grains au feu de bois, dans la marmite — dégustation comprise, panoramas sur la côte en prime. Au retour, baignade à Playa Morón, une plage sauvage au pied des falaises.</p>
-          <div class="resto-chips"><span class="chip" data-i18n="a3_c1">Quad à la journée</span><span class="chip" data-i18n="a3_c2">Fincas & dégustation</span><span class="chip" data-i18n="a3_c3">Playa Morón</span></div>
-          <a class="resto-lien" href="https://lafabricasamana.com/" target="_blank" rel="noopener">La Fábrica Samaná — visiter le site</a>
-        </div>
-      </article>
+      <div class="act2-duo">
+        <article class="act2-h reveal">
+          <div class="act2-ph"><img src="/img/273211944ea4.jpg" alt="Le catamaran rouge Antares de The Dive Academy à Las Terrenas — plongée, snorkeling et sorties en mer" loading="lazy"></div>
+          <div class="act2-tx">
+            <h3>The Dive Academy</h3>
+            <div class="resto-type" data-i18n="a1_t">Plongée & apnée · Las Terrenas</div>
+            <p data-i18n="a1_d">De la première bulle aux cours certifiés, en excursion privée ou en petit groupe. Et des sorties d'apnée avec Paul, le fondateur, aussi passionné que sympathique.</p>
+            <a class="resto-lien" href="https://tdalasterrenas.com/" target="_blank" rel="noopener" data-i18n="a_lien">Visiter le site</a>
+          </div>
+        </article>
+        <article class="act2-h reveal">
+          <div class="act2-ph"><img src="/img/route-cafe.JPG" alt="Brouette de cabosses de cacao multicolores à La Fábrica Samaná, sur la route du café" style="object-position:50% 72%" loading="lazy"></div>
+          <div class="act2-tx">
+            <h3 data-i18n="a3_h">La route du café</h3>
+            <div class="resto-type" data-i18n="a3_t">Journée en quad · montagnes de Samaná</div>
+            <p data-i18n="a3_d">Un quad pour la journée, les lomas derrière Las Terrenas, et des fincas familiales qui torréfient encore leur café au feu de bois. Dégustation comprise. Au retour, baignade à Playa Morón.</p>
+            <a class="resto-lien" href="https://lafabricasamana.com/" target="_blank" rel="noopener">Visiter La Fábrica Samaná</a>
+          </div>
+        </article>
+      </div>
     </div>
   </div>
 </section>
@@ -1702,7 +1791,7 @@ fetch('/api/disponibilites').then(function(r){if(!r.ok)throw 0;return r.json()})
    var y=startY+Math.floor((startM+k)/12),mo=(startM+k)%12,dim=new Date(y,mo+1,0).getDate();
    for(var dd=1;dd<=dim;dd++){var s=iso(y,mo,dd);if(s>=TODAY&&!BUSY[s]){vy=y;vm=mo;found=true;break}}
  }
- var minY=startY,minM=startM,maxOff=17;
+ var minY=startY,minM=startM,maxOff=12;
  var arr=null,dep=null;
  var go=document.getElementById('bkc-go'),pick=document.getElementById('bkc-pick');
  function fmt(s){var p=s.split('-');var d=new Date(+p[0],+p[1]-1,+p[2]);return d.toLocaleDateString(L.loc,{day:'numeric',month:'long'})}
