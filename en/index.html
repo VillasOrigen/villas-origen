@@ -1105,6 +1105,26 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
   .act2-hx .hx-table td+td{white-space:nowrap}
   .act2-hx .hx-table td span{display:block;font-size:.64rem}
 }
+
+/* ═══════════ OFFRE D'OUVERTURE : bandeau photo sobre (style 1C) ═══════════ */
+.hero-offre{display:inline-block;max-width:100%;margin-top:22px;color:#F7F1E6;font-family:var(--sans);font-size:.92rem;line-height:1.4;text-decoration:none;border-bottom:1px solid rgba(247,241,230,.6);padding-bottom:4px;text-shadow:0 1px 8px rgba(15,22,12,.6);transition:border-color .3s}
+.hero-offre i{display:inline-block;width:9px;height:9px;border-radius:50%;background:#F5B301;margin-right:10px;vertical-align:1px}
+.hero-offre:hover{border-bottom-color:#F5B301}
+.bk-ph{position:relative;max-width:960px;margin:0 auto 46px;border-radius:4px;overflow:hidden;min-height:380px;display:flex;align-items:flex-end;background:#2b3526}
+.bk-ph>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%}
+.bk-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,24,14,.84) 0%,rgba(18,24,14,.58) 48%,rgba(18,24,14,0) 80%)}
+.bk-ph-txt{position:relative;z-index:1;padding:40px 44px;max-width:600px;color:#F7F1E6}
+.bk-ph-eti{display:inline-block;background:#F5B301;color:#1A1208;font-family:var(--sans);font-weight:700;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:3px;margin:0}
+.bk-ph h3{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,3.6vw,2.9rem);line-height:1.04;margin:14px 0 12px;color:#F7F1E6}
+.bk-ph-p{font-size:.92rem;line-height:1.65;color:rgba(247,241,230,.92);max-width:48ch;margin:0}
+.bk-ph-lien{display:inline-block;margin-top:20px;color:#F7F1E6;font-weight:600;font-size:.88rem;text-decoration:none;border-bottom:2px solid #F5B301;padding-bottom:3px}
+.bk-ph-lien:hover{color:#F5B301}
+@media(max-width:640px){
+  .hero-offre{font-size:.8rem;margin-top:18px}
+  .bk-ph{min-height:460px;margin-bottom:34px}
+  .bk-ph::after{background:linear-gradient(0deg,rgba(18,24,14,.9) 0%,rgba(18,24,14,.6) 55%,rgba(18,24,14,.1) 100%)}
+  .bk-ph-txt{padding:26px 20px}
+}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
@@ -1148,7 +1168,7 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
     </h1>
     <div class="hero-sep" aria-hidden="true"></div>
     <a class="hero-cta" href="#reserver" data-i18n="cta_sejour">Book your stay</a>
-    <a class="hero-promo" href="#reserver"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg><span>Opening offer: airport transfers included</span><span class="hp-more">Learn more<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="hero-offre" href="#reserver"><i aria-hidden="true"></i>Opening offer: your airport transfer is on us</a>
   </div>
   <span class="hero-scroll" aria-hidden="true" data-i18n="scroll">Scroll</span>
 </header>
@@ -1372,14 +1392,16 @@ V.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTo
       <p class="bk-dispolnk" id="bkcal-lnk" hidden><a href="#bkcal">Check availability<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 4v16M6 14l6 6 6-6"/></svg></a></p>
     </div>
     
-    <div class="bk-offre reveal"><div class="bk-sticker" aria-hidden="true"><i>value</i><b>US$150</b><span>included</span></div>
-      <div class="bk-offre-ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg></div>
-      <div>
-        <p class="bk-offre-tag">Opening offer · Direct bookings only</p>
-        <h3>Airport transfers <em>included</em></h3>
-        <p class="bk-offre-p">Book directly with us and your private round-trip transfer from El Catey airport is included, with our partner driver. A US$150 value, and an arrival without a single worry.</p>
+    <div class="bk-ph reveal">
+      <img src="/img/route-aiport.JPG" alt="The view over the coast and the sea from the El Catey airport road to Las Terrenas" loading="lazy">
+      <div class="bk-ph-txt">
+        <p class="bk-ph-eti">Opening offer · Direct bookings</p>
+        <h3>Your driver will be waiting at the airport.</h3>
+        <p class="bk-ph-p">Book directly with us and your private round-trip transfer from El Catey airport is included, with our partner driver. A US$150 value, and a worry-free arrival.</p>
+        <a class="bk-ph-lien" href="https://wa.me/15819838339?text=Hello%21%20I%27m%20coming%20from%20the%20Your%20stay%20section%20and%20I%27d%20like%20to%20know%20your%20availability%20and%20rates." target="_blank" rel="noopener">Book direct</a>
       </div>
     </div>
+    <script>(function(){var a=document.querySelector('.bk-ph-lien');if(a)a.addEventListener('click',function(e){var b=document.querySelector('.bk-direct .btn-foret');if(b){e.preventDefault();b.click()}})})();</script>
     <div class="bk-duo reveal">
       <div class="bk-carte bk-direct">
         <span class="bk-chip">Best rate</span>

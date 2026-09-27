@@ -109,13 +109,12 @@ nav.gnav .nav-lang a+a{border-left-color:rgba(26,18,8,.2)}
 @media(max-width:620px){.cta-box .cta-inner{padding:30px 24px}}
 
 /* ═══ Offre d'ouverture (article, coupon) ═══ */
-.art-offre{position:relative;background:#F5B301;border-radius:12px;padding:24px 26px;margin:34px 0;display:flex;gap:18px;align-items:flex-start;box-shadow:0 12px 30px rgba(26,18,8,.18)}
-.art-offre::before{content:"";position:absolute;inset:7px;border:2px dashed rgba(255,255,255,.75);border-radius:8px;pointer-events:none}
+.art-offre{position:relative;background:linear-gradient(160deg,#2D4A2D 0%,#1E331E 100%);border-radius:4px;padding:26px 28px;margin:34px 0;display:flex;gap:18px;align-items:flex-start;color:#F7F1E6}
 .art-offre>div{position:relative;z-index:1}
-.art-offre-ico{flex:0 0 46px;width:46px;height:46px;border-radius:50%;border:2px solid #1A1208;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;color:#1A1208;position:relative;z-index:1}
-.art-offre-tag{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;font-weight:800;color:#1A1208;opacity:.9;margin:0 0 7px}
-.art-offre p{color:#1A1208;font-size:.9rem;line-height:1.65;margin:0 0 13px}
-.art-offre strong{color:#1A1208}
-a.art-offre-lnk{display:inline-flex;align-items:center;gap:8px;color:#1A1208;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;font-weight:800;text-decoration:none;border-bottom:2px solid #1A1208;padding-bottom:3px}
-a.art-offre-lnk:hover{opacity:.72}
-@media(max-width:620px){.art-offre{flex-direction:column;gap:12px;padding:20px 18px}}
+.art-offre-ico{flex:0 0 44px;width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(245,179,1,.85);display:flex;align-items:center;justify-content:center;color:#F5B301}
+.art-offre p.art-offre-tag{display:inline-block;background:#F5B301;color:#1A1208;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:4px 9px;border-radius:3px;margin:0 0 12px}
+.art-offre p{color:rgba(247,241,230,.9);font-size:.92rem;line-height:1.65;margin:0 0 14px}
+.art-offre strong{color:#fff}
+a.art-offre-lnk{display:inline-flex;align-items:center;gap:8px;color:#F7F1E6;font-size:.86rem;font-weight:600;text-decoration:none;border-bottom:2px solid #F5B301;padding-bottom:3px}
+a.art-offre-lnk:hover{color:#F5B301}
+@media(max-width:620px){.art-offre{flex-direction:column;gap:12px;padding:22px 20px}}
