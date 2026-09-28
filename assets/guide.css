@@ -8,12 +8,14 @@
 .breadcrumb{font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:#fff;margin-bottom:14px;text-shadow:0 1px 8px rgba(15,22,12,.95)}
 .breadcrumb a{border-bottom:1px solid transparent;transition:border-color .3s}
 .breadcrumb a:hover{border-bottom-color:var(--ocre-pale)}
-.article{max-width:760px;margin:0 auto;padding:7vh 6vw 4vh}
-.chapo{font-family:var(--serif);font-size:clamp(1.15rem,2vw,1.45rem);line-height:1.6;color:#33301f;margin-bottom:26px}
-.meta-l{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:#8a7d6a;padding-bottom:30px;border-bottom:1px solid rgba(201,161,94,.45)}
+.article{max-width:800px;margin:0 auto;padding:7vh clamp(20px,5vw,40px) 4vh}
+.article .chapo{font-family:var(--serif);font-size:clamp(1.15rem,2vw,1.45rem);line-height:1.6;color:#33301f;margin-bottom:26px}
+.article .meta-l{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:#8a7d6a;padding-bottom:30px;border-bottom:1px solid rgba(201,161,94,.45)}
 .article h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.5rem,2.8vw,2.1rem);line-height:1.2;color:var(--kaki);margin:52px 0 18px}
 .article p{margin-bottom:16px;color:#3d352a;font-size:1rem;line-height:1.75}
 .article strong{font-weight:600;color:var(--encre)}
+/* Grands écrans : les photos débordent légèrement de la colonne de texte */
+@media(min-width:1000px){.article .g-figs{width:min(900px,92vw);position:relative;left:50%;transform:translateX(-50%)}}
 .g-table-wrap{overflow-x:auto;margin:26px 0 10px;-webkit-overflow-scrolling:touch}
 .g-table{width:100%;border-collapse:collapse;font-size:.88rem;color:#3d352a}
 .g-table caption{text-align:left;font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ocre);padding-bottom:12px}
@@ -88,12 +90,12 @@ nav.gnav .nav-lang a+a{border-left-color:rgba(26,18,8,.2)}
 
 /* ═══════════ LISIBILITÉ (2026-08) ═══════════ */
 .article p{color:#332d20}
-.chapo{color:#2e2a1c}
+.article .chapo{color:#2e2a1c}
 .g-faq .faq-item p{color:#3d3527;font-size:1.02rem}
 .g-table{color:#332d20}
 @media(min-width:900px){
   .article p{font-size:1.09rem;line-height:1.8}
-  .chapo{font-size:1.5rem}
+  .article .chapo{font-size:1.5rem}
   .g-table{font-size:.95rem}
 }
 .article a{color:var(--kaki);font-weight:500;border-bottom:1px solid var(--or);transition:color .3s}
