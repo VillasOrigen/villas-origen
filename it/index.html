@@ -1045,11 +1045,11 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
   .gal5-tout{display:none}
   .gal5-mob{display:flex;justify-content:center;align-items:center;gap:10px;width:100%;margin-top:14px;padding:15px;border:1px solid rgba(239,230,214,.4);background:none;color:var(--sable-clair);font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
 }
-.vis{position:fixed;inset:0;z-index:300;background:rgba(14,20,11,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 76px 118px}
+.vis{position:fixed;inset:0;z-index:300;background:rgba(14,20,11,.985);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 76px 118px}
 .vis[hidden]{display:none}
-.vis figure{margin:0;display:flex;flex-direction:column;align-items:center;max-width:100%;max-height:100%}
-.vis-img{max-width:100%;max-height:calc(100vh - 230px);object-fit:contain;display:block}
-.vis figcaption{margin-top:14px;font-family:var(--serif);font-style:italic;font-size:1.1rem;color:rgba(247,241,230,.85);text-align:center}
+.vis figure{margin:0;display:flex;flex-direction:column;align-items:center;flex:1 1 0;min-height:0;width:100%}
+.vis-img{flex:1 1 0;min-height:0;width:100%;object-fit:contain;display:block}
+.vis figcaption{flex:none;margin-top:14px;font-family:var(--serif);font-style:italic;font-size:1.1rem;color:rgba(247,241,230,.85);text-align:center}
 .vis-x{position:absolute;top:12px;right:16px;width:44px;height:44px;border:0;background:none;color:#F7F1E6;font-size:2.2rem;line-height:1;cursor:pointer}
 .vis-n{position:absolute;top:24px;left:24px;font-size:.72rem;letter-spacing:.2em;color:rgba(247,241,230,.7)}
 .vis-fl{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border:1px solid rgba(247,241,230,.3);border-radius:50%;background:rgba(14,20,11,.4);color:#F7F1E6;cursor:pointer;display:flex;align-items:center;justify-content:center}
@@ -1061,7 +1061,6 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
 @media(max-width:780px){
   .vis{padding:60px 0 96px}
   .vis-fl{display:none}
-  .vis-img{max-height:calc(100vh - 200px)}
   .vis figcaption{font-size:1rem;padding:0 16px}
   .vis-th button{width:52px;height:38px}
 }
@@ -1317,7 +1316,7 @@ var P=JSON.parse(document.getElementById('gal-donnees').textContent);
 var V=document.getElementById('vis');document.body.appendChild(V);var IM=V.querySelector('.vis-img'),CAP=V.querySelector('figcaption'),N=V.querySelector('.vis-n'),TH=V.querySelector('.vis-th');
 var i=0,avant=null,pret=false;
 function vignettes(){if(pret)return;P.forEach(function(p,k){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label',(k+1)+' / '+P.length);b.innerHTML='<img src="'+p.src+'" alt="" loading="lazy">';b.addEventListener('click',function(){montrer(k)});TH.appendChild(b)});pret=true}
-function montrer(k){i=(k+P.length)%P.length;IM.src=P[i].src;IM.alt=P[i].alt;CAP.textContent=P[i].tag;N.textContent=(i+1)+' / '+P.length;
+function montrer(k){i=(k+P.length)%P.length;IM.src=P[i].src;[i+1,i-1].forEach(function(j){(new Image()).src=P[(j+P.length)%P.length].src});IM.alt=P[i].alt;CAP.textContent=P[i].tag;N.textContent=(i+1)+' / '+P.length;
  var b=TH.querySelectorAll('button');for(var j=0;j<b.length;j++)b[j].setAttribute('aria-current',j===i?'true':'false');if(b[i])b[i].scrollIntoView({block:'nearest',inline:'center'})}
 function ouvrir(k){avant=document.activeElement;vignettes();V.hidden=false;document.body.style.overflow='hidden';montrer(k);V.querySelector('.vis-x').focus()}
 function fermer(){V.hidden=true;document.body.style.overflow='';if(avant)avant.focus()}
@@ -1325,7 +1324,7 @@ document.querySelectorAll('[data-vis]').forEach(function(b){b.addEventListener('
 V.querySelector('.vis-x').addEventListener('click',fermer);
 V.querySelector('.vis-prec').addEventListener('click',function(){montrer(i-1)});
 V.querySelector('.vis-suiv').addEventListener('click',function(){montrer(i+1)});
-V.addEventListener('click',function(e){if(e.target===V)fermer()});
+V.addEventListener('click',function(e){if(e.target===V||e.target===V.querySelector('figure'))fermer()});
 document.addEventListener('keydown',function(e){if(V.hidden)return;if(e.key==='Escape')fermer();if(e.key==='ArrowLeft')montrer(i-1);if(e.key==='ArrowRight')montrer(i+1)});
 var x0=null;V.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
 V.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)montrer(i+(dx<0?1:-1));x0=null});
