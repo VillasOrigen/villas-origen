@@ -1132,6 +1132,32 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
 .essentiel strong{color:var(--encre);font-weight:700}
 @media(max-width:640px){.essentiel{padding:18px 10px;gap:8px 0}.essentiel li{font-size:.62rem;letter-spacing:.1em;padding:0 11px}.essentiel li:first-child::before{content:"";position:absolute;left:-3px;top:50%;width:5px;height:5px;margin-top:-3px;border-radius:50%;background:var(--or)}}
 .faq-item p a{color:var(--kaki);font-weight:500;border-bottom:1px solid var(--or)}
+
+/* ═══════════ VOTRE HÔTE : bandeau photo avec portrait ═══════════ */
+.hote{position:relative;min-height:560px;overflow:hidden;background:var(--foret-sombre);color:var(--sable-clair);display:flex;align-items:center}
+.hote-fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 45%}
+.hote-voile{position:absolute;inset:0;background:linear-gradient(90deg,rgba(24,36,20,.94) 0%,rgba(24,36,20,.84) 40%,rgba(24,36,20,.25) 74%,rgba(24,36,20,0) 100%)}
+.hote-in{position:relative;width:100%;padding-top:80px;padding-bottom:80px}
+.hote-in>*{max-width:600px}
+.hote .eyebrow{color:var(--ocre-pale);display:flex;align-items:center;gap:18px}
+.hote .eyebrow::before{content:"";width:46px;height:1px;background:var(--or)}
+.hote h2{font-family:var(--serif);font-weight:600;font-size:clamp(2.2rem,4vw,3.4rem);line-height:1.08;margin:20px 0 18px;color:#F7F1E6}
+.hote-p{font-size:.98rem;line-height:1.75;color:rgba(247,241,230,.88);margin:0 0 30px}
+.hote-sig{display:flex;align-items:center;gap:24px;margin-bottom:32px}
+.hote-sig img{width:148px;height:148px;border-radius:50%;object-fit:cover;flex:0 0 auto;padding:5px;border:1px solid var(--or);background:rgba(24,36,20,.5)}
+.hote-sig b{display:block;font-family:var(--serif);font-weight:500;font-size:1.7rem;line-height:1.2;color:#F7F1E6;margin-bottom:6px}
+.hote-sig span{display:block;font-size:.62rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ocre-pale);line-height:1.6}
+.hote-lien{display:inline-flex;align-items:center;gap:10px;color:#F7F1E6;font-size:.7rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;border-bottom:1px solid var(--or);padding-bottom:6px;transition:color .3s}
+.hote-lien:hover{color:var(--ocre-pale)}
+@media(max-width:780px){
+  .hote{min-height:0}
+  .hote-voile{background:linear-gradient(180deg,rgba(24,36,20,.9) 0%,rgba(24,36,20,.82) 100%)}
+  .hote-in{padding-top:64px;padding-bottom:64px}
+  .hote-sig{gap:18px}
+  .hote-sig img{width:112px;height:112px}
+  .hote-sig b{font-size:1.45rem}
+  .hote-lien{letter-spacing:.16em}
+}
 </style>
 <link rel="stylesheet" href="/assets/leaflet/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
@@ -1390,6 +1416,22 @@ V.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTo
 
 
 
+
+<!-- ═══════════ VOTRE HÔTE ═══════════ -->
+<section class="hote" id="hote" aria-labelledby="hote-titre">
+  <img class="hote-fond" src="/img/14b0eda71f23.jpg" alt="Il bohío e la piscina di Villas Origen sotto un cielo al tramonto" loading="lazy">
+  <div class="hote-voile" aria-hidden="true"></div>
+  <div class="container hote-in reveal">
+    <p class="eyebrow">Il vostro contatto</p>
+    <h2 id="hote-titre">Una villa di famiglia, e una persona vera dall'altra parte</h2>
+    <p class="hote-p">Villas Origen è il progetto della nostra famiglia del Québec: una casa dei Caraibi, nei Caraibi. Dalla prima domanda fino alla partenza, sono io a rispondervi.</p>
+    <div class="hote-sig">
+      <img src="/img/alexias.jpg" alt="Alexias Garneau, Villas Origen" width="300" height="300" loading="lazy">
+      <div><b>Alexias Garneau</b><span>Il vostro contatto, dalla prenotazione alla partenza</span></div>
+    </div>
+    <a class="hote-lien" href="https://wa.me/15819838339?text=Ciao%20Alexias%21" target="_blank" rel="noopener">Scrivere ad Alexias su WhatsApp<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
 
 <!-- ═══════════ DEUX FAÇONS DE RÉSERVER ═══════════ -->
 <section class="bk" id="reserver">
