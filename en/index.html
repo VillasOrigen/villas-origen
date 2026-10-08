@@ -1510,7 +1510,6 @@ V.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTo
       </div>
       <div class="bk-cal-leg">
         <span><i class="l1"></i> Available</span>
-        <span><i class="l4">15</i> No check-in</span>
         <span><i class="l2b">15</i> Unavailable</span>
         <span><i class="l3"></i> Your stay</span>
       </div>
@@ -1881,7 +1880,7 @@ document.addEventListener('click',function(e){
 <script>
 (function(){
 var W=document.getElementById('bkcal');if(!W)return;
-var L={"min": "4-night minimum", "pick": "Pick your check-in date", "pick2": "Now pick your check-out date", "dates": "Your dates", "night": "night", "nights": "nights", "overlap": "These dates include nights that are already booked: please pick another range.", "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], "dows": ["S", "M", "T", "W", "T", "F", "S"], "du": "", "au": "to", "loc": "en-US", "arrL": "Check-in", "depL": "Check-out", "choose": "Add date", "clear": "Clear dates", "legCourt": "No check-in", "msgCourt": "No check-in on {d}: 4 free nights are needed from that date.", "msgMin": "4-night minimum: choose a check-out from {d}.", "msgLoin": "There is a booking between these dates: choose an earlier check-out, or clear the dates."};
+var L={"min": "4-night minimum", "pick": "Pick your check-in date", "pick2": "Now pick your check-out date", "dates": "Your dates", "night": "night", "nights": "nights", "overlap": "These dates include nights that are already booked: please pick another range.", "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], "dows": ["S", "M", "T", "W", "T", "F", "S"], "du": "", "au": "to", "loc": "en-US", "arrL": "Check-in", "depL": "Check-out", "choose": "Add date", "clear": "Clear dates", "msgCourt": "No check-in on {d}: the minimum stay is 4 nights, and the villa is unavailable from {r}.", "msgMin": "4-night minimum: choose a check-out from {d}.", "msgLoin": "There is a booking between these dates: choose an earlier check-out, or clear the dates."};
 fetch('/api/disponibilites').then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
  if(!d||!d.nights)throw 0;
  var BUSY={};d.nights.forEach(function(n){BUSY[n]=1});
@@ -1931,9 +1930,8 @@ fetch('/api/disponibilites').then(function(r){if(!r.ok)throw 0;return r.json()})
    var s=c.getAttribute('data-d'),e=etat(s);
    if(s===arr||s===dep){c.className='bk-cal-d sel';c.title='';return}
    if(arr&&dep&&s>arr&&s<dep){c.className='bk-cal-d mid';c.title='';return}
-   c.className='bk-cal-d'+(e==='ok'?'':' '+e);
+   c.className='bk-cal-d'+(e==='ok'||e==='court'||e==='loin'?'':' '+e);
    if(arr&&!dep&&hov&&s>arr&&s<hov)c.classList.add('prev');
-   c.title=e==='court'?L.legCourt:'';
   });
  }
  function clic(s){
@@ -1946,7 +1944,7 @@ fetch('/api/disponibilites').then(function(r){if(!r.ok)throw 0;return r.json()})
    else msg=L.msgLoin;
   }else{
    if(e==='ok'){arr=s;dep=null}
-   else msg=L.msgCourt.replace('{d}',fmt(s));
+   else{var r=s;while(!BUSY[r])r=addD(r,1);msg=L.msgCourt.replace('{d}',fmt(s)).replace('{r}',fmt(r))}
   }
   paint();update();
  }

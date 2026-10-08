@@ -1510,7 +1510,6 @@ V.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTo
       </div>
       <div class="bk-cal-leg">
         <span><i class="l1"></i> Disponible</span>
-        <span><i class="l4">15</i> Arrivée impossible</span>
         <span><i class="l2b">15</i> Non disponible</span>
         <span><i class="l3"></i> Votre séjour</span>
       </div>
@@ -1881,7 +1880,7 @@ document.addEventListener('click',function(e){
 <script>
 (function(){
 var W=document.getElementById('bkcal');if(!W)return;
-var L={"min": "4 nuits minimum", "pick": "Choisissez votre date d'arrivée", "pick2": "Choisissez maintenant votre date de départ", "dates": "Vos dates", "night": "nuit", "nights": "nuits", "overlap": "Ces dates incluent des nuits déjà réservées : choisissez une autre plage.", "months": ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"], "dows": ["D", "L", "M", "M", "J", "V", "S"], "du": "du", "au": "au", "loc": "fr-CA", "arrL": "Arrivée", "depL": "Départ", "choose": "Choisir une date", "clear": "Effacer les dates", "legCourt": "Arrivée impossible", "msgCourt": "Pas d'arrivée possible le {d} : il faut 4 nuits libres à partir de cette date.", "msgMin": "Séjour de 4 nuits minimum : choisissez un départ à partir du {d}.", "msgLoin": "Une réservation se trouve entre ces dates : choisissez un départ plus tôt, ou effacez les dates."};
+var L={"min": "4 nuits minimum", "pick": "Choisissez votre date d'arrivée", "pick2": "Choisissez maintenant votre date de départ", "dates": "Vos dates", "night": "nuit", "nights": "nuits", "overlap": "Ces dates incluent des nuits déjà réservées : choisissez une autre plage.", "months": ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"], "dows": ["D", "L", "M", "M", "J", "V", "S"], "du": "du", "au": "au", "loc": "fr-CA", "arrL": "Arrivée", "depL": "Départ", "choose": "Choisir une date", "clear": "Effacer les dates", "msgCourt": "Pas d'arrivée possible le {d} : le séjour minimum est de 4 nuits, et la villa n'est plus disponible à partir du {r}.", "msgMin": "Séjour de 4 nuits minimum : choisissez un départ à partir du {d}.", "msgLoin": "Une réservation se trouve entre ces dates : choisissez un départ plus tôt, ou effacez les dates."};
 fetch('/api/disponibilites').then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
  if(!d||!d.nights)throw 0;
  var BUSY={};d.nights.forEach(function(n){BUSY[n]=1});
@@ -1931,9 +1930,8 @@ fetch('/api/disponibilites').then(function(r){if(!r.ok)throw 0;return r.json()})
    var s=c.getAttribute('data-d'),e=etat(s);
    if(s===arr||s===dep){c.className='bk-cal-d sel';c.title='';return}
    if(arr&&dep&&s>arr&&s<dep){c.className='bk-cal-d mid';c.title='';return}
-   c.className='bk-cal-d'+(e==='ok'?'':' '+e);
+   c.className='bk-cal-d'+(e==='ok'||e==='court'||e==='loin'?'':' '+e);
    if(arr&&!dep&&hov&&s>arr&&s<hov)c.classList.add('prev');
-   c.title=e==='court'?L.legCourt:'';
   });
  }
  function clic(s){
@@ -1946,7 +1944,7 @@ fetch('/api/disponibilites').then(function(r){if(!r.ok)throw 0;return r.json()})
    else msg=L.msgLoin;
   }else{
    if(e==='ok'){arr=s;dep=null}
-   else msg=L.msgCourt.replace('{d}',fmt(s));
+   else{var r=s;while(!BUSY[r])r=addD(r,1);msg=L.msgCourt.replace('{d}',fmt(s)).replace('{r}',fmt(r))}
   }
   paint();update();
  }
