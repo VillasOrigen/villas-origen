@@ -1164,10 +1164,31 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
 .bk-prix strong{font-weight:700;font-size:1.3rem;color:var(--encre);margin:0 3px}
 
 /* ═══════════ SÉJOUR MINIMUM : jours impossibles (trop court) ═══════════ */
-.bk-cal-d.court{background:transparent;border:1px dashed rgba(26,18,8,.12);color:#b6ab99;cursor:default}
 .bk-prix-min{display:inline-block;margin-left:6px;color:#6e6353}
 .bk-prix-min::before{content:"·";margin-right:8px;color:var(--or)}
 .berr{font-size:.78rem;color:#8a4a2b;text-align:center;margin:10px 0 0;line-height:1.5}
+
+/* ═══════════ CALENDRIER v2 : champs Arrivée / Départ, états lisibles ═══════════ */
+.bk-cal-fields{display:grid;grid-template-columns:1fr 1fr;max-width:520px;margin:0 auto 12px;border:1px solid rgba(26,18,8,.2);border-radius:12px;background:#fff}
+.bk-cal-f{padding:11px 18px;text-align:left;border-radius:12px;transition:box-shadow .2s}
+.bk-cal-f+.bk-cal-f{border-left:1px solid rgba(26,18,8,.14)}
+.bk-cal-f small{display:block;font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--encre)}
+.bk-cal-f b{display:block;font-weight:500;font-size:.95rem;color:#9a8f7d;margin-top:3px}
+.bk-cal-f.rempli b{color:var(--encre)}
+.bk-cal-f.act{box-shadow:0 0 0 2px var(--kaki);position:relative;z-index:1}
+.bk-cal-hint{text-align:center;font-size:.88rem;line-height:1.5;color:#4a4135;margin:0 auto 20px;max-width:560px;min-height:1.5em}
+.bk-cal-hint.err{color:#8a4a2b}
+.bk-cal-d.court,.bk-cal-d.loin{background:transparent;border:1px solid transparent;color:#a99e8c;text-decoration:none}
+.bk-cal-d.court{cursor:pointer}
+.bk-cal-d.loin{cursor:default}
+.bk-cal-d.min{background:rgba(58,74,48,.07);border:1px solid rgba(58,74,48,.22);color:#5d6b52;cursor:pointer}
+.bk-cal-d.prev{background:rgba(58,74,48,.14);border-color:rgba(58,74,48,.24)}
+.bk-cal-leg .l4,.bk-cal-leg .l2b{width:auto;height:auto;font-style:normal;font-size:.72rem;color:#a99e8c;line-height:1}
+.bk-cal-leg .l2b{text-decoration:line-through}
+.bk-cal-d.busy{border-color:transparent}
+.bk-cal-clear{background:none;border:0;padding:0;font:inherit;font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--kaki);border-bottom:1px solid var(--or);cursor:pointer}
+.bk-cal-clear[hidden]{display:none}
+@media(max-width:640px){.bk-cal-f{padding:10px 12px}.bk-cal-f b{font-size:.85rem}}
 </style>
 <link rel="stylesheet" href="/assets/leaflet/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
@@ -1477,6 +1498,11 @@ V.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTo
         <h3>Disponibilidad</h3>
         <p>Estancia mínima de 4 noches. Elija sus fechas y escríbanos.</p>
       </div>
+      <div class="bk-cal-fields">
+        <div class="bk-cal-f" id="bkc-fa"><small>Llegada</small><b id="bkc-va">Elegir fecha</b></div>
+        <div class="bk-cal-f" id="bkc-fd"><small>Salida</small><b id="bkc-vd">Elegir fecha</b></div>
+      </div>
+      <p class="bk-cal-hint" id="bkc-pick" aria-live="polite"></p>
       <div class="bk-cal-nav"><button type="button" id="bkc-prev" aria-label="&#8249;">&#8249;</button><button type="button" id="bkc-next" aria-label="&#8250;">&#8250;</button></div>
       <div class="bk-cal-months">
         <div class="bk-cal-m m1"><h4 id="bkc-t1"></h4><div class="bk-cal-g" id="bkc-g1"></div></div>
@@ -1484,11 +1510,12 @@ V.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTo
       </div>
       <div class="bk-cal-leg">
         <span><i class="l1"></i> Disponible</span>
-        <span><i class="l2"></i> No disponible</span>
-        <span><i class="l3"></i> Su selección</span>
+        <span><i class="l4">15</i> Sin llegada posible</span>
+        <span><i class="l2b">15</i> No disponible</span>
+        <span><i class="l3"></i> Su estancia</span>
       </div>
       <div class="bk-cal-bar">
-        <p class="bk-cal-pick" id="bkc-pick"></p>
+        <button type="button" class="bk-cal-clear" id="bkc-clear" hidden>Borrar fechas</button>
         <a class="btn-foret dim" id="bkc-go" href="#">Solicitar estas fechas</a>
       </div>
       <p class="bk-cal-note">Se actualiza automáticamente varias veces al día.</p>
@@ -1854,35 +1881,74 @@ document.addEventListener('click',function(e){
 <script>
 (function(){
 var W=document.getElementById('bkcal');if(!W)return;
-var L={"min": "mínimo 4 noches", "pick": "Elija su fecha de llegada", "pick2": "Ahora elija su fecha de salida", "dates": "Sus fechas", "night": "noche", "nights": "noches", "overlap": "Estas fechas incluyen noches ya reservadas: elija otro rango.", "months": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"], "dows": ["D", "L", "M", "X", "J", "V", "S"], "du": "del", "au": "al", "loc": "es-DO"};
+var L={"min": "mínimo 4 noches", "pick": "Elija su fecha de llegada", "pick2": "Ahora elija su fecha de salida", "dates": "Sus fechas", "night": "noche", "nights": "noches", "overlap": "Estas fechas incluyen noches ya reservadas: elija otro rango.", "months": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"], "dows": ["D", "L", "M", "X", "J", "V", "S"], "du": "del", "au": "al", "loc": "es-DO", "arrL": "Llegada", "depL": "Salida", "choose": "Elegir fecha", "clear": "Borrar fechas", "legCourt": "Sin llegada posible", "msgCourt": "No es posible llegar el {d}: se necesitan 4 noches libres desde esa fecha.", "msgMin": "Mínimo 4 noches: elija una salida a partir del {d}.", "msgLoin": "Hay una reserva entre estas fechas: elija una salida anterior o borre las fechas."};
 fetch('/api/disponibilites').then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
  if(!d||!d.nights)throw 0;
  var BUSY={};d.nights.forEach(function(n){BUSY[n]=1});
- var today=new Date();var TODAY=today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+ var MIN=4,arr=null,dep=null,hov=null,msg='';
  function iso(y,m,dd){return y+'-'+String(m+1).padStart(2,'0')+'-'+String(dd).padStart(2,'0')}
- // premier mois avec au moins un jour libre
- var startY=today.getFullYear(),startM=today.getMonth(),vy=startY,vm=startM,found=false;
- for(var k=0;k<20&&!found;k++){
-   var y=startY+Math.floor((startM+k)/12),mo=(startM+k)%12,dim=new Date(y,mo+1,0).getDate();
-   for(var dd=1;dd<=dim;dd++){var s=iso(y,mo,dd);if(s>=TODAY&&!BUSY[s]&&!rangeBusy(s,addD(s,4))){vy=y;vm=mo;found=true;break}}
- }
- var minY=startY,minM=startM,maxOff=12;
- var arr=null,dep=null,MIN=4;
- function addD(s,n){var p=s.split('-'),d=new Date(+p[0],+p[1]-1,+p[2]+n);return iso(d.getFullYear(),d.getMonth(),d.getDate())}
+ var today=new Date(),TODAY=iso(today.getFullYear(),today.getMonth(),today.getDate());
+ function addD(s,n){var p=s.split('-'),x=new Date(+p[0],+p[1]-1,+p[2]+n);return iso(x.getFullYear(),x.getMonth(),x.getDate())}
+ function nightsBetween(a,b){var pa=a.split('-'),pb=b.split('-');return Math.round((Date.UTC(+pb[0],+pb[1]-1,+pb[2])-Date.UTC(+pa[0],+pa[1]-1,+pa[2]))/864e5)}
+ function rangeBusy(a,b){var s=a;while(s<b){if(BUSY[s])return true;s=addD(s,1)}return false}
  function okArr(s){return s>=TODAY&&!rangeBusy(s,addD(s,MIN))}
  function okDep(s){return !!arr&&!dep&&s>arr&&nightsBetween(arr,s)>=MIN&&!rangeBusy(arr,s)}
- var go=document.getElementById('bkc-go'),pick=document.getElementById('bkc-pick');
- function fmt(s){var p=s.split('-');var d=new Date(+p[0],+p[1]-1,+p[2]);return d.toLocaleDateString(L.loc,{day:'numeric',month:'long'})}
- function nightsBetween(a,b){var pa=a.split('-'),pb=b.split('-');return Math.round((Date.UTC(+pb[0],+pb[1]-1,+pb[2])-Date.UTC(+pa[0],+pa[1]-1,+pa[2]))/864e5)}
- function rangeBusy(a,b){var p=a.split('-'),d=new Date(+p[0],+p[1]-1,+p[2]);while(true){var s=iso(d.getFullYear(),d.getMonth(),d.getDate());if(s>=b)return false;if(BUSY[s])return true;d.setDate(d.getDate()+1)}}
+ // État d'un jour : past, busy (nuit prise), court (arrivée impossible), min (dans le minimum), loin (au-delà d'une réservation), ok
+ function etat(s){
+  if(s<TODAY)return'past';
+  if(arr&&!dep&&s>arr){
+   if(okDep(s))return'ok';
+   if(nightsBetween(arr,s)<MIN&&!rangeBusy(arr,s))return'min';
+   return BUSY[s]?'busy':'loin';
+  }
+  if(BUSY[s])return'busy';
+  return okArr(s)?'ok':'court';
+ }
+ // premier mois où une arrivée est possible
+ var startY=today.getFullYear(),startM=today.getMonth(),vy=startY,vm=startM,found=false;
+ for(var k=0;k<20&&!found;k++){
+  var y=startY+Math.floor((startM+k)/12),mo=(startM+k)%12,dim=new Date(y,mo+1,0).getDate();
+  for(var dd=1;dd<=dim;dd++){if(okArr(iso(y,mo,dd))){vy=y;vm=mo;found=true;break}}
+ }
+ var maxOff=12;
+ var fA=document.getElementById('bkc-fa'),fD=document.getElementById('bkc-fd'),vA=document.getElementById('bkc-va'),vD=document.getElementById('bkc-vd');
+ var hint=document.getElementById('bkc-pick'),clear=document.getElementById('bkc-clear'),go=document.getElementById('bkc-go');
+ function fmt(s){var p=s.split('-');return new Date(+p[0],+p[1]-1,+p[2]).toLocaleDateString(L.loc,{day:'numeric',month:'long'})}
  function update(){
-  go.classList.add('dim');pick.classList.remove('err');
-  if(!arr){pick.textContent=L.pick+' · '+L.min;return}
-  if(!dep){pick.innerHTML='<strong>'+L.dates+' ·</strong> '+fmt(arr)+' · '+L.pick2+' ('+L.min+')';return}
-  if(rangeBusy(arr,dep)){pick.textContent=L.overlap;pick.classList.add('err');return}
+  vA.textContent=arr?fmt(arr):L.choose;vD.textContent=dep?fmt(dep):L.choose;
+  fA.classList.toggle('rempli',!!arr);fD.classList.toggle('rempli',!!dep);
+  fA.classList.toggle('act',!arr);fD.classList.toggle('act',!!arr&&!dep);
+  clear.hidden=!arr;go.classList.toggle('dim',!(arr&&dep));
+  hint.classList.toggle('err',!!msg);
+  if(msg){hint.textContent=msg;return}
+  if(!arr){hint.textContent=L.pick+' · '+L.min;return}
+  if(!dep){hint.textContent=L.pick2+' · '+L.min;return}
   var n=nightsBetween(arr,dep);
-  pick.innerHTML='<strong>'+L.dates+' ·</strong> '+(L.du?L.du+' ':'')+fmt(arr)+' '+L.au+' '+fmt(dep)+', '+n+' '+(n>1?L.nights:L.night);
-  go.classList.remove('dim');
+  hint.textContent=(L.du?L.du+' ':'')+fmt(arr)+' '+L.au+' '+fmt(dep)+', '+n+' '+(n>1?L.nights:L.night);
+ }
+ function paint(){
+  W.querySelectorAll('[data-d]').forEach(function(c){
+   var s=c.getAttribute('data-d'),e=etat(s);
+   if(s===arr||s===dep){c.className='bk-cal-d sel';c.title='';return}
+   if(arr&&dep&&s>arr&&s<dep){c.className='bk-cal-d mid';c.title='';return}
+   c.className='bk-cal-d'+(e==='ok'?'':' '+e);
+   if(arr&&!dep&&hov&&s>arr&&s<hov)c.classList.add('prev');
+   c.title=e==='court'?L.legCourt:'';
+  });
+ }
+ function clic(s){
+  var e=etat(s);
+  if(e==='past'||e==='busy')return;
+  msg='';hov=null;
+  if(arr&&!dep&&s>arr){
+   if(e==='ok')dep=s;
+   else if(e==='min')msg=L.msgMin.replace('{d}',fmt(addD(arr,MIN)));
+   else msg=L.msgLoin;
+  }else{
+   if(e==='ok'){arr=s;dep=null}
+   else msg=L.msgCourt.replace('{d}',fmt(s));
+  }
+  paint();update();
  }
  function render(){
   [[0,'bkc-t1','bkc-g1'],[1,'bkc-t2','bkc-g2']].forEach(function(cfg){
@@ -1893,29 +1959,21 @@ fetch('/api/disponibilites').then(function(r){if(!r.ok)throw 0;return r.json()})
    var first=new Date(y,mo,1).getDay(),dim=new Date(y,mo+1,0).getDate();
    for(var i=0;i<first;i++){var o=document.createElement('div');o.className='bk-cal-d off';g.appendChild(o)}
    for(var dd=1;dd<=dim;dd++){
-    var s=iso(y,mo,dd),c=document.createElement('div');c.className='bk-cal-d';c.textContent=dd;
-    if(s<TODAY)c.classList.add('past');
-    else if(okDep(s)){}
-    else if(arr&&!dep&&s>arr&&nightsBetween(arr,s)<MIN&&!rangeBusy(arr,s))c.classList.add('court');
-    else if(BUSY[s])c.classList.add('busy');
-    else if(!okArr(s))c.classList.add('court');
-    if(arr===s||dep===s)c.classList.add('sel');
-    else if(arr&&dep&&s>arr&&s<dep)c.classList.add('mid');
-    (function(s2,el){el.addEventListener('click',function(){
-      if(okDep(s2)){dep=s2}
-      else if(okArr(s2)){arr=s2;dep=null}
-      else return;
-      render();update();
-    })})(s,c);
+    var c=document.createElement('div');c.className='bk-cal-d';c.textContent=dd;c.setAttribute('data-d',iso(y,mo,dd));
+    c.addEventListener('click',function(){clic(this.getAttribute('data-d'))});
+    c.addEventListener('mouseenter',function(){var s=this.getAttribute('data-d');if(arr&&!dep&&etat(s)==='ok'&&s>arr){hov=s;paint()}});
     g.appendChild(c);
    }
   });
-  var off=(vy-minY)*12+(vm-minM);
+  paint();
+  var off=(vy-startY)*12+(vm-startM);
   document.getElementById('bkc-prev').disabled=off<=0;
   document.getElementById('bkc-next').disabled=off>=maxOff;
  }
+ W.querySelector('.bk-cal-months').addEventListener('mouseleave',function(){if(hov){hov=null;paint()}});
  document.getElementById('bkc-prev').addEventListener('click',function(){vm--;if(vm<0){vm=11;vy--}render()});
  document.getElementById('bkc-next').addEventListener('click',function(){vm++;if(vm>11){vm=0;vy++}render()});
+ clear.addEventListener('click',function(){arr=dep=hov=null;msg='';paint();update()});
  go.addEventListener('click',function(e){
   e.preventDefault();
   if(go.classList.contains('dim'))return;
