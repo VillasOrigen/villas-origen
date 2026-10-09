@@ -1204,8 +1204,59 @@ nav.scrolled .nav-burger span{background:var(--kaki);box-shadow:none}
 .bkp-t{display:flex;justify-content:space-between;gap:16px;margin-top:8px;padding-top:10px;border-top:1px solid rgba(26,18,8,.12);font-weight:700;font-size:1rem;color:var(--encre)}
 .bkp-n{margin:10px 0 0;font-size:.76rem;line-height:1.5;color:#6e6353}
 .bkp-n strong{color:#2f6b3a;font-weight:600}
+
+/* ═══════════ CARTE SATELLITE (comme le site Riviera) ═══════════ */
+.zone{position:relative;height:540px;overflow:hidden;border-radius:6px;background:#1e3b33;isolation:isolate;box-shadow:0 20px 60px rgba(26,18,8,.14)}
+.zone #villa-map{position:absolute;inset:0;z-index:0;background:#1e3b33}
+.zone .leaflet-container{background:#1e3b33;font-family:var(--sans)}
+.zone__voile{position:absolute;inset:0;z-index:400;pointer-events:none;background:linear-gradient(90deg,rgba(0,20,25,.8) 0%,rgba(0,20,25,.45) 34%,rgba(0,20,25,0) 60%),linear-gradient(180deg,rgba(0,20,25,0) 60%,rgba(0,20,25,.35) 100%)}
+.zone__cartouche{position:absolute;left:30px;bottom:30px;right:30px;z-index:401;display:flex;flex-direction:column;gap:8px;max-width:560px;pointer-events:none}
+.zone__nom{font-family:var(--serif);font-weight:500;font-size:2rem;line-height:1.1;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.zone__secteur{font-size:.68rem;font-weight:700;line-height:1.4;letter-spacing:.26em;text-transform:uppercase;color:#ecd49b;text-shadow:0 1px 6px rgba(0,0,0,.7)}
+.zone__infos{font-size:.88rem;font-weight:600;line-height:1.6;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+.zone__note{font-size:.76rem;line-height:1.5;color:rgba(255,255,255,.85);text-shadow:0 1px 8px rgba(0,0,0,.8)}
+.zone__google{pointer-events:auto;align-self:flex-start;margin-top:4px;padding-bottom:3px;border-bottom:1px solid #ecd49b;font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.7)}
+.zone__google:hover{color:#ecd49b}
+.zone .leaflet-control-attribution{background:none!important;color:rgba(255,255,255,.7);font-size:.56rem;text-shadow:0 1px 3px rgba(0,0,0,.8)}
+.zone .leaflet-control-attribution a{color:inherit}
+.zone__libelle{background:none;border:0}
+.zone__libelle span{position:absolute;left:0;top:0;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.85),0 0 10px rgba(0,0,0,.55)}
+.zone__libelle--plage span{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.3rem;color:#f8ecc8;letter-spacing:.02em}
+.zone__libelle--secteur span{padding:3px 10px;background:#fdfbf7;color:var(--foret-sombre);font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-shadow:none}
+@media(max-width:700px){
+  .zone{height:460px}
+  .zone__voile{background:linear-gradient(180deg,rgba(0,20,25,0) 35%,rgba(0,20,25,.6) 62%,rgba(0,20,25,.9) 100%)}
+  .zone__cartouche{left:20px;right:20px;bottom:20px}
+  .zone__nom{font-size:1.6rem}
+}
+/* ═══════════ CALENDRIER : résumé Arrivée → Départ (pas des champs à cliquer) ═══════════ */
+.bk-cal-fields{display:flex;align-items:flex-end;justify-content:center;gap:22px;max-width:none;margin:2px auto 10px;border:0;border-radius:0;background:none}
+.bk-cal-f{min-width:150px;padding:0 4px 8px;text-align:center;border-radius:0;border-bottom:2px solid rgba(26,18,8,.1);box-shadow:none;cursor:default}
+.bk-cal-f+.bk-cal-f{border-left:0}
+.bk-cal-f small{color:#8a7d6a}
+.bk-cal-f b{font-family:var(--serif);font-weight:600;font-size:1.3rem;color:#b3a894}
+.bk-cal-f.rempli b{color:var(--encre)}
+.bk-cal-f.act{box-shadow:none;border-bottom-color:var(--or)}
+.bk-cal-f.act small{color:var(--kaki)}
+.bk-cal-fl{color:var(--or);padding-bottom:12px;line-height:0}
+@media(max-width:640px){.bk-cal-fields{gap:12px}.bk-cal-f{min-width:0;flex:1}.bk-cal-f b{font-size:1.1rem}}
 </style>
 <link rel="stylesheet" href="/assets/leaflet/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script>
+window.VOallerA=function(t){
+ var h=document.documentElement,EV=['wheel','touchstart','keydown','mousedown'],n=0,dernier=0,iv;
+ function net(){var s=h.style.scrollBehavior;h.style.scrollBehavior='auto';t.scrollIntoView();h.style.scrollBehavior=s}
+ function bouge(){dernier=Date.now()}
+ function stop(){clearInterval(iv);EV.forEach(function(ev){removeEventListener(ev,stop,true)});removeEventListener('scroll',bouge)}
+ t.scrollIntoView();
+ addEventListener('scroll',bouge,{passive:true});
+ setTimeout(function(){EV.forEach(function(ev){addEventListener(ev,stop,{capture:true,passive:true})})},0);
+ iv=setInterval(function(){
+  if(Date.now()-dernier>250){var marge=parseFloat(getComputedStyle(t).scrollMarginTop)||0;if(Math.abs(t.getBoundingClientRect().top-marge)>6)net()}
+  if(++n>6)stop();
+ },450);
+};
+</script>
 </head>
 <body>
 
@@ -1515,6 +1566,7 @@ V.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTo
       </div>
       <div class="bk-cal-fields">
         <div class="bk-cal-f" id="bkc-fa"><small>Anreise</small><b id="bkc-va">Datum wählen</b></div>
+        <span class="bk-cal-fl" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
         <div class="bk-cal-f" id="bkc-fd"><small>Abreise</small><b id="bkc-vd">Datum wählen</b></div>
       </div>
       <p class="bk-cal-hint" id="bkc-pick" aria-live="polite"></p>
@@ -1547,14 +1599,18 @@ V.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTo
       <h2 data-i18n="loc_h2">Wo die <em>Villa</em> liegt</h2>
       <p data-i18n="loc_p">An der ersten Bucht von Cosón, fünf Gehminuten von Playa Cosón und fünf Autominuten vom Dorf Las Terrenas entfernt.</p>
     </div>
-    <div class="situation-map reveal">
-      <div id="villa-map" role="img" aria-label="Carte — secteur approximatif de la villa, première baie de Cosón, Las Terrenas"></div>
+    <div class="zone reveal">
+      <div id="villa-map" role="img" aria-label="Satellitenkarte: ungefähre Lage der Villa an der ersten Bucht von Cosón, Las Terrenas"></div>
+      <div class="zone__voile" aria-hidden="true"></div>
+      <div class="zone__cartouche">
+        <div class="zone__nom">Villas Origen</div>
+        <div class="zone__secteur">Playa Cosón · die erste Bucht</div>
+        <div class="zone__infos">5 Min. zu Fuß zum Strand · 5 Min. ins Dorf · 25 Min. vom Flughafen El Catey</div>
+        <div class="zone__note" data-i18n="loc_note">Ungefähre Lage: Die genaue Adresse wird bei der Buchung mitgeteilt.</div>
+        <a class="zone__google" href="https://www.google.com/maps/search/Playa+Coson+Las+Terrenas" target="_blank" rel="noopener" data-i18n="loc_link">Die Gegend auf Google Maps ansehen<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="margin-left:7px;vertical-align:-1px" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      </div>
     </div>
-    <p class="situation-note" data-i18n="loc_note">Ungefähre Lage — die genaue Adresse wird bei der Buchung mitgeteilt.</p>
-    <div class="situation-cta reveal">
-      <a class="map-link" href="https://www.google.com/maps/search/Playa+Coson+Las+Terrenas" target="_blank" rel="noopener" data-i18n="loc_link">Die Gegend auf Google Maps ansehen</a>
-    </div>
-  </div>
+      </div>
 </section>
 
 <!-- ═══════════ LES ACTIVITÉS ═══════════ -->
@@ -1787,13 +1843,23 @@ stats.forEach(s => obsStats.observe(s));
   function initVillaMap(){
     var el = document.getElementById('villa-map');
     if(!el || !window.L || el._leaflet_id) return;
-    var lat = 19.300833, lng = -69.574472;
-    var map = L.map(el, {scrollWheelZoom:false, zoomControl:true}).setView([lat, lng], 14);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-    L.circle([lat, lng], {radius:450, color:'#C9A15E', weight:1.5, opacity:.7, fillColor:'#3A4A30', fillOpacity:.15}).addTo(map);
-    setTimeout(function(){ map.invalidateSize(); }, 300);
+    // Imagerie satellite Esri World Imagery (comme le site Riviera). Carte figée : la zone, jamais l'adresse.
+    var TUILES = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+    var zone = [19.300833, -69.574472], etroit = el.offsetWidth < 700;
+    var centre = etroit ? [19.2985, -69.5775] : [19.3020, -69.5795];
+    var map = L.map(el, {center:centre, zoom:etroit ? 14 : 15, zoomControl:false, attributionControl:false,
+      dragging:false, scrollWheelZoom:false, doubleClickZoom:false, touchZoom:false, boxZoom:false, keyboard:false, tap:false});
+    L.tileLayer(TUILES, {maxZoom:18}).addTo(map);
+    L.control.attribution({position:'topright', prefix:false}).addAttribution('Imagerie © Esri, Maxar, Earthstar Geographics').addTo(map);
+    function etiquette(pos, html, classe){
+      L.marker(pos, {interactive:false, keyboard:false, icon:L.divIcon({className:'zone__libelle '+classe, html:html, iconSize:null})}).addTo(map);
+    }
+    L.circle(zone, {radius:360, stroke:false, fillColor:'#f2ede2', fillOpacity:.1, interactive:false}).addTo(map);
+    L.circle(zone, {radius:290, color:'#f2ede2', weight:2, opacity:1, fillColor:'#f2ede2', fillOpacity:.16, interactive:false}).addTo(map);
+    etiquette([zone[0] + 290 * 1.5 / 110574, zone[1]], '<span>Villas Origen</span>', 'zone__libelle--secteur');
+    // téléphone (carte plus large) : le nom de la plage un peu plus vers la mer, pour ne pas toucher l'étiquette de la villa
+    etiquette(etroit ? [19.3078, -69.5856] : [19.3052, -69.5805], '<span>Playa Cosón</span>', 'zone__libelle--plage');
+    window.addEventListener('resize', function(){ map.invalidateSize(); });
   }
   if(document.readyState !== 'loading') initVillaMap();
   else document.addEventListener('DOMContentLoaded', initVillaMap);
@@ -1880,7 +1946,7 @@ document.getElementById('bsend').addEventListener('click',function(){
 document.addEventListener('click',function(e){
  var a=e.target.closest&&e.target.closest('a');if(!a)return;
  var isNav=a.classList.contains('nav-cta')||a.classList.contains('m-cta')||a.classList.contains('hero-cta');
- if(isNav){var tR=document.getElementById('reserver');if(tR){e.preventDefault();history.replaceState(null,'','#reserver');tR.scrollIntoView();var nR=0,ivR=setInterval(function(){tR.scrollIntoView();if(++nR>5)clearInterval(ivR)},450);return;}}
+ if(isNav){var tR=document.getElementById('reserver');if(tR){e.preventDefault();history.replaceState(null,'','#reserver');window.VOallerA(tR);return;}}
  var isCta=a.classList.contains('wa-float')||(a.classList.contains('btn-foret')&&(a.getAttribute('href')||'').indexOf('wa.me')>-1);
  if(isCta){e.preventDefault();open();}
 });
@@ -1893,7 +1959,7 @@ document.addEventListener('click',function(e){
 .wa-float.on{opacity:1;transform:none;pointer-events:auto}
 @media(max-width:640px){.wa-float{right:16px;bottom:16px;width:52px;height:52px}}</style>
 <script>(function(){var w=document.querySelector('.wa-float');if(!w)return;var f=function(){var y=window.scrollY||0;w.classList.toggle('on',y>500)};window.addEventListener('scroll',f,{passive:true});f()})();</script>
-<script>(function(){if(location.hash==='#reserver'){var t=document.getElementById('reserver');if(t){var n=0,iv=setInterval(function(){t.scrollIntoView();if(++n>6)clearInterval(iv)},450);}}})();</script>
+<script>(function(){if(location.hash==='#reserver'){var t=document.getElementById('reserver');if(t)window.VOallerA(t);}})();</script>
 <script type="application/json" id="tarifs-secours">{"periodes": [{"du": "2026-09-01", "au": "2026-11-30", "prix": 295}, {"du": "2026-12-01", "au": "2027-01-31", "prix": 360}, {"du": "2027-02-01", "au": "2027-04-15", "prix": 340}, {"du": "2027-04-16", "au": "2027-06-30", "prix": 295}, {"du": "2027-07-01", "au": "2027-08-31", "prix": 295}, {"du": "2027-09-01", "au": "2027-11-30", "prix": 295}, {"du": "2027-12-01", "au": "2028-01-31", "prix": 380}], "reglages": {"direct": 0.1, "semaine": 0.1, "mois": 0.36, "derniere_minute_14": 0, "derniere_minute_7": 0}, "source": "secours"}</script>
 <script>
 /* Prix exact du séjour : grille lue dans la feuille Google via /api/tarifs (copie de secours ci-dessus) */
